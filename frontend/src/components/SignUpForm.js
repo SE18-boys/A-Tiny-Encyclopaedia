@@ -3,6 +3,7 @@ import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import React from "react";
 import '../css/signUp.css'
 import logo from "../assets/logo1.png";
+import {history} from "../utils/history";
 
 
 export default class SignUpForm extends React.Component {
@@ -14,14 +15,20 @@ export default class SignUpForm extends React.Component {
         this.props.handleChange();
         console.log("enter handleChange")
     }
+    backToHome=()=>
+    {
+        history.push("/")
+    }
 
     render() {
         return (
             <div>
 
                 <div align="center">
-                    <img alt="logo" src={logo}
+                <a >
+                    <img alt="logo" src={logo} onClick={this.backToHome}
                          style={{textAlign: 'center', background: '#fff', padding: 0, height: 150, marginTop: 150}}/>
+                </a>
                 </div>
                 <Form
                     name="normal_login"
