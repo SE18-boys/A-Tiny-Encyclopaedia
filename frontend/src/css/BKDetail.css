@@ -1,0 +1,119 @@
+.content-title {
+    margin: 26px 0 7px 0;
+    padding-right: 68px;
+    position: relative;
+}
+
+.content-title-edit {
+    font-size: 12px;
+    line-height: 24px;
+    padding: 0 8px;
+    border-radius: 4px;
+    border: 1px solid #d8d8d8;
+    margin-left: 16px;
+    height: 24px;
+    display: inline-block;
+    font-weight: 400;
+    position: relative;
+    top: -2px;
+}
+
+.content-title-add {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.content-sub-title {
+    font-weight: 400;
+    margin-bottom: 9px;
+}
+
+.content-summary {
+    margin-top: 23px;
+    margin-bottom: 25px;
+    white-space: pre-wrap;
+    font-family: "Arial", "Microsoft YaHei UI", "黑体", "宋体";
+}
+
+.content-p {
+    margin-bottom: 14px;
+}
+
+.bk-title {
+    font-weight: 600;
+}
+
+.bk-font36 {
+    font-size: 36px;
+    line-height: 48px;
+}
+
+.bk-font14 {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.bk-color-darkgrey {
+    color: #666666;
+}
+
+.bk-color-topagrey {
+    color: #555555;
+}
+
+.bk-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+}
+
+i.title-edit {
+    top: 2px;
+    margin-right: 4px;
+    background-image: url("data:image/svg+xml;base64,PHN-3ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEzIDEyIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTEgMGgxNnYxNkgxeiIvPgogICAgICAgIDxnIGZpbGw9IiM5OTkiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik03LjYxNS43OEM4LjI3My4xMjggOC45LjIzNyA5LjQ3OC44MWwxLjA4NCAxLjA3N2MuNTYxLjU1OC40NzUgMS4yODMtLjA1MyAxLjgwNkw1LjA4NyA5LjA4NkgyLjJWNi4xODVMNy42MTUuNzh6TTMuMjI5IDguMDU4aDEuNDM0bDUuMTIxLTUuMDk0Yy4xNTYtLjE1NS4xNjYtLjIzNC4wNTMtLjM0N0w4LjY5NCAxLjQ4Yy0uMTYzLS4xNTctLjE4Mi0uMTQtLjM1NC4wM0wzLjIzIDYuNjF2MS40NDZ6TTEgMTEuMjloMTJWMTAuMkgxeiIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==");
+}
+
+.wiki-add-icon {
+    margin: 0 4px;
+    top: 1px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath fill='%23D8D8D8' d='M0 12h12V0H0v12zm.857-.857h10.286V.857H.857v10.286z'/%3E%3Cpath fill='%23999' d='M6.47 3h-.94v2.53H3v.94h2.53V9h.94V6.47H9v-.94H6.47z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+i.title-edit, .wiki-add-icon {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    position: relative;
+}
+
+.title-1 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-top: 36px;
+    clear: both;
+}
+
+.title-1 .title-detail {
+    margin-left: 9px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.title-anchor {
+    position: relative;
+    top: -80px;
+    display: block;
+    height: 0px;
+    overflow: hidden;
+}
+
+.title-1 .bk-flex {
+    margin-bottom: 20px;
+    border-left: 5px solid #ff5e5e;
+}
