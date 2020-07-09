@@ -5,6 +5,7 @@ import {SearchBar} from "../components/SearchBar";
 import {withRouter} from "react-router-dom";
 import SignUpForm from "../components/SignUpForm";
 import SignInForm from "../components/SignInForm";
+import {HomeHeaderInfo} from "../components/HomeHeaderInfo";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -46,7 +47,7 @@ class SignUpView extends React.Component {
         return (
             <Layout>
                 <Header style={{background: '#fff', padding: 0}}>
-                    <HeaderInfo/>
+                    <HomeHeaderInfo/>
                 </Header>
                 <Layout style={{background: '#fff', padding: 0}}>
                     <Content style={{padding: '0 50px'}}>

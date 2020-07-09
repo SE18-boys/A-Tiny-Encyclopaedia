@@ -7,6 +7,10 @@
 ++ ./dev-log  
 by--xy  
 
+++ ./frontend
+
+by--zy
+
 ## 2020.7.7
 
 ### add basic frontend
@@ -19,3 +23,16 @@ by--xy
 ++ ./backendTest  
 by--zmy  
 
+## 2020.7.8
+
+### add new feature of frontend  
+
+++./frontend
+
+by--zy,zmy,xy
+
+### add basic backend project
+
+++./project_backend
+
+by--wy

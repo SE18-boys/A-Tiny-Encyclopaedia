@@ -14,6 +14,8 @@ import {
 import {QuestionCircleOutlined} from '@ant-design/icons';
 import logo from "../assets/logo1.png";
 import '../css/signUp.css'
+import {history} from "../utils/history";
+import {withRouter} from "react-router";
 
 const {Option} = Select;
 const AutoCompleteOption = AutoComplete.Option;
@@ -49,7 +51,7 @@ const tailFormItemLayout = {
     },
 };
 
-class SignInForm extends React.Component{
+class SignInForm extends React.Component {
 
 
     // const [form] = Form.useForm();
@@ -57,6 +59,10 @@ class SignInForm extends React.Component{
     onFinish = values => {
         console.log('Received values of form: ', values);
     };
+
+    backToHome = () => {
+        history.push("/")
+    }
 
 
     // const [autoCompleteResult, setAutoCompleteResult] = useState([]);
@@ -66,8 +72,16 @@ class SignInForm extends React.Component{
         return (
             <div>
                 <div align="center">
-                    <img alt="logo" src={logo}
-                         style={{textAlign: 'center', background: '#fff', padding: 0, height: 150, marginTop: 150}}/>
+                    <a>
+                        <img alt="logo" src={logo} onClick={this.backToHome}
+                             style={{
+                                 textAlign: 'center',
+                                 background: '#fff',
+                                 padding: 0,
+                                 height: 150,
+                                 marginTop: 150
+                             }}/>
+                    </a>
                 </div>
                 <Form
                     //{...formItemLayout}
@@ -91,7 +105,7 @@ class SignInForm extends React.Component{
                             },
                         ]}
                     >
-                        <Input  placeholder="Email"/>
+                        <Input placeholder="Email"/>
                     </Form.Item>
                     <Form.Item
                         name="username"
@@ -111,7 +125,7 @@ class SignInForm extends React.Component{
                             },
                         ]}
                     >
-                        <Input  placeholder="Username"/>
+                        <Input placeholder="Username"/>
                     </Form.Item>
 
                     <Form.Item
@@ -125,7 +139,7 @@ class SignInForm extends React.Component{
                         ]}
                         hasFeedback
                     >
-                        <Input.Password  placeholder="Password"/>
+                        <Input.Password placeholder="Password"/>
                     </Form.Item>
 
                     <Form.Item
@@ -149,10 +163,8 @@ class SignInForm extends React.Component{
                         //     }),
                         // ]}
                     >
-                        <Input.Password  placeholder="Confirm Password"/>
+                        <Input.Password placeholder="Confirm Password"/>
                     </Form.Item>
-
-
 
 
                     {/*<Form.Item label="Captcha" extra="We must make sure that your are a human.">*/}
@@ -178,7 +190,7 @@ class SignInForm extends React.Component{
                     {/*</Form.Item>*/}
 
 
-                    <Form.Item >
+                    <Form.Item>
                         <Button type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}}>
                             注册
                         </Button>
@@ -190,6 +202,6 @@ class SignInForm extends React.Component{
 
 };
 
-export default SignInForm;
+export default withRouter(SignInForm);
 
 // export default useRouter()
