@@ -20,15 +20,17 @@ public class UserController {
 
     @RequestMapping("/login")
     public Msg login(@RequestBody Map<String,String>map){
-        String name=map.get("name");
+        String name=map.get("username");
         String password=map.get("password");
+        System.out.print(name);
+        System.out.print(password);
         User auth = userService.checkUser(name, password);
         if(auth!=null){
             JSONObject obj=new JSONObject();
             obj.put("id",auth.getId());
-            obj.put("name",auth.getName());
+            obj.put("username",auth.getName());
             obj.put("email",auth.getEmail());
-            obj.put("isAuth",auth.getIs_auth());
+            obj.put("isAuth",auth.getIsAuth());
             SessionUtil.setSession(obj);
             JSONObject data=JSONObject.fromObject(auth);
             return MsgUtil.makeMsg(MsgUtil.SUCCESS,MsgUtil.LOGIN_SUCCESS_MSG,data);
@@ -52,7 +54,7 @@ public class UserController {
 
     @RequestMapping("/register")
     public Msg register(@RequestBody JSONObject object){
-        String name= object.getString("name");
+        String name= object.getString("username");
         String password=object.getString("password");
         String email=object.getString("email");
         User auth=userService.findUserByName(name);
@@ -61,7 +63,7 @@ public class UserController {
             user.setName(name);
             user.setPassword(password);
             user.setEmail(email);
-            user.setIs_auth(Boolean.FALSE);
+            user.setIsAuth(Boolean.FALSE);
             userService.addUser(user);
             return MsgUtil.makeMsg(MsgUtil.SUCCESS,MsgUtil.REGISTER_SUCCESS_MSG);
         }else{

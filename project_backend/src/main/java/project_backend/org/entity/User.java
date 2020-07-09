@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.*;
 import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
 @Entity
-@Table(name ="user",schema ="encyclopaedia")
+@Table(name ="user")
 @JsonIgnoreProperties(value = {"handler","hibernateLazyInitializer","fieldHandler"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -52,11 +52,11 @@ public class User {
 
     @Basic
     @Column(name = "isAuth")
-    public Boolean getIs_auth(){
+    public Boolean getIsAuth(){
         return this.isAuth;
     }
-    public void setIs_auth(Boolean is_auth){
-        this.isAuth=is_auth;
+    public void setIsAuth(Boolean isAuth){
+        this.isAuth=isAuth;
     }
 
 
