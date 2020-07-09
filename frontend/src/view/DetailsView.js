@@ -87,16 +87,33 @@ class HomeView extends React.Component{
                             grid={{gutter: 10, column: 3}}
                             dataSource={meanings}
 
-                            renderItem={item => (
-                                <List.Item>
-                                    <div className="poly-detail-item">
-                                        <span className="poly-detail-item-icon">►</span>
-                                        <span className="bk-margin-left bk-font14">
+                            renderItem={(item, index) => {
+                                if(index === type){
+                                    return (
+                                        <List.Item>
+                                            <div className="poly-detail-item">
+                                                <span className="poly-detail-item-icon">■</span>
+                                                <span className="bk-margin-left bk-font14">
+                                                <span>{item}</span>
+                                                </span>
+                                            </div>
+                                        </List.Item>
+                                    )
+                                }
+                                else{
+                                    return(
+                                        <List.Item>
+                                            <div className="poly-detail-item">
+                                                <span className="poly-detail-item-icon">►</span>
+                                                <span className="bk-margin-left bk-font14">
                                             <a>{item}</a>
                                             </span>
-                                    </div>
-                                </List.Item>
-                            )}
+                                            </div>
+                                        </List.Item>
+                                    )
+                                }
+
+                            }}
                         />
                     </div>
                     <Layout>
