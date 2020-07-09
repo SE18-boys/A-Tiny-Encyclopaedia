@@ -36,3 +36,11 @@ by--zy,zmy,xy
 ++./project_backend
 
 by--wy
+
+## 2020.7.9
+
+### update the detail page
+
++-./frontend  
+
+by--zmy  

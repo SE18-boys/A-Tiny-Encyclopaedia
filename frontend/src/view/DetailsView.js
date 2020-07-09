@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {HashRouter as Router, Link, Route, Switch, withRouter} from 'react-router-dom';
 import 'antd/dist/antd.min.css'
-import {Breadcrumb, Layout, Menu, Card, Affix} from 'antd';
+import {Breadcrumb, Layout, Menu, Card, Affix, List} from 'antd';
 
 import '../css/home.css'
 import {HeaderInfo} from "../components/HeaderInfo";
@@ -9,9 +9,10 @@ import {EntryDetails} from "../components/EntryDetails";
 import {HomeHeaderInfo} from "../components/HomeHeaderInfo";
 
 const name = "clannad";
+const type = 0;
 const number1 = 5;
 const meanings = ["日本Key公司发行的恋爱冒险游戏","日本东映动画改编制作的动画电影","爱尔兰克兰纳德家族乐团",
-"美崎树里绘制的Key社官方漫画","日本京都动画改编制作的电视动画"];
+"美崎树里绘制的Key社官方漫画","日本京都动画改编制作的电视动画",];
 const name1 = "幽语";
 const name2 = "伊妹";
 
@@ -33,7 +34,26 @@ class HomeView extends React.Component{
 
         let themeans = [];
         for(let i=0; i<meanings.length; ++i){
-            themeans.push(<Card.Grid style={gridStyle}>{meanings[i]}</Card.Grid>)
+            if(i === type){
+                themeans.push(
+                    <div class="poly-detail-item">
+                        <span class="poly-detail-item-icon">■</span>
+                        <span class="bk-margin-left bk-font14">
+                        <span>{meanings[i]}</span>
+                        </span>
+                    </div>
+                );
+            }
+            else{
+                themeans.push(
+                    <div class="poly-detail-item">
+                        <span class="poly-detail-item-icon">►</span>
+                        <span class="bk-margin-left bk-font14">
+                        <a>{meanings[i]}</a>
+                        </span>
+                    </div>
+                );
+            }
         }
         return(
             <div>
@@ -43,7 +63,42 @@ class HomeView extends React.Component{
                         {/*    {themeans}*/}
                         {/*</Card>*/}
                         <HeaderInfo/>
+
                     </Header>
+
+                    <Content>
+                    <div class="poly wrapper">
+
+                        <List
+                            header={
+                                <div className="poly-detail-title">
+                                        <span>
+                                            <span className="bk-strong">
+                                                {name}
+                                            </span>
+                                            是一个多义词，请在下列义项上选择浏览（共5个义项）
+                                        </span>
+                                    <a>
+                                        <i className="wiki-add-icon"></i>
+                                        <span className="bk-color-darkgrey">添加义项</span>
+                                    </a>
+                                </div>
+                            }
+                            grid={{gutter: 10, column: 3}}
+                            dataSource={meanings}
+
+                            renderItem={item => (
+                                <List.Item>
+                                    <div className="poly-detail-item">
+                                        <span className="poly-detail-item-icon">►</span>
+                                        <span className="bk-margin-left bk-font14">
+                                            <a>{item}</a>
+                                            </span>
+                                    </div>
+                                </List.Item>
+                            )}
+                        />
+                    </div>
                     <Layout>
                         <Content>
                             <EntryDetails/>
@@ -67,6 +122,7 @@ class HomeView extends React.Component{
                             </Card>
                         </Sider>
                     </Layout>
+                    </Content>
                     <Footer>Footer
                     </Footer>
                 </Layout>
@@ -77,3 +133,24 @@ class HomeView extends React.Component{
 }
 
 export default withRouter(HomeView);
+
+
+
+
+{/*<div class="poly-detail bk-font14">*/}
+{/*    <div class="poly-detail-title">*/}
+{/*                <span>*/}
+{/*                    <span class="bk-strong">*/}
+{/*                        {name}*/}
+{/*                    </span>*/}
+{/*                    是一个多义词，请在下列义项上选择浏览（共5个义项）*/}
+{/*                </span>*/}
+{/*        <a>*/}
+{/*            <i class="wiki-add-icon"></i>*/}
+{/*            <span class="bk-color-darkgrey">添加义项</span>*/}
+{/*        </a>*/}
+{/*    </div>*/}
+{/*</div>*/}
+{/*<div class="bk-flex">*/}
+{/*    {themeans}*/}
+{/*</div>*/}
