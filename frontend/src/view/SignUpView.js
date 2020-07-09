@@ -25,7 +25,7 @@ class SignUpView extends React.Component {
 
     handleChange = () => {
 
-        console.log("enter father handleChange")
+        //console.log("enter father handleChange")
 
         if (this.state.isLoginPage) {
             this.setState({isLoginPage: false});

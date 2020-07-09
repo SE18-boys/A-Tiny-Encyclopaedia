@@ -1,10 +1,10 @@
-import config from 'config';
+// import config from 'config';
 import {postRequest, putRequest} from "../utils/ajax";
 import {history} from '../utils/history';
 import {message} from 'antd';
 
 export const register = (data) => {
-    const url = `${config.apiUrl}/register`;
+    const url = `http://localhost:8080/register`;
     const callback = (data) => {
         if(data.status >= 0) {
             console.log('Received backend data: ', data);
@@ -20,7 +20,7 @@ export const register = (data) => {
 };
 
 export const login = (data) => {
-    const url = `${config.apiUrl}/login`;
+    const url = `http://localhost:8080/login`;
     const callback = (data) => {
         if(data.status >= 0) {
             localStorage.setItem('user', JSON.stringify(data.data));
@@ -35,16 +35,16 @@ export const login = (data) => {
 };
 
 export const getUsers = (data,callback) => {
-    const url = `${config.apiUrl}/getUsers`;
+    const url = `http://localhost:8080/getUsers`;
     postRequest(url, data, callback);
 };
 
-export const uploadAvatar = (userId, iconBase64, message) => {
-    const data = {userId:userId,iconBase64:iconBase64};
-    const url = `${config.apiUrl}/uploadAvatar`;
-    putRequest(url, data, message);
-}
-
+// export const uploadAvatar = (userId, iconBase64, message) => {
+//     const data = {userId:userId,iconBase64:iconBase64};
+//     const url = `${config.apiUrl}/uploadAvatar`;
+//     putRequest(url, data, message);
+// }
+//
 // export const logout = () => {
 //     const url = `${config.apiUrl}/logout`;
 //
@@ -60,7 +60,7 @@ export const uploadAvatar = (userId, iconBase64, message) => {
 //     };
 //     postRequest(url, {}, callback);
 // };
-
+//
 // export const checkSession = (callback) => {
 //     const url = `${config.apiUrl}/checkSession`;
 //     postRequest(url, {}, callback);
