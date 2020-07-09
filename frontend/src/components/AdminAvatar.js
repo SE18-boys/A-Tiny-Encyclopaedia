@@ -9,16 +9,25 @@ import {history} from "../utils/history";
 export class AdminAvatar extends React.Component {
 
     state={
-        isSignUp: false,
+        isSignIn: false,
+        username: null,
+    }
+
+    componentDidMount(){
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log("user info:",user);
+        if (user!==null){
+            this.setState({username: user.name,isSignIn: true})
+        }
     }
 
     onClickSignUp=()=>history.push("/SignUp")
 
     signUpInfo=()=>
     {
-        if(this.state.isSignUp)
+        if(this.state.isSignIn)
             return(
-                <span className="name">Hi,{localStorage.getItem("username")}</span>
+                <span className="name">Hi,{this.state.username}</span>
             )
         else
             return (

@@ -19,7 +19,7 @@ public class UserController {
 
     @RequestMapping("/login")
     public Msg login(@RequestBody Map<String,String>map){
-        String name=map.get("name");
+        String name=map.get("username");
         String password=map.get("password");
         User auth = userService.checkUser(name, password);
         if(auth!=null){

@@ -21,6 +21,8 @@ class SignUpView extends React.Component {
 
 
     componentDidMount() {
+        // const user = JSON.parse(localStorage.getItem("user"));
+        // console.log("user info:",user);
     }
 
     handleChange = () => {
