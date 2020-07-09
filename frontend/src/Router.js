@@ -3,7 +3,7 @@ import { Router, Route, Switch, Redirect} from 'react-router-dom';
 import HomeView from "./view/HomeView";
 import DetailsView from "./view/DetailsView";
 import {history} from "./utils/history";
-import SignUpForm from "./components/SignUpForm";
+import LoginForm from "./components/LoginForm";
 import SignUpView from "./view/SignUpView";
 
 class BasicRoute extends React.Component{

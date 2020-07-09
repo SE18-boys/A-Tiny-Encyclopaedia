@@ -16,6 +16,8 @@ import logo from "../assets/logo1.png";
 import '../css/signUp.css'
 import {history} from "../utils/history";
 import {withRouter} from "react-router";
+// import {register} from "../services/userService";
+
 
 const {Option} = Select;
 const AutoCompleteOption = AutoComplete.Option;
@@ -51,19 +53,27 @@ const tailFormItemLayout = {
     },
 };
 
-class SignInForm extends React.Component {
+class RegisterForm extends React.Component {
 
 
     // const [form] = Form.useForm();
 
     onFinish = values => {
         console.log('Received values of form: ', values);
+        // register(values);
+
     };
 
-    backToHome = () => {
-        history.push("/")
+    handleChange = () => {
+        this.props.handleChange();
+        console.log("enter handleChange")
     }
 
+    backToHome = () => {
+        history.push("/");
+    }
+
+    // onClickRegister=()
 
     // const [autoCompleteResult, setAutoCompleteResult] = useState([]);
 
@@ -191,9 +201,10 @@ class SignInForm extends React.Component {
 
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}}>
+                        <Button type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}} >
                             注册
                         </Button>
+                        已有账号 <a onClick={this.handleChange}>立刻登录!</a>
                     </Form.Item>
                 </Form>
             </div>
@@ -202,6 +213,6 @@ class SignInForm extends React.Component {
 
 };
 
-export default withRouter(SignInForm);
+export default withRouter(RegisterForm);
 
 // export default useRouter()

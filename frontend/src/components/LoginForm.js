@@ -6,7 +6,7 @@ import logo from "../assets/logo1.png";
 import {history} from "../utils/history";
 
 
-export default class SignUpForm extends React.Component {
+export default class LoginForm extends React.Component {
 
     onFinish = values => {
         console.log('Received values of form: ', values);
