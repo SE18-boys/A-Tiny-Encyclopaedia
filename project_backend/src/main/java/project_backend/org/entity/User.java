@@ -51,7 +51,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "isAuth")
+    @Column(name = "is_auth")
     public Boolean getIs_auth(){
         return this.isAuth;
     }
