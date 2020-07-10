@@ -14,6 +14,7 @@ export class HeaderInfo extends React.Component {
 
     render(){
         // const user = JSON.parse(localStorage.getItem("user"));
+        // console.log("user info:",user);
         return(
             <div id="header">
                 <div id="header-content" >

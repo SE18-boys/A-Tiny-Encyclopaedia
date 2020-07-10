@@ -22,11 +22,13 @@ class SignUpView extends React.Component {
 
 
     componentDidMount() {
+        // const user = JSON.parse(localStorage.getItem("user"));
+        // console.log("user info:",user);
     }
 
     handleChange = () => {
 
-        console.log("enter father handleChange")
+        //console.log("enter father handleChange")
 
         if (this.state.isLoginPage) {
             this.setState({isLoginPage: false});
