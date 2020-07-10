@@ -3,9 +3,7 @@ import { Router, Route, Switch, Redirect} from 'react-router-dom';
 import HomeView from "./view/HomeView";
 import DetailsView from "./view/DetailsView";
 import {history} from "./utils/history";
-import LoginForm from "./components/LoginForm";
-import SignUpView from "./view/SignUpView";
-import AddEntryView from "./view/AddEntryView";
+
 
 class BasicRoute extends React.Component{
 
@@ -26,6 +24,7 @@ class BasicRoute extends React.Component{
                     <Route exact path="/Details" component={DetailsView} />
                     <Route exact path="/SignUp" component={SignUpView} />
                     <Route exact path="/AddEntry" component={AddEntryView} />
+
                     <Redirect from="/*" to="/" />
                 </Switch>
 
