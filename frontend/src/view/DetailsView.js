@@ -7,6 +7,7 @@ import '../css/home.css'
 import {HeaderInfo} from "../components/HeaderInfo";
 import {EntryDetails} from "../components/EntryDetails";
 import {HomeHeaderInfo} from "../components/HomeHeaderInfo";
+import MyFooter from "../components/MyFooter";
 
 const name = "clannad";
 const type = 0;
@@ -140,9 +141,9 @@ class HomeView extends React.Component{
                         </Sider>
                     </Layout>
                     </Content>
-                    <Footer>Footer
-                    </Footer>
                 </Layout>
+                {/*这里css有问题，无法做到固定在页面最底部而非浏览器最底部*/}
+                <MyFooter/>
             </div>
 
         );

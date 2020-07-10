@@ -157,21 +157,21 @@ class RegisterForm extends React.Component {
                         // label="Confirm Password"
                         dependencies={['password']}
                         hasFeedback
-                        // rules={[
-                        //     {
-                        //         required: true,
-                        //         message: 'Please confirm your password!',
-                        //     },
-                        //     ({getFieldValue}) => ({
-                        //         validator(rule, value) {
-                        //             if (!value || getFieldValue('password') === value) {
-                        //                 return Promise.resolve();
-                        //             }
-                        //
-                        //             return Promise.reject('The two passwords that you entered do not match!');
-                        //         },
-                        //     }),
-                        // ]}
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please confirm your password!',
+                            },
+                            ({getFieldValue}) => ({
+                                validator(rule, value) {
+                                    if (!value || getFieldValue('password') === value) {
+                                        return Promise.resolve();
+                                    }
+
+                                    return Promise.reject('The two passwords that you entered do not match!');
+                                },
+                            }),
+                        ]}
                     >
                         <Input.Password placeholder="Confirm Password"/>
                     </Form.Item>

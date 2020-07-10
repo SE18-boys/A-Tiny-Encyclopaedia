@@ -6,6 +6,7 @@ import {withRouter} from "react-router-dom";
 import LoginForm from "../components/LoginForm";
 import {HomeHeaderInfo} from "../components/HomeHeaderInfo";
 import RegisterForm from "../components/RegisterForm";
+import MyFooter from "../components/MyFooter";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -56,9 +57,7 @@ class SignUpView extends React.Component {
                             {this.signForm()}
                         </div>
                     </Content>
-                    <Footer style={{textAlign: 'center', background: '#fff', padding: 0}}>
-                        copyright@2020 SE18boys
-                    </Footer>
+                    <MyFooter/>
                 </Layout>
             </Layout>
 

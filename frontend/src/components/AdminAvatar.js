@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons';
 import {withRouter} from "react-router-dom";
 import {history} from "../utils/history";
+import Button from "antd/es/button";
 export class AdminAvatar extends React.Component {
 
     state={
@@ -26,7 +27,10 @@ export class AdminAvatar extends React.Component {
             )
 
     }
-
+    handleAdd=()=>
+    {
+        history.push("/AddEntry")
+    }
     render() {
 
         const menu = (
@@ -49,6 +53,9 @@ export class AdminAvatar extends React.Component {
 
         return(
             <div id="avatar">
+                <span style={{padding:"10px"}}>
+                    <Button onClick={this.handleAdd}>创建词条</Button>
+                </span>
                 <span className="name">{this.signUpInfo()}</span>
                 <Dropdown overlay={menu} placement="bottomRight">
                     {/*<Avatar src={user.userIcon.iconBase64} style={{cursor:"pointer"}}/>*/}
