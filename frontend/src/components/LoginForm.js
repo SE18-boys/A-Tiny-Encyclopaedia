@@ -4,12 +4,13 @@ import React from "react";
 import '../css/signUp.css'
 import logo from "../assets/logo1.png";
 import {history} from "../utils/history";
+import * as userService from '../services/userService'
 
+export default class LoginForm extends React.Component {
 
-export default class SignUpForm extends React.Component {
-
-    onFinish = values => {
+    onFinish = (values) => {
         console.log('Received values of form: ', values);
+        userService.login(values);
     };
     handleChange = () => {
         this.props.handleChange();

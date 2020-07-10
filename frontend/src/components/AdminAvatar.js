@@ -6,19 +6,29 @@ import {
 } from '@ant-design/icons';
 import {withRouter} from "react-router-dom";
 import {history} from "../utils/history";
+import Button from "antd/es/button";
 export class AdminAvatar extends React.Component {
 
     state={
-        isSignUp: false,
+        isSignIn: false,
+        username: null,
+    }
+
+    componentDidMount(){
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log("user info:",user);
+        if (user!==null){
+            this.setState({username: user.name,isSignIn: true})
+        }
     }
 
     onClickSignUp=()=>history.push("/SignUp")
 
     signUpInfo=()=>
     {
-        if(this.state.isSignUp)
+        if(this.state.isSignIn)
             return(
-                <span className="name">Hi,{localStorage.getItem("username")}</span>
+                <span className="name">Hi,{this.state.username}</span>
             )
         else
             return (
@@ -26,7 +36,10 @@ export class AdminAvatar extends React.Component {
             )
 
     }
-
+    handleAdd=()=>
+    {
+        history.push("/AddEntry")
+    }
     render() {
 
         const menu = (
@@ -49,6 +62,9 @@ export class AdminAvatar extends React.Component {
 
         return(
             <div id="avatar">
+                <span style={{padding:"10px"}}>
+                    <Button onClick={this.handleAdd}>创建词条</Button>
+                </span>
                 <span className="name">{this.signUpInfo()}</span>
                 <Dropdown overlay={menu} placement="bottomRight">
                     {/*<Avatar src={user.userIcon.iconBase64} style={{cursor:"pointer"}}/>*/}

@@ -5,6 +5,7 @@ import {Breadcrumb, Layout, Menu} from 'antd';
 import '../css/home.css'
 import {SearchBar} from "../components/SearchBar";
 import {HomeHeaderInfo} from "../components/HomeHeaderInfo";
+import MyFooter from "../components/MyFooter";
 
 const {Header, Content, Footer, Sider} = Layout;
 class HomeView extends React.Component{
@@ -30,9 +31,7 @@ class HomeView extends React.Component{
                             </div>
                         </div>
                     </Content>
-                    <Footer style={{textAlign: 'center', background: '#fff', padding: 0 }}>
-                        copyright@2020 SE18boys
-                    </Footer>
+                    <MyFooter/>
                 </Layout>
             </Layout>
 
