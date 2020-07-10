@@ -43,4 +43,24 @@ by--wy
 
 +-./frontend  
 
-by--zmy  
+by--zmy
+
+### add AddEntry page
+
++./frontend
+
+by--zy
+
+### fix bugs of backend
+
++-./project_backend
+
+by--wy
+
+### connect frontend and backend
+
++-./frontend
+
++-./project_backend
+
+by--xy
