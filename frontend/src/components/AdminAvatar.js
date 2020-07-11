@@ -7,6 +7,8 @@ import {
 import {withRouter} from "react-router-dom";
 import {history} from "../utils/history";
 import Button from "antd/es/button";
+import * as userService from '../services/userService'
+
 export class AdminAvatar extends React.Component {
 
     state={
@@ -40,17 +42,23 @@ export class AdminAvatar extends React.Component {
     {
         history.push("/AddEntry")
     }
+
+    showProfile=()=>
+    {
+        history.push("/Profile")
+    }
+
     render() {
 
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
+                    <a onClick={this.showProfile}>
                         Show Profile
                     </a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a href="#" >
+                    <a href="#" onClick={userService.logout}>
                         Log Out
                     </a>
                 </Menu.Item>

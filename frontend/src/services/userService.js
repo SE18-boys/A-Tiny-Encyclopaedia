@@ -39,28 +39,28 @@ export const getUsers = (data,callback) => {
     postRequest(url, data, callback);
 };
 
-// export const uploadAvatar = (userId, iconBase64, message) => {
-//     const data = {userId:userId,iconBase64:iconBase64};
-//     const url = `${config.apiUrl}/uploadAvatar`;
-//     putRequest(url, data, message);
-// }
-//
-// export const logout = () => {
-//     const url = `${config.apiUrl}/logout`;
-//
-//     const callback = (data) => {
-//         if(data.status >= 0) {
-//             localStorage.removeItem("user");
-//             history.push("/login");
-//             message.success(data.msg);
-//         }
-//         else{
-//             message.error(data.msg);
-//         }
-//     };
-//     postRequest(url, {}, callback);
-// };
-//
+export const uploadAvatar = (userId, iconBase64, message) => {
+    const data = {userId:userId,iconBase64:iconBase64};
+    const url = `http://localhost:8080/uploadAvatar`;
+    putRequest(url, data, message);
+}
+
+export const logout = () => {
+    const url = `http://localhost:8080/logout`;
+
+    const callback = (data) => {
+        if(data.status >= 0) {
+            localStorage.removeItem("user");
+            history.push("/login");
+            message.success(data.msg);
+        }
+        else{
+            message.error(data.msg);
+        }
+    };
+    postRequest(url, {}, callback);
+};
+
 // export const checkSession = (callback) => {
 //     const url = `${config.apiUrl}/checkSession`;
 //     postRequest(url, {}, callback);
