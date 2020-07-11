@@ -64,3 +64,23 @@ by--wy
 +-./project_backend
 
 by--xy
+
+## 2020.7.10
+
+### discuss data structure
+
++-./frontend  
+
++-./neo4j_data  
+
++-./database  
+
+by--zmy,xy,wy,zy
+
+## 2020.7.11
+
+### add profile page and logout
+
++-./frontend  
+
+by--xy
