@@ -85,6 +85,14 @@ by--zmy,xy,wy,zy
 
 by--xy
 
+## 2020.7.13
+
+#### fix bugs and add features of front page
+
++-./frontend 
+
+by--zy,xy,zmy,wy
+
 ## 2020.7.14
 
 ### add some junit5 test example
@@ -92,3 +100,9 @@ by--xy
 +-./project_backend
 
 by--xy
+
+### re-design and re-write the neo4j database initialize script
+
++-./neo4j_data
+
+by--zy
