@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout} from "antd";
+import {Layout, message} from "antd";
 import {HeaderInfo} from "../components/HeaderInfo";
 import {SearchBar} from "../components/SearchBar";
 import {withRouter} from "react-router-dom";
@@ -7,6 +7,7 @@ import LoginForm from "../components/LoginForm";
 import {HomeHeaderInfo} from "../components/HomeHeaderInfo";
 import RegisterForm from "../components/RegisterForm";
 import MyFooter from "../components/MyFooter";
+import {history} from "../utils/history";
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -21,9 +22,13 @@ class SignUpView extends React.Component {
     }
 
 
-    componentDidMount() {
-        // const user = JSON.parse(localStorage.getItem("user"));
-        // console.log("user info:",user);
+    componentDidMount(){
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log("user info:",user);
+        if (user!==null){
+            message.success("已经登录")
+            history.push("/");
+        }
     }
 
     handleChange = () => {

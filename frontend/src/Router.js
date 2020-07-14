@@ -6,6 +6,7 @@ import {history} from "./utils/history";
 import LoginForm from "./components/LoginForm";
 import SignUpView from "./view/SignUpView";
 import AddEntryView from "./view/AddEntryView";
+import ProfileView from "./view/ProfileView";
 
 class BasicRoute extends React.Component{
 
@@ -23,6 +24,7 @@ class BasicRoute extends React.Component{
             <Router history={history}>
                 <Switch>
                     <Route exact path="/" component={HomeView} />
+                    <Route exact path="/Profile" component={ProfileView} />
                     <Route exact path="/Details" component={DetailsView} />
                     <Route exact path="/SignUp" component={SignUpView} />
                     <Route exact path="/AddEntry" component={AddEntryView} />
