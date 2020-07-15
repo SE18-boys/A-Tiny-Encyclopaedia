@@ -52,8 +52,8 @@ class MedicalGraph:
         rels_doeat = []  # 疾病－宜吃食物关系
         rels_noteat = []  # 疾病－忌吃食物关系
         rels_commondrug = []  # 疾病－通用药品关系
-        rels_recommanddrug = []  # 疾病－热门药品关系
-        rels_recommand_dish = []  # 疾病-推荐菜品关系
+        rels_recommenddrug = []  # 疾病－热门药品关系
+        rels_recommend_dish = []  # 疾病-推荐菜品关系
         rels_drug_detail = []  # 疾病和具体药品关系
 
         count = 0
@@ -165,12 +165,12 @@ class MedicalGraph:
                     # if not_eat not in foods:
                     #     foods += not_eat
 
-            if 'recommand_eat' in data_json:
-                dishes += data_json['recommand_eat']
-                for recommand_dish in data_json['recommand_eat']:
-                    rels_recommand_dish.append([disease, recommand_dish])
-                    # if recommand_dish not in dishes:
-                    #     dishes += recommand_dish
+            if 'recommend_eat' in data_json:
+                dishes += data_json['recommend_eat']
+                for recommend_dish in data_json['recommend_eat']:
+                    rels_recommend_dish.append([disease, recommend_dish])
+                    # if recommend_dish not in dishes:
+                    #     dishes += recommend_dish
 
             if 'common_drug' in data_json:
                 drugs += data_json['common_drug']
@@ -179,12 +179,12 @@ class MedicalGraph:
                     # if common_drug not in drugs:
                     #     drugs += common_drug
 
-            if 'recommand_drug' in data_json:
-                drugs += data_json['recommand_drug']
-                for recommand_drug in data_json['recommand_drug']:
-                    rels_recommanddrug.append([disease, recommand_drug])
-                    # if recommand_drug not in drugs:
-                    #    drugs += recommand_drug
+            if 'recommend_drug' in data_json:
+                drugs += data_json['recommend_drug']
+                for recommend_drug in data_json['recommend_drug']:
+                    rels_recommenddrug.append([disease, recommend_drug])
+                    # if recommend_drug not in drugs:
+                    #    drugs += recommend_drug
 
             if 'drug_detail' in data_json:
                 drug_details += data_json['drug_detail']
@@ -195,7 +195,7 @@ class MedicalGraph:
 
             
         return set(diseases), set(symptoms), set(departments), set(cure_ways), set(checks), set(foods), set(dishes), set(drugs), set(drug_details), disease_infos,\
-            rels_check, rels_recommand_dish, rels_noteat, rels_doeat, rels_cure_department, rels_commondrug,rels_recommanddrug,\
+            rels_check, rels_recommend_dish, rels_noteat, rels_doeat, rels_cure_department, rels_commondrug,rels_recommenddrug,\
             rels_symptom, rels_acompany,rels_drug_detail,rels_cure_way
 
       
@@ -230,7 +230,7 @@ class MedicalGraph:
 
     def create_graphnodes(self):
         Diseases,Symptoms,Departments,Cure_ways,Checks,Foods,Dishes,Drugs,Drug_details,disease_infos,\
-            rels_check, rels_recommand_dish, rels_noteat, rels_doeat, rels_cure_department, rels_commondrug, rels_recommanddrug,\
+            rels_check, rels_recommend_dish, rels_noteat, rels_doeat, rels_cure_department, rels_commondrug, rels_recommenddrug,\
             rels_symptom, rels_acompany, rels_drug_detail, rels_cure_way = self.read_nodes()
         # print(216)
         # input()
@@ -257,23 +257,21 @@ class MedicalGraph:
 
     def create_graphrels(self):
         Diseases,Symptoms,Departments,Cure_ways,Checks,Foods,Dishes,Drugs,Drug_details,disease_infos,\
-            rels_check, rels_recommand_dish, rels_noteat, rels_doeat, rels_cure_department, rels_commondrug, rels_recommanddrug,\
+            rels_check, rels_recommend_dish, rels_noteat, rels_doeat, rels_cure_department, rels_commondrug, rels_recommenddrug,\
             rels_symptom, rels_acompany, rels_drug_detail, rels_cure_way = self.read_nodes()
         
 
         self.create_relationship('Disease', 'Symptom',rels_symptom, 'has_symptom', '症状')
         self.create_relationship('Disease', 'Disease',rels_acompany, 'acompany_with', '并发症')
         self.create_relationship('Disease', 'Department', rels_cure_department, 'cure_in', '就诊科室')
-        self.create_relationship('Disease', 'Department', rels_cure_department, 'cure_in', '就诊科室')
         self.create_relationship('Disease', 'Cure_way', rels_cure_way, 'cure_by', '治疗方式')
         self.create_relationship('Disease', 'Check', rels_check, 'need_check', '检查项目')
         self.create_relationship('Disease', 'Food', rels_doeat, 'do_eat', '宜吃')
         self.create_relationship('Disease', 'Food', rels_noteat, 'not_eat', '禁忌食物')
-        self.create_relationship('Disease', 'Dish', rels_recommand_dish, 'recommand_dish', '推荐菜品')
-        self.create_relationship('Disease', 'Department', rels_cure_department, 'cure_in', '就诊科室')
+        self.create_relationship('Disease', 'Dish', rels_recommend_dish, 'recommend_dish', '推荐菜品')
         self.create_relationship('Disease', 'Drug', rels_commondrug, 'common_drug', '常用药品')
         self.create_relationship('Disease', 'Drug_detail', rels_drug_detail, 'drug_detail', '具体药品')
-        self.create_relationship('Disease', 'Drug', rels_recommanddrug, 'recommand_drug', '好评药品')
+        self.create_relationship('Disease', 'Drug', rels_recommenddrug, 'recommend_drug', '好评药品')
 
     '''创建实体关联边'''
 
@@ -302,7 +300,7 @@ class MedicalGraph:
 
     def export_data(self):
         Diseases,Symptoms,Departments,Cure_ways,Checks,Foods,Dishes,Drugs,Drug_details,disease_infos,\
-            rels_check, rels_recommand_dish, rels_noteat, rels_doeat, rels_cure_department, rels_commondrug, rels_recommanddrug,\
+            rels_check, rels_recommend_dish, rels_noteat, rels_doeat, rels_cure_department, rels_commondrug, rels_recommenddrug,\
             rels_symptom, rels_acompany, rels_drug_detail, rels_cure_way = self.read_nodes()
         f_disease = open('disease.txt', 'w+')
         f_symptom = open('symptoms.txt', 'w+')
