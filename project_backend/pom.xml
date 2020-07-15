@@ -32,8 +32,29 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-neo4j</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-neo4j</artifactId>
+       </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-bolt-driver</artifactId>
+            <version>${neo4j-ogm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-embedded-driver</artifactId>
+            <version>${neo4j-ogm.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j</artifactId>
+            <version>3.2.9</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -45,12 +66,6 @@
             <artifactId>json-lib</artifactId>
             <version>2.4</version>
             <classifier>jdk15</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.10</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -66,21 +81,7 @@
                     <groupId>org.junit.vintage</groupId>
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
-                <exclusion>
-                    <artifactId>junit-jupiter-engine</artifactId>
-                    <groupId>org.junit.jupiter</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>junit-jupiter</artifactId>
-                    <groupId>org.junit.jupiter</groupId>
-                </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>5.5.2</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

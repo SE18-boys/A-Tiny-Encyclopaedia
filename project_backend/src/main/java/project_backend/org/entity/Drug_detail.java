@@ -4,13 +4,13 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 @NodeEntity
-public class Food {
+public class Drug_detail {
     @Id
     @GeneratedValue
     private long id;
     private String name;
 
-    public Food(){
+    public Drug_detail(){
 
     }
 
