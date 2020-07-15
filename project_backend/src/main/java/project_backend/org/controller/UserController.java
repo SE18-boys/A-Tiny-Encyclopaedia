@@ -4,6 +4,7 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import project_backend.org.service.UserService;
 import project_backend.org.entity.User;
@@ -19,7 +20,7 @@ public class UserController {
 
     @RequestMapping("/login")
     public Msg login(@RequestBody Map<String,String>map){
-        String name=map.get("username");
+        String name=map.get("name");
         String password=map.get("password");
         User auth = userService.checkUser(name, password);
         if(auth!=null){
