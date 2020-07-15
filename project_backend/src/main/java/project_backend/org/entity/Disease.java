@@ -4,6 +4,7 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @NodeEntity
@@ -24,42 +25,105 @@ public class Disease {
     private String easy_get;
     private String desc;
 
-    private Disease(){
+    public Disease(){
 
     }
 
     @Relationship(type ="accompany_with",direction = Relationship.OUTGOING)
     private Set<Disease> accompany_diseases;
+    public void addAccompany_disease(Disease disease){
+        if(accompany_diseases == null) {
+            accompany_diseases = new HashSet<>();
+        }
+        accompany_diseases.add(disease);
+    }
+    public void updateAccompany_diseases(Set<Disease> diseases){
+        accompany_diseases = diseases;
+    }
 
     @Relationship(type = "cure_in",direction =Relationship.OUTGOING)
     private Set<Department> related_department;
+    public void addRelated_department(Department department){
+        if(related_department == null) {
+            related_department = new HashSet<>();
+        }
+        related_department.add(department);
+    }
 
     @Relationship(type = "common_drug",direction = Relationship.OUTGOING)
     private Set<Drug> common_drug;
+    public void addCommon_drug(Drug drug){
+        if(common_drug == null) {
+            common_drug = new HashSet<>();
+        }
+        common_drug.add(drug);
+    }
 
     @Relationship(type = "recommand_drug",direction = Relationship.OUTGOING)
     private Set<Drug> recommand_drug;
+    public void addRecommand_drug(Drug drug){
+        if(recommand_drug == null) {
+            recommand_drug = new HashSet<>();
+        }
+        recommand_drug.add(drug);
+    }
 
     @Relationship(type = "do_eat",direction = Relationship.OUTGOING)
     private Set<Food> do_eat;
+    public void addDo_eat(Food food){
+        if(do_eat == null) {
+            do_eat = new HashSet<>();
+        }
+        do_eat.add(food);
+    }
 
     @Relationship(type = "drug_detail",direction = Relationship.OUTGOING)
     private Set<Drug_detail> drug_detail;
+    public void addDrug_detail(Drug_detail detail){
+        if(drug_detail == null) {
+            drug_detail = new HashSet<>();
+        }
+        drug_detail.add(detail);
+    }
 
     @Relationship(type = "no_eat",direction = Relationship.OUTGOING)
     private Set<Food> no_eat;
 
     @Relationship(type = "has_symptom",direction = Relationship.OUTGOING)
     private Set<Symptom> related_symptom;
+    public void addRelated_symptom(Symptom symptom){
+        if(related_symptom == null) {
+            related_symptom = new HashSet<>();
+        }
+        related_symptom.add(symptom);
+    }
 
     @Relationship(type = "need_check",direction = Relationship.OUTGOING)
     private Set<Check> need_check;
+    public void addNeed_check(Check check){
+        if(need_check == null) {
+            need_check = new HashSet<>();
+        }
+        need_check.add(check);
+    }
 
     @Relationship(type = "cure_by",direction = Relationship.OUTGOING)
     private Set<Cure_way> cure_by;
+    public void addCure_by(Cure_way cure_way){
+        if(cure_by == null) {
+            cure_by = new HashSet<>();
+        }
+        cure_by.add(cure_way);
+    }
 
     @Relationship(type = "recommand_dish",direction = Relationship.OUTGOING)
     private Set<Dish> recommand_dish;
+    public void addRecommand_dish(Dish dish){
+        if(recommand_dish == null) {
+            recommand_dish = new HashSet<>();
+        }
+        recommand_dish.add(dish);
+    }
 
     public long getId() {
         return id;
@@ -142,7 +206,6 @@ public class Disease {
     public String getYibao_status() {
         return yibao_status;
     }
-
     public void setYibao_status(String yibao_status) {
         this.yibao_status = yibao_status;
     }
