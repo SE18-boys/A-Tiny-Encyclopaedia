@@ -16,7 +16,7 @@ import logo from "../assets/logo1.png";
 import '../css/signUp.css'
 import {history} from "../utils/history";
 import {withRouter} from "react-router";
-// import {register} from "../services/userService";
+import {register} from "../services/userService";
 
 
 const {Option} = Select;
@@ -60,7 +60,7 @@ class RegisterForm extends React.Component {
 
     onFinish = values => {
         console.log('Received values of form: ', values);
-        // register(values);
+        register(values);
 
     };
 

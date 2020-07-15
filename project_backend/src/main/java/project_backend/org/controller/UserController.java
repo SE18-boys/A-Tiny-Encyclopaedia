@@ -52,7 +52,7 @@ public class UserController {
 
     @RequestMapping("/register")
     public Msg register(@RequestBody JSONObject object){
-        String name= object.getString("name");
+        String name= object.getString("username");
         String password=object.getString("password");
         String email=object.getString("email");
         User auth=userService.findUserByName(name);
