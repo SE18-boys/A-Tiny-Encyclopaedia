@@ -220,7 +220,7 @@ class MedicalGraph:
             node = Node("Disease", name=disease_dict['name'], desc=disease_dict['desc'],
                         prevent=disease_dict['prevent'], cause=disease_dict['cause'],yibao_status=disease_dict['yibao_status'],
                         get_prob=disease_dict['get_prob'],easy_get=disease_dict['easy_get'], cure_lasttime=disease_dict['cure_lasttime'],
-                        cured_prob=disease_dict['cured_prob'],cost_money=['cost_money'],get_way=['get_way'])
+                        cured_prob=disease_dict['cured_prob'],cost_money=disease_dict['cost_money'],get_way=disease_dict['get_way'])
             self.g.create(node)
             count += 1
             # print(count)
