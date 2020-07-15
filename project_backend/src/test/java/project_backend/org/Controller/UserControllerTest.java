@@ -9,10 +9,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import project_backend.org.UnitTestDemoApplicationTests;
 import project_backend.org.controller.UserController;
@@ -27,8 +29,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class UserControllerTest extends UnitTestDemoApplicationTests {
 
     @Test
@@ -71,7 +75,19 @@ public class UserControllerTest extends UnitTestDemoApplicationTests {
     }
 
     @Test
-    public void register() {
+    @Rollback
+    public void register() throws Exception {
+        JSONObject jsonData = new JSONObject();
+        jsonData.put("name", "testUser");
+        jsonData.put("password", "123456");
+        jsonData.put("email", "123456@qq.com");
+
+        String responseString = mockMvc.perform(
+                post("/register")    //请求的url,请求的方法是get
+                        .contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root")
+        ).andExpect(status().isOk())    //返回的状态是200
+                .andReturn().getResponse().getContentAsString();   //将相应的数据转换为字符串
+        System.out.println("--------返回的json = " + responseString);
     }
 
     @Test
