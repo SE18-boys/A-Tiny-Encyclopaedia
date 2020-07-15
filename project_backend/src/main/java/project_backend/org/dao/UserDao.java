@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserDao {
     User checkUser(String username, String password);
-    void add(User user);
+    User add(User user);
     List<User> getUsers();
     User findByName(String username);
 }

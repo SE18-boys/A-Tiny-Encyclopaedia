@@ -17,8 +17,9 @@ public class UserDaoImpl implements UserDao {
         return userRepository.checkUser(username,password);
     }
     @Override
-    public void add(User user){
+    public User add(User user){
         userRepository.saveAndFlush(user);
+        return user;
     }
 
     @Override

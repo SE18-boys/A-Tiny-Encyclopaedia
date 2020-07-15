@@ -1,4 +1,4 @@
-package project_backend.org.Controller;
+package project_backend.org.controller;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.minidev.json.JSONObject;
@@ -17,7 +17,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import project_backend.org.UnitTestDemoApplicationTests;
-import project_backend.org.controller.UserController;
 import project_backend.org.service.UserService;
 import project_backend.org.entity.User;
 
