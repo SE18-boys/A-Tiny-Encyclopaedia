@@ -165,9 +165,9 @@ class MedicalGraph:
                     # if not_eat not in foods:
                     #     foods += not_eat
 
-            if 'recommend_eat' in data_json:
-                dishes += data_json['recommend_eat']
-                for recommend_dish in data_json['recommend_eat']:
+            if 'recommand_eat' in data_json:
+                dishes += data_json['recommand_eat']
+                for recommend_dish in data_json['recommand_eat']:
                     rels_recommend_dish.append([disease, recommend_dish])
                     # if recommend_dish not in dishes:
                     #     dishes += recommend_dish
@@ -179,9 +179,9 @@ class MedicalGraph:
                     # if common_drug not in drugs:
                     #     drugs += common_drug
 
-            if 'recommend_drug' in data_json:
-                drugs += data_json['recommend_drug']
-                for recommend_drug in data_json['recommend_drug']:
+            if 'recommand_drug' in data_json:
+                drugs += data_json['recommand_drug']
+                for recommend_drug in data_json['recommand_drug']:
                     rels_recommenddrug.append([disease, recommend_drug])
                     # if recommend_drug not in drugs:
                     #    drugs += recommend_drug
