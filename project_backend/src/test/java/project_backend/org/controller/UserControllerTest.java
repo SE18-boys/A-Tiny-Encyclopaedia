@@ -77,7 +77,7 @@ public class UserControllerTest extends UnitTestDemoApplicationTests {
     @Rollback
     public void register() throws Exception {
         JSONObject jsonData = new JSONObject();
-        jsonData.put("name", "testUser");
+        jsonData.put("username", "testUser");
         jsonData.put("password", "123456");
         jsonData.put("email", "123456@qq.com");
 
