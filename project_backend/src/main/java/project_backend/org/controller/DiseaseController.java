@@ -18,11 +18,15 @@ public class DiseaseController {
     private DiseaseService diseaseService;
 
     @RequestMapping("/DiseaseByName")
-    public Disease findDiseaseyName(@RequestBody Map<String, String> parms){
+    public Disease findDiseaseByName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
         Disease disease = diseaseService.findDiseaseByName(name);
         System.out.println(disease);
-        return diseaseService.findDiseaseByName(name);
+        if(disease==null){
+            disease=new Disease();
+            disease.setId(-1);
+        }
+        return disease;
     }
 
     @RequestMapping("/AddDisease")
