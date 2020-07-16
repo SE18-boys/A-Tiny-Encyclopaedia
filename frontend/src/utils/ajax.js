@@ -78,15 +78,23 @@ let postRequest = (url, json, callback) => {
     let opts = {
         method: "POST",
         body: JSON.stringify(json),
+        // body: json,
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json;charset=UTF-8'
         },
         credentials: "include"
     };
 
     fetch(url,opts)
         .then((response) => {
-            return response.json()
+            // if(response) {
+                // console.log(response.body)
+                return response.json()
+            // }
+            // else{
+                // console.log("empty")
+            // }
+            // console.log(response.json())
         })
         .then((data) => {
             callback(data);
