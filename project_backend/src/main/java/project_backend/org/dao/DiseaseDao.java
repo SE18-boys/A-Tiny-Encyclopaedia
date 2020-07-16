@@ -12,4 +12,5 @@ public interface DiseaseDao {
     //增
     Disease addDisease(Disease disease);
     void updateAccompany_diseases(Disease disease, Set<Disease> accompany_diseases);
+    void deleteByName(String name);
 }

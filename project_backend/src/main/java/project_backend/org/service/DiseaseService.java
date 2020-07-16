@@ -9,4 +9,5 @@ public interface DiseaseService {
 
     Disease AddDisease(Disease disease);
     boolean UpdateAccompany_diseasesToDisease(String name, Set<String> accompany_names);
+    void deleteDiseaseByName(String name);
 }
