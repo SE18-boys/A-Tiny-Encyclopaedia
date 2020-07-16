@@ -1,10 +1,10 @@
 // import config from 'config';
-import {postRequest, putRequest} from "../utils/ajax";
+import {apiUrl, postRequest, putRequest} from "../utils/ajax";
 import {history} from '../utils/history';
 import {message} from 'antd';
 
 export const register = (data) => {
-    const url = `http://localhost:8080/register`;
+    const url = apiUrl+`/register`;
     const callback = (data) => {
         if(data.status >= 0) {
             console.log('Received backend data: ', data);
@@ -20,7 +20,7 @@ export const register = (data) => {
 };
 
 export const login = (data) => {
-    const url = `http://localhost:8080/login`;
+    const url = apiUrl+`/login`;
     const callback = (data) => {
         if(data.status >= 0) {
             localStorage.setItem('user', JSON.stringify(data.data));
@@ -35,18 +35,18 @@ export const login = (data) => {
 };
 
 export const getUsers = (data,callback) => {
-    const url = `http://localhost:8080/getUsers`;
+    const url = apiUrl+`/getUsers`;
     postRequest(url, data, callback);
 };
 
 export const uploadAvatar = (userId, iconBase64, message) => {
     const data = {userId:userId,iconBase64:iconBase64};
-    const url = `http://localhost:8080/uploadAvatar`;
+    const url = apiUrl+`/uploadAvatar`;
     putRequest(url, data, message);
 }
 
 export const logout = () => {
-    const url = `http://localhost:8080/logout`;
+    const url = apiUrl+`/logout`;
 
     const callback = (data) => {
         if(data.status >= 0) {
