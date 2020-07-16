@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Dropdown, Menu} from 'antd';
+import {Avatar, Dropdown, Menu} from 'antd';
 import '../css/index.css'
 import {
     SettingFilled,
@@ -11,25 +11,27 @@ import * as userService from '../services/userService'
 
 export class AdminAvatar extends React.Component {
 
-    state={
+    state = {
         isSignIn: false,
         username: null,
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const user = JSON.parse(localStorage.getItem("user"));
-        console.log("user info:",user);
-        if (user!==null){
-            this.setState({username: user.name,isSignIn: true})
+        console.log("user info:", user);
+        if (user !== null) {
+            this.setState({username: user.name, isSignIn: true})
         }
     }
 
-    onClickSignUp=()=>history.push("/SignUp")
+    onClickSignUp = () => {
+        if (history.location.pathname !== "/SignUp")
+            history.push("/SignUp")
+    }
 
-    signUpInfo=()=>
-    {
-        if(this.state.isSignIn)
-            return(
+    signUpInfo = () => {
+        if (this.state.isSignIn)
+            return (
                 <span className="name">Hi,{this.state.username}</span>
             )
         else
@@ -38,14 +40,15 @@ export class AdminAvatar extends React.Component {
             )
 
     }
-    handleAdd=()=>
-    {
-        history.push("/AddEntry")
+    handleAdd = () => {
+
+        if (history.location.pathname !== "/AddEntry")
+            history.push("/AddEntry")
     }
 
-    showProfile=()=>
-    {
-        history.push("/Profile")
+    showProfile = () => {
+        if (history.location.pathname !== "/Profile")
+            history.push("/Profile")
     }
 
     render() {
@@ -68,15 +71,15 @@ export class AdminAvatar extends React.Component {
         // const {user} = this.props;
 
 
-        return(
+        return (
             <div id="avatar">
-                <span style={{padding:"10px"}}>
+                <span style={{padding: "10px"}}>
                     <Button onClick={this.handleAdd}>创建词条</Button>
                 </span>
                 <span className="name">{this.signUpInfo()}</span>
                 <Dropdown overlay={menu} placement="bottomRight">
                     {/*<Avatar src={user.userIcon.iconBase64} style={{cursor:"pointer"}}/>*/}
-                    <SettingFilled />
+                    <SettingFilled/>
                 </Dropdown>
             </div>
         );

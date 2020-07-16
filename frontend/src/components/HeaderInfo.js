@@ -9,6 +9,7 @@ const {Search} = Input;
 export class HeaderInfo extends React.Component {
     backToHome=()=>
     {
+        if (history.location.pathname !== "/")
         history.push("/")
     }
 
