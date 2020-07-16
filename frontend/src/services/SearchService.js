@@ -5,7 +5,7 @@ import {message} from "antd";
 
 
 export const searchDetails = (data, callback) => {
-    const url = `http://localhost:8080/DiseaseByName`;
+    const url = `http://localhost:8087/DiseaseByName`;
     // const callback = (data) => {
     //     // if(data.status >= 0) {
     //         console.log('Received backend data: ', data);
