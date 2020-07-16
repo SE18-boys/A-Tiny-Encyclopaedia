@@ -16,9 +16,9 @@ export default class LoginForm extends React.Component {
         this.props.handleChange();
         console.log("enter handleChange")
     }
-    backToHome=()=>
-    {
-        history.push("/")
+    backToHome = () => {
+        if (history.location.pathname !== "/")
+            history.push("/")
     }
 
     render() {
@@ -26,10 +26,16 @@ export default class LoginForm extends React.Component {
             <div>
 
                 <div align="center">
-                <a >
-                    <img alt="logo" src={logo} onClick={this.backToHome}
-                         style={{textAlign: 'center', background: '#fff', padding: 0, height: 150, marginTop: 150}}/>
-                </a>
+                    <a>
+                        <img alt="logo" src={logo} onClick={this.backToHome}
+                             style={{
+                                 textAlign: 'center',
+                                 background: '#fff',
+                                 padding: 0,
+                                 height: 150,
+                                 marginTop: 150
+                             }}/>
+                    </a>
                 </div>
                 <Form
                     name="normal_login"

@@ -22,12 +22,13 @@ class SignUpView extends React.Component {
     }
 
 
-    componentDidMount(){
+    componentDidMount() {
         const user = JSON.parse(localStorage.getItem("user"));
-        console.log("user info:",user);
-        if (user!==null){
+        console.log("user info:", user);
+        if (user !== null) {
             message.success("已经登录")
-            history.push("/");
+            if (history.location.pathname !== "/")
+                history.push("/");
         }
     }
 
@@ -46,7 +47,7 @@ class SignUpView extends React.Component {
 
     signForm = () => {
         if (this.state.isLoginPage)
-            return (<LoginForm  handleChange={this.handleChange}/>)
+            return (<LoginForm handleChange={this.handleChange}/>)
         else
             return (<RegisterForm handleChange={this.handleChange}/>)
     }

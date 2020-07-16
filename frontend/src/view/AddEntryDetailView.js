@@ -11,7 +11,7 @@ import AddEntryDetailForm from "../components/AddEntryDetailForm";
 
 const {Header, Content} = Layout;
 
-class AddEntryView extends React.Component {
+export default class AddEntryDetailView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -34,12 +34,11 @@ class AddEntryView extends React.Component {
                         <span className="info">
                             <div style={{position: 'relative', padding:"20px"}}>
                               <div className='info-header'> 创建词条</div>
-                                <div className='info-body'> 欢迎您创建词条！请输入词条名及选择词条所属类别
+                                <div className='info-body'> 请输入词条的详细信息
                                 </div>
                                 </div>
                         </span>
-                        <AddEntryForm/>
-                        {/*<AddEntryDetailForm/>*/}
+                        <AddEntryDetailForm/>
                     </Content>
                     <MyFooter/>
                 </Layout>
@@ -48,9 +47,4 @@ class AddEntryView extends React.Component {
 
     }
 }
-
-// export default withRouter(AddEntryView);
-
-export default AddEntryView;
-
 

@@ -70,7 +70,8 @@ class RegisterForm extends React.Component {
     }
 
     backToHome = () => {
-        history.push("/");
+        if (history.location.pathname !== "/")
+            history.push("/");
     }
 
     // onClickRegister=()
@@ -201,7 +202,7 @@ class RegisterForm extends React.Component {
 
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}} >
+                        <Button type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}}>
                             注册
                         </Button>
                         已有账号 <a onClick={this.handleChange}>立刻登录!</a>
