@@ -19,7 +19,7 @@ class MedicalGraph:
 
         # self.data_path = os.path.join(cur_dir, 'data/medical.json')
         # self.data_path = 'C:/Users/BoringYang/Desktop/summer/medical.json'  # absolute path
-        self.data_path = 'C:/Users/BoringYang/Desktop/summer/test1.json'  # test json
+        self.data_path = 'C:/Users/Administrator/Desktop/web_proj/A-Tiny-Encyclopaedia/neo4j_data/test1.json'  # test json
         self.g = Graph(
             host="localhost",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
             http_port=7474,  # neo4j 服务器监听的端口号
