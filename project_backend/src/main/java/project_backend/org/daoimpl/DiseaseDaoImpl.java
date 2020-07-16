@@ -29,4 +29,9 @@ public class DiseaseDaoImpl implements DiseaseDao {
         disease.setAccompany_diseases(accompany_diseases);
         diseaseRepository.save(disease);
     }
+
+    @Override
+    public void deleteByName(String name) {
+        diseaseRepository.deleteByName(name);
+    }
 }

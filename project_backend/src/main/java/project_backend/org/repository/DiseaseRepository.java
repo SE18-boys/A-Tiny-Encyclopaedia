@@ -6,4 +6,5 @@ import project_backend.org.entity.Disease;
 
 public interface DiseaseRepository extends Neo4jRepository<Disease, Long> {
     Disease findByName(String name);
+    void deleteByName(String name);
 }

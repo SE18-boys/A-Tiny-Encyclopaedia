@@ -37,4 +37,9 @@ public class DiseaseServiceImpl implements DiseaseService {
         diseaseDao.updateAccompany_diseases(disease, accompany_diseases);
         return true;
     }
+
+    @Override
+    public void deleteDiseaseByName(String name) {
+        diseaseDao.deleteByName(name);
+    }
 }
