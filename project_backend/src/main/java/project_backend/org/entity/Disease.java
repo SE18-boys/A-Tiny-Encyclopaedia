@@ -37,9 +37,6 @@ public class Disease {
         }
         accompany_diseases.add(disease);
     }
-    public void updateAccompany_diseases(Set<Disease> diseases){
-        accompany_diseases = diseases;
-    }
 
     @Relationship(type = "cure_in",direction =Relationship.OUTGOING)
     private Set<Department> related_department;
@@ -125,10 +122,11 @@ public class Disease {
         recommand_dish.add(dish);
     }
 
+
+    //属性
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -209,4 +207,39 @@ public class Disease {
     public void setYibao_status(String yibao_status) {
         this.yibao_status = yibao_status;
     }
+
+
+    //关系
+    public Set<Disease> getAccompany_diseases() { return accompany_diseases; }
+    public void setAccompany_diseases(Set<Disease> accompany_diseases) { this.accompany_diseases = accompany_diseases; }
+
+    public Set<Department> getRelated_department() { return related_department; }
+    public void setRelated_department(Set<Department> related_department) { this.related_department = related_department; }
+
+    public Set<Cure_way> getCure_by() { return cure_by;}
+    public void setCure_by(Set<Cure_way> cure_by) { this.cure_by = cure_by; }
+
+    public Set<Drug> getCommon_drug() { return common_drug; }
+    public void setCommon_drug(Set<Drug> common_drug) { this.common_drug = common_drug; }
+
+    public Set<Drug> getRecommand_drug() { return recommand_drug; }
+    public void setRecommand_drug(Set<Drug> recommand_drug) { this.recommand_drug = recommand_drug; }
+
+    public Set<Food> getDo_eat() { return do_eat; }
+    public void setDo_eat(Set<Food> do_eat) { this.do_eat = do_eat; }
+
+    public Set<Drug_detail> getDrug_detail() { return drug_detail; }
+    public void setDrug_detail(Set<Drug_detail> drug_detail) { this.drug_detail = drug_detail; }
+
+    public Set<Food> getNo_eat() { return no_eat; }
+    public void setNo_eat(Set<Food> no_eat) { this.no_eat = no_eat; }
+
+    public Set<Symptom> getRelated_symptom() { return related_symptom; }
+    public void setRelated_symptom(Set<Symptom> related_symptom) { this.related_symptom = related_symptom; }
+
+    public Set<Check> getNeed_check() { return need_check; }
+    public void setNeed_check(Set<Check> need_check) { this.need_check = need_check; }
+
+    public Set<Dish> getRecommand_dish() { return recommand_dish; }
+    public void setRecommand_dish(Set<Dish> recommand_dish) { this.recommand_dish = recommand_dish; }
 }
