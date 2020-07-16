@@ -5,6 +5,7 @@ import {message} from "antd";
 import {apiUrl} from '../utils/ajax'
 
 
+
 export const searchDetails = (data) => {
     const url = apiUrl+`/DiseaseByName`;
     const callback = (data) => {
@@ -20,12 +21,7 @@ export const searchDetails = (data) => {
 export const addSimpleDetails = (data) => {
     const url = apiUrl+`/AddDisease`;
     const callback = (data) => {
-        // if(data.status >= 0) {
         console.log('Received backend data: ', data);
-        // message.success(data.msg);
-        // message.error(data.msg);
-        // }
-        // console.log(data.id)
     };
     postRequest(url, data, callback);
 };

@@ -19,12 +19,12 @@ class MedicalGraph:
 
         # self.data_path = os.path.join(cur_dir, 'data/medical.json')
         # self.data_path = 'C:/Users/BoringYang/Desktop/summer/medical.json'  # absolute path
-        self.data_path = 'C:/Users/BoringYang/Desktop/summer/test1.json'  # test json
+        self.data_path = 'D:/test1.json'  # test json
         self.g = Graph(
             host="localhost",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
             http_port=7474,  # neo4j 服务器监听的端口号
             user="neo4j",  # 数据库user name，如果没有更改过，应该是neo4j
-            password="123")
+            password="123456")
 
     '''读取文件'''
 
@@ -60,7 +60,7 @@ class MedicalGraph:
         for data in open(self.data_path, encoding='utf-8'):
             disease_dict = {}
             count += 1
-            # print(count)
+            print(count)
             data_json = json.loads(data)
             disease = data_json['name']
             disease_dict['name'] = disease
@@ -209,7 +209,7 @@ class MedicalGraph:
             node = Node(label, name=node_name)
             self.g.create(node)
             count += 1
-            # print(count, len(nodes))
+            print(count, len(nodes))
         return
 
     '''创建知识图谱中心疾病的节点'''
@@ -223,7 +223,7 @@ class MedicalGraph:
                         cured_prob=disease_dict['cured_prob'],cost_money=disease_dict['cost_money'],get_way=disease_dict['get_way'])
             self.g.create(node)
             count += 1
-            # print(count)
+            print(count)
         return
 
     '''创建知识图谱实体节点类型schema'''

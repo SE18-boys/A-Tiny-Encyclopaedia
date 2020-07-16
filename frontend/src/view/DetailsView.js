@@ -8,6 +8,7 @@ import {HeaderInfo} from "../components/HeaderInfo";
 import {EntryDetails} from "../components/EntryDetails";
 import {HomeHeaderInfo} from "../components/HomeHeaderInfo";
 import MyFooter from "../components/MyFooter";
+import {searchDetails} from "../services/SearchService";
 
 const name = "clannad";
 const type = 0;
@@ -17,22 +18,42 @@ const meanings = ["日本Key公司发行的恋爱冒险游戏","日本东映动�
 const name1 = "幽语";
 const name2 = "伊妹";
 
+
 const gridStyle = {
     width: '33%',
 };
 const {Header, Content, Footer, Sider} = Layout;
 const {Grid} = Card;
+
+let value = "";
 class HomeView extends React.Component{
 
     constructor(props) {
         super(props);
+        this.state={
+            search: "",
+            result: [],
+        }
     }
 
+    callback = (data) => {
+        this.setState({result: data});
+        //console.log("received data is:", data);
+    };
+
     componentDidMount(){
+        const query = this.props.location.search;
+        const arr = query.split('&');
+        value = arr[0].substr(8);
+        this.setState({search: value});
+        // let params={'name':value};
+        // searchDetails(params, this.callback);
     }
 
     render(){
-
+        const query = this.props.location.search;
+        const arr = query.split('&');
+        value = arr[0].substr(8);
         let themeans = [];
         for(let i=0; i<meanings.length; ++i){
             if(i === type){
@@ -60,66 +81,13 @@ class HomeView extends React.Component{
             <div>
                 <Layout>
                     <Header>
-                        {/*<Card title={name+"是一个多义词，请在下列义项上选择浏览（共"+number1+"个义项）"}>*/}
-                        {/*    {themeans}*/}
-                        {/*</Card>*/}
                         <HeaderInfo/>
-
                     </Header>
 
                     <Content>
-                    <div class="poly wrapper">
-
-                        <List
-                            header={
-                                <div className="poly-detail-title">
-                                        <span>
-                                            <span className="bk-strong">
-                                                {name}
-                                            </span>
-                                            是一个多义词，请在下列义项上选择浏览（共5个义项）
-                                        </span>
-                                    <a>
-                                        <i className="wiki-add-icon"></i>
-                                        <span className="bk-color-darkgrey">添加义项</span>
-                                    </a>
-                                </div>
-                            }
-                            grid={{gutter: 10, column: 3}}
-                            dataSource={meanings}
-
-                            renderItem={(item, index) => {
-                                if(index === type){
-                                    return (
-                                        <List.Item>
-                                            <div className="poly-detail-item">
-                                                <span className="poly-detail-item-icon">■</span>
-                                                <span className="bk-margin-left bk-font14">
-                                                <span>{item}</span>
-                                                </span>
-                                            </div>
-                                        </List.Item>
-                                    )
-                                }
-                                else{
-                                    return(
-                                        <List.Item>
-                                            <div className="poly-detail-item">
-                                                <span className="poly-detail-item-icon">►</span>
-                                                <span className="bk-margin-left bk-font14">
-                                            <a>{item}</a>
-                                            </span>
-                                            </div>
-                                        </List.Item>
-                                    )
-                                }
-
-                            }}
-                        />
-                    </div>
                     <Layout>
                         <Content>
-                            <EntryDetails/>
+                            <EntryDetails name={value}/>
                         </Content>
                         <Sider theme="light">
                             <Card title="词条统计">
@@ -153,7 +121,7 @@ class HomeView extends React.Component{
 export default withRouter(HomeView);
 
 
-
+//一些暂时用不上的代码
 
 {/*<div class="poly-detail bk-font14">*/}
 {/*    <div class="poly-detail-title">*/}
@@ -172,3 +140,53 @@ export default withRouter(HomeView);
 {/*<div class="bk-flex">*/}
 {/*    {themeans}*/}
 {/*</div>*/}
+
+
+// <div className="poly wrapper">
+//
+//     <List
+//         header={
+//             <div className="poly-detail-title">
+//                                         <span>
+//                                             <span className="bk-strong">
+//                                                 {name}
+//                                             </span>
+//                                             是一个多义词，请在下列义项上选择浏览（共5个义项）
+//                                         </span>
+//                 <a>
+//                     <i className="wiki-add-icon"></i>
+//                     <span className="bk-color-darkgrey">添加义项</span>
+//                 </a>
+//             </div>
+//         }
+//         grid={{gutter: 10, column: 3}}
+//         dataSource={meanings}
+//
+//         renderItem={(item, index) => {
+//             if (index === type) {
+//                 return (
+//                     <List.Item>
+//                         <div className="poly-detail-item">
+//                             <span className="poly-detail-item-icon">■</span>
+//                             <span className="bk-margin-left bk-font14">
+//                                                 <span>{item}</span>
+//                                                 </span>
+//                         </div>
+//                     </List.Item>
+//                 )
+//             } else {
+//                 return (
+//                     <List.Item>
+//                         <div className="poly-detail-item">
+//                             <span className="poly-detail-item-icon">►</span>
+//                             <span className="bk-margin-left bk-font14">
+//                                             <a>{item}</a>
+//                                             </span>
+//                         </div>
+//                     </List.Item>
+//                 )
+//             }
+//
+//         }}
+//     />
+// </div>
