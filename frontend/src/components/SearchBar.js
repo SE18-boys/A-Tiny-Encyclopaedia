@@ -3,6 +3,7 @@ import {Button, Input, AutoComplete} from 'antd';
 import SearchOutlined from "@ant-design/icons/lib/icons/SearchOutlined";
 import {history} from "../utils/history";
 import logo from "../assets/logo1.png";
+import {searchDetails} from "../services/SearchService";
 
 const {Option} = AutoComplete;
 const {Search} = Input;
@@ -24,8 +25,11 @@ export class SearchBar extends React.Component {
 
     search = (value) => {
         console.log(value);
-        if (history.location.pathname !== "/Details")
-            history.push("/Details");
+        let params={'name':value}
+        // if (history.location.pathname !== "/Details")
+        //     history.push("/Details");
+        console.log(params)
+        searchDetails(params)
     }
 
     render() {
