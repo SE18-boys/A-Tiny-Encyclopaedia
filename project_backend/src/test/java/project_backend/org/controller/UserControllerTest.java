@@ -61,6 +61,7 @@ public class UserControllerTest extends UnitTestDemoApplicationTests {
 
     @Test
     public void login() throws Exception {
+        //test success example
         //定义请求参数，其为JSON对象
         JSONObject jsonData = new JSONObject();
         jsonData.put("username", "mikeshaw");
@@ -71,11 +72,23 @@ public class UserControllerTest extends UnitTestDemoApplicationTests {
         ).andExpect(status().isOk())    //返回的状态是200
                 .andReturn().getResponse().getContentAsString();   //将相应的数据转换为字符串
         System.out.println("--------返回的json = " + responseString);
+
+        //test failed example
+        JSONObject jsonData2 = new JSONObject();
+        jsonData2.put("username", "mikeshaw");
+        jsonData2.put("password", "111111");
+        String responseString2 = mockMvc.perform(
+                post("/login")    //请求的url,请求的方法是get
+                        .contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData2)).param("pcode","root")
+        ).andExpect(status().isOk())    //返回的状态是200
+                .andReturn().getResponse().getContentAsString();   //将相应的数据转换为字符串
+        System.out.println("--------返回的json = " + responseString2);
     }
 
     @Test
     @Rollback
     public void register() throws Exception {
+        //test success example
         JSONObject jsonData = new JSONObject();
         jsonData.put("username", "testUser");
         jsonData.put("password", "123456");
@@ -87,6 +100,14 @@ public class UserControllerTest extends UnitTestDemoApplicationTests {
         ).andExpect(status().isOk())    //返回的状态是200
                 .andReturn().getResponse().getContentAsString();   //将相应的数据转换为字符串
         System.out.println("--------返回的json = " + responseString);
+
+        //test failed example
+        String responseString2 = mockMvc.perform(
+                post("/register")    //请求的url,请求的方法是get
+                        .contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root")
+        ).andExpect(status().isOk())    //返回的状态是200
+                .andReturn().getResponse().getContentAsString();   //将相应的数据转换为字符串
+        System.out.println("--------返回的json = " + responseString2);
     }
 
     @Test
