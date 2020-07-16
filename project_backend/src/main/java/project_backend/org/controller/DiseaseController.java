@@ -20,6 +20,8 @@ public class DiseaseController {
     @RequestMapping("/DiseaseByName")
     public Disease findDiseaseyName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
+        Disease disease = diseaseService.findDiseaseByName(name);
+        System.out.println(disease);
         return diseaseService.findDiseaseByName(name);
     }
 
