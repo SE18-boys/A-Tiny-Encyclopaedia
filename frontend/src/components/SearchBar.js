@@ -25,12 +25,12 @@ export class SearchBar extends React.Component {
 
     search = (value) => {
         console.log(value);
-        let params={'name':value}
-        // if (history.location.pathname !== "/Details")
-        //     history.push("/Details");
-        console.log(params)
-        searchDetails(params)
-    }
+        //let params={'name':value};
+        if (history.location.pathname !== "/Details")
+            history.push('/Details?search='+value);
+        //console.log(params);
+        //searchDetails(params)
+    };
 
     render() {
         return (
