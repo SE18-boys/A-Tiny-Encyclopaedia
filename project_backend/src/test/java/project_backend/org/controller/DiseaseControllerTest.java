@@ -82,6 +82,22 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
 
     }
     @Test
+    @Rollback
+    public void UpdateDisease() throws Exception {
+        //test success example
+        JSONObject jsonData = new JSONObject();
+        jsonData.put("name", "testData");
+        jsonData.put("accompanyDiseases", new String[]{"testData2", "testData3"});
+        String responseString = mockMvc.perform(
+                post("/UpdateDisease")    //请求的url,请求的方法是get
+                        .contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root")
+        ).andExpect(status().isOk())    //返回的状态是200
+                .andReturn().getResponse().getContentAsString();   //将相应的数据转换为字符串
+        System.out.println("--------返回的json = " + responseString);
+
+    }
+
+    @Test
     @Transactional
     @Rollback()
     public void AddDisease() throws Exception {
