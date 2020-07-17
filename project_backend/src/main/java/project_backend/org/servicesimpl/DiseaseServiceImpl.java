@@ -31,7 +31,10 @@ public class DiseaseServiceImpl implements DiseaseService {
         Set<Disease> accompany_diseases = new HashSet<>();
         for(String accompany_name: accompany_names){
             Disease d = diseaseDao.findByName(accompany_name);
-            if(d == null) return false;
+            System.out.println(accompany_name);
+            System.out.println(d);
+            System.out.println(d.getId());
+            if(d.getId()==-1) return false;
             accompany_diseases.add(d);
         }
         diseaseDao.updateAccompany_diseases(disease, accompany_diseases);

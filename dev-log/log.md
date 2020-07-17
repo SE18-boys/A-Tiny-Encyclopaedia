@@ -106,3 +106,43 @@ by--xy
 +-./neo4j_data
 
 by--zy
+
+## 2020.7.15
+
+### init Backend disease Controller/Service/Dao...
+
++-./project_backend
+
+by--wy,zmy
+
+### add  UnitTest of Backend
+
++-./project_backend
+
+by--xy
+
+### add Frontend details
+
++-./frontend 
+
+by--zy
+
+## 2020.7.16
+
+### Add Backend api/func
+
++-./project_backend
+
+by--wy,zmy
+
+### update  UnitTest of Backend
+
++-./project_backend
+
+by--xy
+
+### re-design and re-write the neo4j database initialize script
+
++-./neo4j_data
+
+by--zy

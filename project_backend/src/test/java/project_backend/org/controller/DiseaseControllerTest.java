@@ -25,8 +25,6 @@ import org.springframework.web.context.WebApplicationContext;
 import project_backend.org.UnitTestDemoApplicationTests;
 import project_backend.org.entity.Disease;
 import project_backend.org.service.DiseaseService;
-import project_backend.org.service.UserService;
-import project_backend.org.entity.User;
 
 import java.util.List;
 
@@ -74,28 +72,34 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
         JSONObject jsonData = new JSONObject();
         jsonData.put("name", "肺炎");
 
-        String responseString = mockMvc.perform(
-                post("/DiseaseByName")    //请求的url,请求的方法是get
-                        .contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root")
-        ).andExpect(status().isOk())    //返回的状态是200
-                .andReturn().getResponse().getContentAsString();   //将相应的数据转换为字符串
-        System.out.println("--------返回的json = " + responseString);
+        String responseString = mockMvc.perform(post("/DiseaseByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        Disease disease = om.readValue(responseString, new TypeReference<Disease>() {});
+        System.out.println("feedback result: " + "肺炎" +" : "+ disease);
+
+        //test failed example
+        JSONObject jsonData2 = new JSONObject();
+        jsonData2.put("name", "歪比歪比");
+
+        String responseString2 = mockMvc.perform(post("/DiseaseByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData2)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        Disease disease2 = om.readValue(responseString2, new TypeReference<Disease>() {});
+        System.out.println("feedback result: " + "failed" +" : "+ disease2);
 
     }
     @Test
     @Rollback
     public void UpdateDisease() throws Exception {
-        //test success example
+        String name="testData";
         JSONObject jsonData = new JSONObject();
-        jsonData.put("name", "testData");
-        jsonData.put("accompanyDiseases", new String[]{"testData2", "testData3"});
-        String responseString = mockMvc.perform(
-                post("/UpdateDisease")    //请求的url,请求的方法是get
-                        .contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root")
-        ).andExpect(status().isOk())    //返回的状态是200
-                .andReturn().getResponse().getContentAsString();   //将相应的数据转换为字符串
-        System.out.println("--------返回的json = " + responseString);
+        jsonData.put("name", name);
+        jsonData.put("accompanyDiseases", new String[]{"testData2"});
 
+        String responseString = mockMvc.perform(post("/UpdateDisease").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
     }
 
     @Test
@@ -103,7 +107,7 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
     @Rollback()
     public void AddDisease() throws Exception {
         //test success example
-        String name="testData3";
+        String name="UseForAddingTest";
 
         JSONObject jsonData = new JSONObject();
         jsonData.put("prevent", "testData");
@@ -118,17 +122,22 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
         jsonData.put("easyget", "testData");
         jsonData.put("desc", "testData");
 
+        //this entity doesn't exist, go if.
         String responseString = mockMvc.perform(post("/AddDisease").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
         Disease disease = om.readValue(responseString, new TypeReference<Disease>() {});
         System.out.println("feedback result: " + name +" : "+ disease);
-        //diseaseService.deleteDiseaseByName(name);
 
-//        MvcResult result = mockMvc.perform(get("/UserController/getAllUsers").contentType(MediaType.APPLICATION_JSON_VALUE))
-//                .andExpect(status().isOk()).andReturn();
-//        String resultContent = result.getResponse().getContentAsString();
-//        List<User> users = om.readValue(resultContent, new TypeReference<List<User>>() {});
-//        assertEquals(userService.getAllUsers().size(), users.size());
+        //this entity exist go else.
+        String responseString2 = mockMvc.perform(post("/AddDisease").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        Disease disease2 = om.readValue(responseString2, new TypeReference<Disease>() {});
+        System.out.println("feedback result: " + name +" : "+ disease2);
+
+        //delete it anyway.
+        diseaseService.deleteDiseaseByName(name);
+
     }
 }
