@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="81b53881-1e2c-47da-844e-c23bae3848ce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/__test__/component/button.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1eIy7AaTVUraX5hyDF2qWvDxQw1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="ts.external.directory.path" value="D:\IntelliJ IDEA 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\web_proj\A-Tiny-Encyclopaedia\frontend" />
+      <recent name="C:\Users\Administrator\Desktop\web_proj\A-Tiny-Encyclopaedia\frontend\__test__" />
+      <recent name="C:\Users\Administrator\Desktop\web_proj\A-Tiny-Encyclopaedia\frontend\src\view" />
+      <recent name="C:\Users\Administrator\Desktop\web_proj\A-Tiny-Encyclopaedia\frontend\src\services" />
+      <recent name="C:\Users\Administrator\Desktop\web_proj\A-Tiny-Encyclopaedia\frontend\src\css" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Jest.sum(2 + 2) 等于 4">
+    <configuration name="LoginForm Test" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/__test__/component/LoginForm.spec.js" />
+      <test-names>
+        <test-name value="LoginForm Test" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="sum(2 + 2) 等于 4" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/__test__/function/functions.test.js" />
+      <test-names>
+        <test-name value="sum(2 + 2) 等于 4" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.sum(2 + 2) 等于 4" />
+        <item itemvalue="Jest.LoginForm Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="81b53881-1e2c-47da-844e-c23bae3848ce" name="Default Changelist" comment="" />
+      <created>1594023231646</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594023231646</updated>
+      <workItem from="1594023234272" duration="3308000" />
+      <workItem from="1594080005494" duration="450000" />
+      <workItem from="1594083327960" duration="10123000" />
+      <workItem from="1594169459429" duration="4335000" />
+      <workItem from="1594194167736" duration="659000" />
+      <workItem from="1594194878425" duration="84000" />
+      <workItem from="1594194978303" duration="17000" />
+      <workItem from="1594195226307" duration="3096000" />
+      <workItem from="1594255681463" duration="57000" />
+      <workItem from="1594274144469" duration="4846000" />
+      <workItem from="1594280552994" duration="2326000" />
+      <workItem from="1594369268073" duration="687000" />
+      <workItem from="1594434482156" duration="3199000" />
+      <workItem from="1594818482717" duration="1207000" />
+      <workItem from="1595298820750" duration="6682000" />
+      <workItem from="1595318159554" duration="4677000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594026170987">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1594026170987" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1595298991532">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1595298991532" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1595319334881">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595319334881" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1595319334881">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595319334881" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1595319334881">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595319334881" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1595319334881">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595319334881" />
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom" timestamp="1594178455849">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1594178455849" />
+    <state width="1493" height="277" key="GridCell.Tab.1.center" timestamp="1594178455849">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1594178455849" />
+    <state width="1493" height="277" key="GridCell.Tab.1.left" timestamp="1594178455849">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1594178455849" />
+    <state width="1493" height="277" key="GridCell.Tab.1.right" timestamp="1594178455849">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1594178455849" />
+    <state width="1493" height="277" key="GridCell.Tab.2.bottom" timestamp="1594178455850">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.2.bottom/0.0.1536.864@0.0.1536.864" timestamp="1594178455850" />
+    <state width="1493" height="277" key="GridCell.Tab.2.center" timestamp="1594178455849">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.2.center/0.0.1536.864@0.0.1536.864" timestamp="1594178455849" />
+    <state width="1493" height="277" key="GridCell.Tab.2.left" timestamp="1594178455849">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.2.left/0.0.1536.864@0.0.1536.864" timestamp="1594178455849" />
+    <state width="1493" height="277" key="GridCell.Tab.2.right" timestamp="1594178455849">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.2.right/0.0.1536.864@0.0.1536.864" timestamp="1594178455849" />
+    <state width="1493" height="277" key="GridCell.Tab.3.bottom" timestamp="1594178455850">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.3.bottom/0.0.1536.864@0.0.1536.864" timestamp="1594178455850" />
+    <state width="1493" height="277" key="GridCell.Tab.3.center" timestamp="1594178455850">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.3.center/0.0.1536.864@0.0.1536.864" timestamp="1594178455850" />
+    <state width="1493" height="277" key="GridCell.Tab.3.left" timestamp="1594178455850">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.3.left/0.0.1536.864@0.0.1536.864" timestamp="1594178455850" />
+    <state width="1493" height="277" key="GridCell.Tab.3.right" timestamp="1594178455850">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="277" key="GridCell.Tab.3.right/0.0.1536.864@0.0.1536.864" timestamp="1594178455850" />
+    <state x="249" y="7" key="SettingsEditor" timestamp="1595317572971">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="249" y="7" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1595317572971" />
+  </component>
+</project>
