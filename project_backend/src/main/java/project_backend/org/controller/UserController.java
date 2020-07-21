@@ -4,7 +4,6 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import project_backend.org.service.UserService;
 import project_backend.org.entity.User;
@@ -26,7 +25,7 @@ public class UserController {
         if(auth!=null){
             JSONObject obj=new JSONObject();
             obj.put("id",auth.getId());
-            obj.put("name",auth.getName());
+            obj.put("name",auth.getUsername());
             obj.put("email",auth.getEmail());
             obj.put("isAuth",auth.getIs_auth());
             SessionUtil.setSession(obj);
@@ -58,7 +57,7 @@ public class UserController {
         User auth=userService.findUserByName(name);
         if(auth==null){
             User user=new User();
-            user.setName(name);
+            user.setUsername(name);
             user.setPassword(password);
             user.setEmail(email);
             user.setIs_auth(Boolean.FALSE);

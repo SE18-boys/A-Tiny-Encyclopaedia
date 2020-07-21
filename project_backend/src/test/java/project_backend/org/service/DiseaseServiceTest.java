@@ -83,7 +83,7 @@ public class DiseaseServiceTest extends UnitTestDemoApplicationTests {
     public void deleteDiseaseByName(){
         String name = "aDiseaseNobodyCare";
 //        Disease disease = new Disease();
-//        disease.setName(name);
+//        disease.setUsername(name);
 //        diseaseRepository.save(disease);
         diseaseService.deleteDiseaseByName(name);
 
