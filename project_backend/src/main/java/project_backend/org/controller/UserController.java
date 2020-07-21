@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/login")
+    @RequestMapping("/loginmessage")
     public Msg login(@RequestBody Map<String,String>map){
         String name=map.get("username");
         String password=map.get("password");

@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Component
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
@@ -22,6 +23,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         httpServletResponse.setHeader("Access-Control-Allow-Credentials", "true");
         httpServletResponse.setHeader("Access-Control-Allow-Methods", "*");
         httpServletResponse.setStatus(HttpStatus.OK.value());
-        //httpServletResponse.getWriter().write("test");
+        PrintWriter out = httpServletResponse.getWriter();
+        out.write("{\"mes\":\"test\"}");
+        out.flush();
+        out.close();
     }
 }
