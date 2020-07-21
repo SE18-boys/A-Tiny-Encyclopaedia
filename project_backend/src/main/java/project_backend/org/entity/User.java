@@ -2,6 +2,8 @@ package project_backend.org.entity;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
+import java.util.Collection;
+
 import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name ="user",schema ="encyclopaedia")
@@ -11,7 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
         property = "id")
 public class User {
     private Integer id;
-    private String name;
+    private String username;
     private String password;
     private String email;
     private Boolean isAuth;
@@ -30,10 +32,9 @@ public class User {
     }
 
     @Basic
-    @Column(name = "name")
-    public String getName(){return this.name;}
-
-    public void  setName(String name){this.name=name;}
+    @Column(name = "username")
+    public String getUsername(){return this.username;}
+    public void setUsername(String name){this.username =name;}
 
     @Basic
     @Column(name = "password")
