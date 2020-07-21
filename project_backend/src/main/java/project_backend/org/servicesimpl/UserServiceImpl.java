@@ -37,6 +37,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if(user == null){
             return null;
         }
-        return org.springframework.security.core.userdetails.User.withUsername(user.getUsername()).password(user.getPassword()).authorities("test").build();
+        return org.springframework.security.core.userdetails.User.withUsername(user.getUsername()).password(user.getPassword()).build();
     }
 }

@@ -8,18 +8,22 @@ import * as userService from '../services/userService'
 
 export default class LoginForm extends React.Component {
 
+    loginmessage = (values) => {
+        userService.login(values);
+    };
+
     onFinish = (values) => {
         console.log('Received values of form: ', values);
-        userService.login(values);
+        userService.authenticate(values,this.loginmessage);
     };
     handleChange = () => {
         this.props.handleChange();
         console.log("enter handleChange")
-    }
+    };
     backToHome = () => {
         if (history.location.pathname !== "/")
             history.push("/")
-    }
+    };
 
     render() {
         return (

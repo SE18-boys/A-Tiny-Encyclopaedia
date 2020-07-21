@@ -14,6 +14,10 @@ import java.io.IOException;
 public class Http403ForbiddenEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
+        String origin = httpServletRequest.getHeader("Origin");
+        httpServletResponse.setHeader("Access-Control-Allow-Origin", origin);
+        httpServletResponse.setHeader("Access-Control-Allow-Credentials", "true");
+        httpServletResponse.setHeader("Access-Control-Allow-Methods", "*");
         httpServletResponse.setStatus(HttpStatus.FORBIDDEN.value());
     }
 }
