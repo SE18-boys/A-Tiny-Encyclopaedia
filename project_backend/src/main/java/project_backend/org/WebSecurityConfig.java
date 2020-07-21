@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsUtils;
 import project_backend.org.interceptor.Http403ForbiddenEntryPoint;
 import project_backend.org.interceptor.LoginFailureHandler;
 import project_backend.org.interceptor.LoginSuccessHandler;
@@ -59,7 +61,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(http403ForbiddenEntryPoint)
                 .and()
                 .authorizeRequests()
-                    .antMatchers("/DiseaseByName").permitAll() //所有匹配 "/DiseaseByName" 的请求放行
+                    .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() //浏览器预请求
+                    .antMatchers("/DiseaseByName").permitAll()          //所有匹配 "/DiseaseByName" 的请求放行
                     .anyRequest().authenticated() //其余所有请求需要认证
                     .and()
                 .formLogin()

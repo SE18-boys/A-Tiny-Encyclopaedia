@@ -17,6 +17,11 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+        String origin = httpServletRequest.getHeader("Origin");
+        httpServletResponse.setHeader("Access-Control-Allow-Origin", origin);
+        httpServletResponse.setHeader("Access-Control-Allow-Credentials", "true");
+        httpServletResponse.setHeader("Access-Control-Allow-Methods", "*");
         httpServletResponse.setStatus(HttpStatus.OK.value());
+        //httpServletResponse.getWriter().write("test");
     }
 }
