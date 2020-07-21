@@ -16,7 +16,10 @@
     "react-test-renderer": "^16.13.1"
   },
   "scripts": {
-    "test": "jest --colors --coverage"
+    "test": "jest --colors --coverage",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
