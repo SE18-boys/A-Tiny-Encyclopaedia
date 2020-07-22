@@ -37,13 +37,16 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
+    "babel-plugin-css-modules-transform": "^1.6.2",
     "config": "^3.3.1",
     "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^24.9.0",
     "regenerator-runtime": "^0.13.5"
   }
