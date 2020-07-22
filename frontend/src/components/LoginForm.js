@@ -89,7 +89,7 @@ export default class LoginForm extends React.Component {
                         <Button type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}}>
                             登录
                         </Button>
-                        或 <a onClick={this.handleChange}>现在注册!</a>
+                        或 <a onClick={this.handleChange} id="register">现在注册!</a>
                     </Form.Item>
                 </Form>
             </div>

@@ -19,7 +19,8 @@
     "test": "jest --colors --coverage",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,6 +44,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
     "config": "^3.3.1",
+    "cypress": "^4.11.0",
     "enzyme": "^3.11.0",
     "jest": "^24.9.0",
     "regenerator-runtime": "^0.13.5"

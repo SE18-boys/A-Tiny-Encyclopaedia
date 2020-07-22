@@ -32,11 +32,11 @@ export class AdminAvatar extends React.Component {
     signUpInfo = () => {
         if (this.state.isSignIn)
             return (
-                <span className="name">Hi,{this.state.username}</span>
+                <span className="name" id="username">Hi,{this.state.username}</span>
             )
         else
             return (
-                <span className="name" onClick={this.onClickSignUp}><a>登录</a></span>
+                <span className="name" onClick={this.onClickSignUp}><a id="signIn">登录</a></span>
             )
 
     }

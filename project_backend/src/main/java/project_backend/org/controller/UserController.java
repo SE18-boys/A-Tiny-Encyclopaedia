@@ -21,6 +21,8 @@ public class UserController {
     public Msg login(@RequestBody Map<String,String>map){
         String name=map.get("username");
         String password=map.get("password");
+        System.out.println(name);
+        System.out.println(password);
         User auth = userService.checkUser(name, password);
         if(auth!=null){
             JSONObject obj=new JSONObject();
