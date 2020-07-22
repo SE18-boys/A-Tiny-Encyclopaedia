@@ -10,7 +10,12 @@
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
-    "transformIgnorePatterns": [ "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"]
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
+    "testMatch": [
+      "**/__test__/**/*.spec.js"
+    ]
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
