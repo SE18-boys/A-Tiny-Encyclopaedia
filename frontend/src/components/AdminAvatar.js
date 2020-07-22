@@ -1,12 +1,11 @@
 import React from 'react';
-import {Avatar, Dropdown, Menu} from 'antd';
+import {Avatar, Dropdown, Menu,Button} from 'antd';
 import '../css/index.css'
 import {
     SettingFilled,
 } from '@ant-design/icons';
 import {withRouter} from "react-router-dom";
 import {history} from "../utils/history";
-import Button from "antd/es/button";
 import * as userService from '../services/userService'
 
 export class AdminAvatar extends React.Component {
