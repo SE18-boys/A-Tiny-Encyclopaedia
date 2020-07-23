@@ -31,7 +31,7 @@ export default class LoginForm extends React.Component {
 
                 <div align="center">
                     <a>
-                        <img alt="logo" src={logo} onClick={this.backToHome}
+                        <img alt="logo" src={logo} onClick={this.backToHome} id="logo"
                              style={{
                                  textAlign: 'center',
                                  background: '#fff',

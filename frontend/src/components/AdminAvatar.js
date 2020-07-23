@@ -74,7 +74,7 @@ export class AdminAvatar extends React.Component {
         return (
             <div id="avatar">
                 <span style={{padding: "10px"}}>
-                    <Button onClick={this.handleAdd}>创建词条</Button>
+                    <Button onClick={this.handleAdd} id="add_entry">创建词条</Button>
                 </span>
                 <span className="name">{this.signUpInfo()}</span>
                 <Dropdown overlay={menu} placement="bottomRight">
