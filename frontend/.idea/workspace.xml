@@ -25,7 +25,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8354fe05-5a6e-45f3-87ad-00dc338b87e1" name="Default Changelist" comment="" />
+    <list default="true" id="8354fe05-5a6e-45f3-87ad-00dc338b87e1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,6 +55,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RunManager" selected="npm.start">
@@ -118,7 +124,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1595472629064</updated>
-      <workItem from="1595472630252" duration="1206000" />
+      <workItem from="1595472630252" duration="2338000" />
+      <workItem from="1595486646781" duration="69000" />
     </task>
     <task id="LOCAL-00001" summary="rebase">
       <created>1595472724577</created>
@@ -134,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595473816293</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat:add router test using cypress">
+      <created>1595473985234</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595473985234</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,30 +188,30 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1595473099163" />
-    <state x="355" y="0" key="CommitChangelistDialog2" timestamp="1595473815378">
+    <state x="355" y="0" key="CommitChangelistDialog2" timestamp="1595473984477">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="355" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1595473815378" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1595473713039">
+    <state x="355" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1595473984477" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1595475172400">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595473713039" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1595473713039">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595475172400" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1595475172400">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595473713039" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1595473713039">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595475172400" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1595475172400">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595473713039" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1595473713039">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595475172400" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1595475172400">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595473713039" />
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1595473839123">
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595475172400" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1595474017085">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1595473839123" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1595474017085" />
     <state x="537" y="144" key="git4idea.branch.GitSmartOperationDialog" timestamp="1595472666628">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
