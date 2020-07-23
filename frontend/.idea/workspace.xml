@@ -19,21 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81b53881-1e2c-47da-844e-c23bae3848ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="81b53881-1e2c-47da-844e-c23bae3848ce" name="Default Changelist" comment="feat:add utils test">
       <change beforePath="$PROJECT_DIR$/coverage/clover.xml" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/clover.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/coverage-final.json" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/coverage-final.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/block-navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/block-navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/button.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/button.js.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/functions.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/functions.js.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/prettify.css" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/prettify.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/prettify.js" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/prettify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov-report/sorter.js" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/sorter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coverage/lcov.info" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_backend/src/main/java/project_backend/org/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project_backend/src/main/java/project_backend/org/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_backend/src/main/java/project_backend/org/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project_backend/src/main/java/project_backend/org/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../project_backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,22 +186,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1595298991532" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1595407888399">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1595483932275">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595407888399" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1595407888399">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595483932275" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1595483932275">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595407888399" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1595407888398">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595483932275" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1595483932275">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595407888398" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1595407888399">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595483932275" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1595483932275">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595407888399" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595483932275" />
     <state width="1493" height="277" key="GridCell.Tab.1.bottom" timestamp="1594178455849">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
