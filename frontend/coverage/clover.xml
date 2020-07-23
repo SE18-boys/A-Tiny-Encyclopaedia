@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1595408366329" clover="3.2.0">
-  <project timestamp="1595408366330" name="All files">
-    <metrics statements="90" coveredstatements="19" conditionals="10" coveredconditionals="0" methods="33" coveredmethods="2" elements="133" coveredelements="21" complexity="0" loc="90" ncloc="90" packages="3" files="5" classes="5"/>
+<coverage generated="1595471758093" clover="3.2.0">
+  <project timestamp="1595471758093" name="All files">
+    <metrics statements="90" coveredstatements="29" conditionals="10" coveredconditionals="0" methods="33" coveredmethods="8" elements="133" coveredelements="37" complexity="0" loc="90" ncloc="90" packages="3" files="5" classes="5"/>
     <package name="components">
       <metrics statements="14" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="2"/>
       <file name="LoginForm.js" path="C:\Users\Administrator\Desktop\web_proj\A-Tiny-Encyclopaedia\frontend\src\components\LoginForm.js">
@@ -70,31 +70,31 @@
       </file>
     </package>
     <package name="utils">
-      <metrics statements="38" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="18" coveredmethods="0"/>
+      <metrics statements="38" coveredstatements="16" conditionals="2" coveredconditionals="0" methods="18" coveredmethods="6"/>
       <file name="ajax.js" path="C:\Users\Administrator\Desktop\web_proj\A-Tiny-Encyclopaedia\frontend\src\utils\ajax.js">
-        <metrics statements="37" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="18" coveredmethods="0"/>
-        <line num="3" count="1" type="stmt"/>
+        <metrics statements="37" coveredstatements="15" conditionals="2" coveredconditionals="0" methods="18" coveredmethods="6"/>
+        <line num="3" count="2" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
         <line num="64" count="0" type="stmt"/>
-        <line num="70" count="1" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
         <line num="73" count="0" type="stmt"/>
         <line num="74" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -104,11 +104,11 @@
         <line num="86" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
         <line num="92" count="0" type="stmt"/>
-        <line num="96" count="1" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
-        <line num="108" count="0" type="stmt"/>
-        <line num="112" count="0" type="stmt"/>
-        <line num="120" count="0" type="stmt"/>
+        <line num="96" count="2" type="stmt"/>
+        <line num="98" count="2" type="stmt"/>
+        <line num="108" count="2" type="stmt"/>
+        <line num="112" count="2" type="stmt"/>
+        <line num="120" count="2" type="stmt"/>
         <line num="123" count="0" type="stmt"/>
       </file>
       <file name="history.js" path="C:\Users\Administrator\Desktop\web_proj\A-Tiny-Encyclopaedia\frontend\src\utils\history.js">
