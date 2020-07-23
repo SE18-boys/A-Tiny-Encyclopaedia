@@ -2,6 +2,21 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
+    "testMatch": [
+      "**/__test__/**/*.spec.js"
+    ]
+  },
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -38,14 +53,18 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
+    "babel-plugin-css-modules-transform": "^1.6.2",
     "config": "^3.3.1",
     "cypress": "^4.11.0",
     "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "regenerator-runtime": "^0.13.5"
   }
