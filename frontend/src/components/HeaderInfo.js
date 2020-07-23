@@ -21,7 +21,7 @@ export class HeaderInfo extends React.Component {
                 <div id="header-content" >
                     <Row>
                         <Col span={3}>
-                         <a>  <img alt="logo" onClick={this.backToHome} src={logo} style={{height: 60}}/> </a>
+                         <a>  <img alt="logo" onClick={this.backToHome} src={logo} style={{height: 60}} id="logo"/> </a>
                         </Col>
                         <Col span={6}>
                             <Search/>
