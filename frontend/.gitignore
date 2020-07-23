@@ -12,6 +12,11 @@ node_modules/
 
 # production
 /build
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
 
 # misc
 .DS_Store
