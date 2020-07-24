@@ -1,9 +1,10 @@
-import {Form, Input, InputNumber, Button} from 'antd';
+import {Form, Input, InputNumber, Button, message} from 'antd';
 import React from "react";
 import "../css/addEntryForm.css"
 import MinusCircleOutlined from "@ant-design/icons/lib/icons/MinusCircleOutlined";
 import PlusOutlined from "@ant-design/icons/lib/icons/PlusOutlined";
-import {addSimpleDetails} from "../services/SearchService";
+import {addSimpleDetails, updateDetails} from "../services/SearchService";
+import {history} from "../utils/history";
 
 const layout = {
     labelCol: {
@@ -13,16 +14,7 @@ const layout = {
         span: 20,
     },
 };
-const validateMessages = {
-    required: '${label} is required!',
-    types: {
-        email: '${label} is not validate email!',
-        number: '${label} is not a validate number!',
-    },
-    number: {
-        range: '${label} must be between ${min} and ${max}',
-    },
-};
+
 
 const formItemLayout = {
     labelCol: {
@@ -72,12 +64,56 @@ const multiList = [
 export default class AddEntryDetailForm extends React.Component {
     constructor(props) {
         super(props);
+        if(this.props.isUpdate===true)
+        {
+
+
+            let values=this.props.initValues
+            let final=values
+            for(const pro in values)
+            {
+                // console.log(pro)
+                // console.log(values[pro])
+                if(values[pro]!==null && multiList.indexOf(pro)!==-1)
+                {
+                    console.log('enter for')
+                    let tmp=[]
+                    values[pro].forEach(item=>tmp.push(item.name))
+                    console.log("tmp is ")
+                    console.log(tmp)
+                    values[pro]=tmp
+                    console.log("values[pro] is "+values[pro])
+                }
+
+            }
+
+            console.log("after init values is ")
+            console.log(values)
+
+            this.setState({initValues:this.props.initValues})
+        }
+        // else
+        // {
+        //     this.setState({initValues:null})
+        // }
+
     }
 
 
     onFinish = values => {
         console.log(values);
-        addSimpleDetails(values)
+        if(this.props.isUpdate===true)
+        {
+            updateDetails(values)
+            message.info("成功更新词条！")
+        }
+        else
+        {
+            addSimpleDetails(values)
+            message.info("成功添加词条！")
+
+        }
+        history.push('/')
     };
 
     generateFormItem = item => {
@@ -86,10 +122,10 @@ export default class AddEntryDetailForm extends React.Component {
         console.log("item is ", item)
         if (multiList.indexOf(item.name) !== -1) {
 
-            console.log("in muiltiList")
+            // console.log("in muiltiList")
             return (
                 <div>
-                    <Form.List name={item.name}>
+                    <Form.List name={item.name} >
                         {(fields, {add, remove}) => {
                             // add()
                             // if (fields.length < 1) {
@@ -103,11 +139,11 @@ export default class AddEntryDetailForm extends React.Component {
                                 <div>
 
                                     {
-                                        fields.map(
+                                        (fields||[]).map(
                                             (field, index) =>
                                             {
-                                            console.log("enter map")
-                                            console.log(fields.length)
+                                            // console.log("enter map")
+                                            // console.log(fields.length)
                                             return (
                                             <div>
                                                 <Form.Item
@@ -129,6 +165,7 @@ export default class AddEntryDetailForm extends React.Component {
                                                                 message: "请输入 "+item.label+" 或者按右侧删除符号删除本条记录.",
                                                             },
                                                         ]}
+                                                        initialValue={this.props.initValues}
                                                         noStyle
                                                     >
                                                         <Input
@@ -171,7 +208,7 @@ export default class AddEntryDetailForm extends React.Component {
                 </div>
             )
         } else {
-            console.log("not in muiltiList")
+            // console.log("not in muiltiList")
             return (
                 <Form.Item
                     name={item.name}
@@ -188,7 +225,7 @@ export default class AddEntryDetailForm extends React.Component {
     render() {
         return (
             <div>
-                <Form {...layout} name="nest-messages" onFinish={this.onFinish} className="attributeForm">
+                <Form {...layout} name="nest-messages" onFinish={this.onFinish} initialValues={this.props.isUpdate?this.props.initValues:null} className="attributeForm">
                     <Form.Item
                         name={'name'}
                         label="词条名"
