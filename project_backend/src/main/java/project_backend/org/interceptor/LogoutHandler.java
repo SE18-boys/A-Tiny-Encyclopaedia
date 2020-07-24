@@ -1,8 +1,9 @@
 package project_backend.org.interceptor;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -12,16 +13,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @Component
-public class LoginFailureHandler implements AuthenticationFailureHandler {
+public class LogoutHandler implements LogoutSuccessHandler {
     @Override
-    public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
+    public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         String origin = httpServletRequest.getHeader("Origin");
         httpServletResponse.setHeader("Access-Control-Allow-Origin", origin);
         httpServletResponse.setHeader("Access-Control-Allow-Credentials", "true");
         httpServletResponse.setHeader("Access-Control-Allow-Methods", "*");
-        httpServletResponse.setStatus(HttpStatus.EXPECTATION_FAILED.value());
+        httpServletResponse.setStatus(HttpStatus.OK.value());
         PrintWriter out = httpServletResponse.getWriter();
-        out.write("{\"msg\":\"Longin failure!\"}");
+        out.write("{\"msg\":\"Logout success!\"}");
         out.flush();
         out.close();
     }
