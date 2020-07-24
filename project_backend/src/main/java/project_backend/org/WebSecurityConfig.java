@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/DiseaseByName").permitAll()          //所有匹配 "/DiseaseByName" 的请求放行
                     .antMatchers("/loginmessage").permitAll()
                     .antMatchers("/register").permitAll()
-                    .anyRequest().authenticated() //其余所有请求需要认证
+                    .anyRequest().permitAll() //其余所有请求需要认证.authenticated()
                     .and()
                 .formLogin()
                     .usernameParameter("username")

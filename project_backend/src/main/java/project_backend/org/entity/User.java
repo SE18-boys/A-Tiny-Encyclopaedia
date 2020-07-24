@@ -32,7 +32,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "username")
+    @Column(name = "name")
     public String getUsername(){return this.username;}
     public void setUsername(String name){this.username =name;}
 
