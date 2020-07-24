@@ -1,12 +1,11 @@
 import React from 'react';
-import {Avatar, Dropdown, Menu} from 'antd';
+import {Avatar, Dropdown, Menu,Button} from 'antd';
 import '../css/index.css'
 import {
     SettingFilled,
 } from '@ant-design/icons';
 import {withRouter} from "react-router-dom";
 import {history} from "../utils/history";
-import Button from "antd/es/button";
 import * as userService from '../services/userService'
 
 export class AdminAvatar extends React.Component {
@@ -32,11 +31,11 @@ export class AdminAvatar extends React.Component {
     signUpInfo = () => {
         if (this.state.isSignIn)
             return (
-                <span className="name">Hi,{this.state.username}</span>
+                <span className="name" id="username">Hi,{this.state.username}</span>
             )
         else
             return (
-                <span className="name" onClick={this.onClickSignUp}><a>登录</a></span>
+                <span className="name" onClick={this.onClickSignUp}><a id="signIn">登录</a></span>
             )
 
     }
@@ -74,7 +73,7 @@ export class AdminAvatar extends React.Component {
         return (
             <div id="avatar">
                 <span style={{padding: "10px"}}>
-                    <Button onClick={this.handleAdd}>创建词条</Button>
+                    <Button onClick={this.handleAdd} id="add_entry">创建词条</Button>
                 </span>
                 <span className="name">{this.signUpInfo()}</span>
                 <Dropdown overlay={menu} placement="bottomRight">

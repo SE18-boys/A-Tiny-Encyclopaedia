@@ -7,12 +7,12 @@ import project_backend.org.entity.User;
 
 import java.util.List;
 public interface UserRepository extends JpaRepository<User,Integer>{
-    @Query(value = "from User where name = :username and password = :password")
+    @Query(value = "from User where username = :username and password = :password")
     User checkUser(@Param("username") String username, @Param("password") String password);
 
     @Query("select b from User b")
     List<User> getUsers();
 
-    @Query(value= "from User where name = :username")
+    @Query(value= "from User where username = :username")
     User findByName(@Param("username") String username);
 }

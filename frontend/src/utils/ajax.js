@@ -24,7 +24,7 @@ let deleteRequest = (url, json, callback) => {
             callback(false);
             console.log(error);
         });
-}
+};
 
 let putRequest = (url, json, callback) => {
 
@@ -49,6 +49,26 @@ let putRequest = (url, json, callback) => {
             callback("fail");
             console.log(error);
         });
+};
+
+let postRequest_v3 = (url, json, callback) => {
+
+    let opts = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+        credentials: "include"
+    };
+
+    fetch(url,opts)
+        .then((response) => {
+            // if(response) {
+            console.log(response);
+            callback(json);
+            //return response.json()
+        })
+
 };
 
 let postRequest_v2 = (url, data, callback) => {
@@ -92,7 +112,7 @@ let postRequest = (url, json, callback) => {
     fetch(url,opts)
         .then((response) => {
             // if(response) {
-                // console.log(response.body)
+                 //console.log(response)
                 return response.json()
             // }
             // else{
@@ -108,4 +128,4 @@ let postRequest = (url, json, callback) => {
         });
 };
 
-export {postRequest,postRequest_v2, putRequest, deleteRequest};
+export {postRequest,postRequest_v2,postRequest_v3, putRequest, deleteRequest};

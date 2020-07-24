@@ -8,18 +8,22 @@ import * as userService from '../services/userService'
 
 export default class LoginForm extends React.Component {
 
+    loginmessage = (values) => {
+        userService.login(values);
+    };
+
     onFinish = (values) => {
         console.log('Received values of form: ', values);
-        userService.login(values);
+        userService.authenticate(values,this.loginmessage);
     };
     handleChange = () => {
         this.props.handleChange();
         console.log("enter handleChange")
-    }
+    };
     backToHome = () => {
         if (history.location.pathname !== "/")
             history.push("/")
-    }
+    };
 
     render() {
         return (
@@ -27,7 +31,7 @@ export default class LoginForm extends React.Component {
 
                 <div align="center">
                     <a>
-                        <img alt="logo" src={logo} onClick={this.backToHome}
+                        <img alt="logo" src={logo} onClick={this.backToHome} id="logo"
                              style={{
                                  textAlign: 'center',
                                  background: '#fff',
@@ -85,7 +89,7 @@ export default class LoginForm extends React.Component {
                         <Button type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}}>
                             登录
                         </Button>
-                        或 <a onClick={this.handleChange}>现在注册!</a>
+                        或 <a onClick={this.handleChange} id="register">现在注册!</a>
                     </Form.Item>
                 </Form>
             </div>

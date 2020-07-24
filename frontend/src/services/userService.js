@@ -1,5 +1,6 @@
 // import config from 'config';
-import {apiUrl, postRequest, putRequest} from "../utils/ajax";
+
+import {postRequest, postRequest_v3,apiUrl, putRequest} from "../utils/ajax";
 import {history} from '../utils/history';
 import {message} from 'antd';
 
@@ -19,8 +20,13 @@ export const register = (data) => {
     postRequest(url, data, callback);
 };
 
+export const authenticate = (data, callback) => {
+    const url = `http://localhost:8080/login`+`?username=`+data.username+`&password=`+data.password;
+    postRequest_v3(url, data, callback);
+};
+
 export const login = (data) => {
-    const url = apiUrl+`/login`;
+    const url = apiUrl+`/loginmessage`;
     const callback = (data) => {
         if(data.status >= 0) {
             localStorage.setItem('user', JSON.stringify(data.data));

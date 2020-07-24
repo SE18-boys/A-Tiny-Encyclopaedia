@@ -9,13 +9,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,7 +34,7 @@ public class UserServiceTest extends UnitTestDemoApplicationTests {
     @Rollback
     public void addUser() {
         User user = new User();
-        user.setName("TestUser");
+        user.setUsername("TestUser");
         user.setPassword("TestPwd");
         user.setEmail("TestEmail");
         //System.out.println(userService.addUser(user));
@@ -49,7 +47,7 @@ public class UserServiceTest extends UnitTestDemoApplicationTests {
         String username = "TestUser";
         String password = "TestPwd";
         User user = new User();
-        user.setName("TestUser");
+        user.setUsername("TestUser");
         user.setPassword("TestPwd");
         user.setEmail("TestEmail");
         userRepository.save(user);
@@ -63,7 +61,7 @@ public class UserServiceTest extends UnitTestDemoApplicationTests {
     public void findUserByName(){
         String userName = "TestUser";
         User user = new User();
-        user.setName("TestUser");
+        user.setUsername("TestUser");
         user.setPassword("TestPwd");
         user.setEmail("TestEmail");
         userRepository.save(user);
@@ -75,7 +73,7 @@ public class UserServiceTest extends UnitTestDemoApplicationTests {
     @Test
     public void getUsers(){
         User user = new User();
-        user.setName("TestUser");
+        user.setUsername("TestUser");
         user.setPassword("TestPwd");
         user.setEmail("TestEmail");
         userRepository.save(user);
