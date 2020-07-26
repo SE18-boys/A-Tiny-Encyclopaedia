@@ -1,7 +1,8 @@
 import React from 'react'
-import {Button} from 'antd'
+import {Button, message} from 'antd'
 import '../css/BKDetail.css'
 import {searchDetails} from "../services/SearchService";
+import {history} from "../utils/history";
 
 const summary = "《CLANNAD》是日本游戏品牌Key继《Kanon》、《AIR》后发行的第三款恋爱冒险游戏，游戏于2004年4月28日发行PC初回限定版，并依此为原作改编或扩充跨媒体制作的作品。\n\n" +
     "游戏PC版在最初公开时的预定发售日期是2002年，后来预定发售日被延期至2003年，之后再一次被延期至2004年4月28日，相比最初的预定延期了2年。在剧情设计上，延续了Key社出品的前两部作品的特点。但与前两部有所不同的是，本作在发布伊始即确定为全年龄对象。因其剧情大部分发生于春季，亦被视为Key社游戏“季节组曲”中的“春”。\n";
@@ -19,6 +20,15 @@ export class EntryDetails extends React.Component{
     }
 
     callback = (data) => {
+        console.log("get ")
+        console.log(data)
+        if(data.id===-1)
+        {
+
+            message.info("暂未查询到结果！您可以添加此词条！")
+            history.push('/')
+        }
+
         this.setState({result: data});
         //console.log("received data is:", data);
     };
@@ -152,6 +162,20 @@ export class EntryDetails extends React.Component{
         }
     };
 
+    update=()=>{
+
+        let value=this.state.result
+        // this.
+
+        let path= {
+                pathname:'/UpdateEntryDetail',
+                state:this.state.result
+            }
+        history.push(path);
+
+
+    }
+
     render() {
         const contentp =[];
         const direction = [];
@@ -181,7 +205,7 @@ export class EntryDetails extends React.Component{
             <div>
                 <div class="bk-title bk-font36 content-title">
                     {this.state.result.name}
-                    <a class="bk-color-darkgrey content-title-edit">
+                    <a class="bk-color-darkgrey content-title-edit" onClick={this.update}>
                         <i class="title-edit"/>
                         编辑
                     </a>

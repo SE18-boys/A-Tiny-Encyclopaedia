@@ -11,7 +11,7 @@ import {
     DatePicker,
     InputNumber,
     TreeSelect,
-    Switch,
+    Switch, message,
 } from 'antd';
 import "../css/addEntryForm.css"
 import {history} from "../utils/history";
@@ -60,6 +60,7 @@ export default class EntryAttributeForm extends React.Component {
     {
         console.log("add simple entry")
         console.log(values)
+        message.info("暂时只支持添加疾病")
     }
 
 
