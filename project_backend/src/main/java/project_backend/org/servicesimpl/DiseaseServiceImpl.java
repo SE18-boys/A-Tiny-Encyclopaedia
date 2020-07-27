@@ -7,6 +7,7 @@ import project_backend.org.entity.Disease;
 import project_backend.org.service.DiseaseService;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -44,5 +45,10 @@ public class DiseaseServiceImpl implements DiseaseService {
     @Override
     public void deleteDiseaseByName(String name) {
         diseaseDao.deleteByName(name);
+    }
+
+    @Override
+    public List<Disease> findDiseasesByNameContains(String name){
+        return diseaseDao.findDiseasesByNameContains(name);
     }
 }
