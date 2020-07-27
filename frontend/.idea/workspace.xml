@@ -26,8 +26,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8354fe05-5a6e-45f3-87ad-00dc338b87e1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/test2.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/examples/test2.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/test3.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/examples/test3.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AdminAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminAvatar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +127,11 @@
       <option name="presentableId" value="Default" />
       <updated>1595472629064</updated>
       <workItem from="1595472630252" duration="2338000" />
-      <workItem from="1595486646781" duration="69000" />
+      <workItem from="1595486646781" duration="133000" />
+      <workItem from="1595486786852" duration="857000" />
+      <workItem from="1595551795982" duration="2632000" />
+      <workItem from="1595574425491" duration="1204000" />
+      <workItem from="1595834107425" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="rebase">
       <created>1595472724577</created>
@@ -148,7 +154,21 @@
       <option name="project" value="LOCAL" />
       <updated>1595473985234</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix:add gitignore">
+      <created>1595486766951</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1595486766951</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix:edit gitignore to ignore .idea">
+      <created>1595486866018</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1595486866018</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,37 +201,39 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="rebase" />
     <MESSAGE value="feat:add router test using cypress" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat:add router test using cypress" />
+    <MESSAGE value="fix:add gitignore" />
+    <MESSAGE value="fix:edit gitignore to ignore .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix:edit gitignore to ignore .idea" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595473099163">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1595473099163" />
-    <state x="355" y="0" key="CommitChangelistDialog2" timestamp="1595473984477">
+    <state x="355" y="0" key="CommitChangelistDialog2" timestamp="1595486865317">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="355" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1595473984477" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1595475172400">
+    <state x="355" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1595486865317" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1595575630280">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595475172400" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1595475172400">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595575630280" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1595575630279">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595475172400" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1595475172400">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595575630279" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1595575630279">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595475172400" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1595475172400">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595575630279" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1595575630279">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595475172400" />
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1595474017085">
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595575630279" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1595486895708">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1595474017085" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1595486895708" />
     <state x="537" y="144" key="git4idea.branch.GitSmartOperationDialog" timestamp="1595472666628">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

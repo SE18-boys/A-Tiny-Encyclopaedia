@@ -19,7 +19,7 @@ export class AdminAvatar extends React.Component {
         const user = JSON.parse(localStorage.getItem("user"));
         console.log("user info:", user);
         if (user !== null) {
-            this.setState({username: user.name, isSignIn: true})
+            this.setState({username: user.username, isSignIn: true})
         }
     }
 

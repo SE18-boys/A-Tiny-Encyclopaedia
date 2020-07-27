@@ -6,6 +6,7 @@ import project_backend.org.dao.DiseaseDao;
 import project_backend.org.entity.Disease;
 import project_backend.org.repository.DiseaseRepository;
 
+import java.util.List;
 import java.util.Set;
 
 @Repository
@@ -33,5 +34,10 @@ public class DiseaseDaoImpl implements DiseaseDao {
     @Override
     public void deleteByName(String name) {
         diseaseRepository.deleteByName(name);
+    }
+
+    @Override
+    public List<Disease> findDiseasesByNameContains(String name){
+        return diseaseRepository.findDiseasesByNameContains(name);
     }
 }
