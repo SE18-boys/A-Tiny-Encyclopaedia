@@ -1,10 +1,12 @@
 package project_backend.org.controller;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import project_backend.org.entity.Disease;
+import project_backend.org.entryAudit.DiseaseAudit;
 import project_backend.org.service.DiseaseService;
 import project_backend.org.utils.searchutils.SearchUtil;
 
@@ -15,6 +17,8 @@ public class DiseaseController {
     @Autowired
     private DiseaseService diseaseService;
 
+
+    //疾病
     @RequestMapping("/DiseaseByName")
     public SearchUtil findDiseaseByName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
@@ -88,5 +92,22 @@ public class DiseaseController {
         List<String> names = (List<String>) parms.get("accompanyDiseases");
         Set<String> accompany_names = new HashSet<>(names);
         diseaseService.UpdateAccompany_diseasesToDisease(name, accompany_names);
+    }
+
+
+    //疾病审核
+    @RequestMapping("/DiseaseAuditByNmae")
+    public List<DiseaseAudit> findDiseaseAuditByName(@RequestBody Map<String, String> parms){
+        String name = parms.get("name");
+        return diseaseService.findDiseaseAuditByName(name);
+    }
+
+    @RequestMapping("/SetAuditResult")
+    public DiseaseAudit SetAuditResult(@RequestBody Map<String, String> parms){
+        String reason = parms.get("reason");
+        String result = parms.get("result");
+        String stringid = parms.get("id");
+        ObjectId id = new ObjectId(stringid);
+        return diseaseService.SetAuditResult(id, result, reason);
     }
 }
