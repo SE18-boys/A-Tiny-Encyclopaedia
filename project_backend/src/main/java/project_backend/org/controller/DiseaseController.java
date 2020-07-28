@@ -21,9 +21,10 @@ public class DiseaseController {
         int single_search=1;
         int multiple_search=2;
         int not_found=3;
+        int single_multiple_search=4;
         Disease disease=diseaseService.findDiseaseByName(name);
+        List<Disease> diseases=diseaseService.findDiseasesByNameContains(name);
         if(disease==null){
-            List<Disease> diseases=diseaseService.findDiseasesByNameContains(name);
             if(diseases.size()==0){
                 return new SearchUtil(not_found);
             }else{
@@ -34,8 +35,17 @@ public class DiseaseController {
                 return new SearchUtil(multiple_search,names);
             }
         }else{
-            return new SearchUtil(single_search,disease);
+            if(diseases.size()==1) {
+                return new SearchUtil(single_search, disease);
+            }else{
+                List<String> names=new ArrayList<>();
+                for(Disease disease_tmp:diseases){
+                    names.add(disease_tmp.getName());
+                }
+                return new SearchUtil(single_multiple_search,names,disease);
+            }
         }
+
     }
 
     @RequestMapping("/AddDisease")
