@@ -54,26 +54,22 @@ public class DiseaseServiceImpl implements DiseaseService {
     @Override
     public List<DiseaseAudit> findDiseaseAuditByName(String name) {
         Optional<List<DiseaseAudit>> DiseaseAudits = diseaseDao.findAuditByName(name);
-        if(DiseaseAudits.isEmpty()){
-            return null;
-        }
-        else {
+        if (DiseaseAudits.isPresent()) {
             //System.out.println(DiseaseAudits.get().get(0));
             List<DiseaseAudit> diseaseAudits = DiseaseAudits.get();
             for (DiseaseAudit diseaseAudit : diseaseAudits) {
                 diseaseAudit.setStringid(diseaseAudit.getId().toString());
             }
             return diseaseAudits;
+        } else {
+            return null;
         }
     }
 
     @Override
     public DiseaseAudit SetAuditResult(ObjectId id, String result, String reason) {
         Optional<DiseaseAudit> diseaseAuditOptional = diseaseDao.findAuditById(id);
-        if(diseaseAuditOptional.isEmpty()){
-            return null;
-        }
-        else{
+        if (diseaseAuditOptional.isPresent()) {
             DiseaseAudit diseaseAudit = diseaseAuditOptional.get();
             diseaseAudit.setStatues(result);
             diseaseAudit.setReason(reason);
@@ -83,8 +79,10 @@ public class DiseaseServiceImpl implements DiseaseService {
             diseaseAudit.setAudit_date(date);
             diseaseDao.AddOrUpdateDiseaseAudit(diseaseAudit);
             return diseaseAudit;
+        } else {
+            return null;
         }
-
+    }
     public List<Disease> findDiseasesByNameContains(String name){
         return diseaseDao.findDiseasesByNameContains(name);
     }
