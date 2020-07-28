@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import project_backend.org.entity.Disease;
 import project_backend.org.entryAudit.DiseaseAudit;
 import project_backend.org.service.DiseaseService;
+import project_backend.org.utils.searchutils.SearchUtil;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 public class DiseaseController {
@@ -22,15 +20,36 @@ public class DiseaseController {
 
     //疾病
     @RequestMapping("/DiseaseByName")
-    public Disease findDiseaseByName(@RequestBody Map<String, String> parms){
+    public SearchUtil findDiseaseByName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
-        Disease disease = diseaseService.findDiseaseByName(name);
-        System.out.println(disease);
+        int single_search=1;
+        int multiple_search=2;
+        int not_found=3;
+        int single_multiple_search=4;
+        Disease disease=diseaseService.findDiseaseByName(name);
+        List<Disease> diseases=diseaseService.findDiseasesByNameContains(name);
         if(disease==null){
-            disease=new Disease();
-            disease.setId(-1);
+            if(diseases.size()==0){
+                return new SearchUtil(not_found);
+            }else{
+                List<String> names=new ArrayList<>();
+                for(Disease disease_tmp:diseases){
+                    names.add(disease_tmp.getName());
+                }
+                return new SearchUtil(multiple_search,names);
+            }
+        }else{
+            if(diseases.size()==1) {
+                return new SearchUtil(single_search, disease);
+            }else{
+                List<String> names=new ArrayList<>();
+                for(Disease disease_tmp:diseases){
+                    names.add(disease_tmp.getName());
+                }
+                return new SearchUtil(single_multiple_search,names,disease);
+            }
         }
-        return disease;
+
     }
 
     @RequestMapping("/AddDisease")

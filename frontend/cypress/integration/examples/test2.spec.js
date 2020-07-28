@@ -11,7 +11,7 @@ describe('My second test',function(){
             .should('have.attr','type','submit')
             .click()
         cy.url().should('eq','http://localhost:3000/')
-        cy.get('#username').should('contain','Hi,')
+        cy.get('#username').should('contain','Hi,wy122963')
             .wait(3000)
     })
     it('test login failure',()=>{
@@ -28,5 +28,6 @@ describe('My second test',function(){
             .should('have.value','123456')
         cy.get('#normal_login_password')
             .should('have.value','wy13278649176')
+            .wait(2000)
     })
 })

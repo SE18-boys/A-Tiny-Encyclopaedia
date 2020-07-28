@@ -13,6 +13,7 @@ public interface DiseaseDao {
     //疾病
     //查
     Disease findByName(String name);
+    List<Disease> findDiseasesByNameContains(String name);
 
     //增
     Disease addDisease(Disease disease);

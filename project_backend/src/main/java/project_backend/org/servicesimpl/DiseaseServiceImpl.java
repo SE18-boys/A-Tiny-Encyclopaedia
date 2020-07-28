@@ -10,6 +10,9 @@ import project_backend.org.service.DiseaseService;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class DiseaseServiceImpl implements DiseaseService {
@@ -81,5 +84,8 @@ public class DiseaseServiceImpl implements DiseaseService {
             diseaseDao.AddOrUpdateDiseaseAudit(diseaseAudit);
             return diseaseAudit;
         }
+
+    public List<Disease> findDiseasesByNameContains(String name){
+        return diseaseDao.findDiseasesByNameContains(name);
     }
 }

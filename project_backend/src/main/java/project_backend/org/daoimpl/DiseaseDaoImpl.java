@@ -56,5 +56,8 @@ public class DiseaseDaoImpl implements DiseaseDao {
     @Override
     public DiseaseAudit AddOrUpdateDiseaseAudit(DiseaseAudit diseaseAudit) {
         return diseaseAuditRepository.save(diseaseAudit);
+    public List<Disease> findDiseasesByNameContains(String name){
+        return diseaseRepository.findDiseasesByNameContains(name);
+
     }
 }
