@@ -67,7 +67,7 @@ public class UserControllerTest extends UnitTestDemoApplicationTests {
         jsonData.put("username", "mikeshaw");
         jsonData.put("password", "123456");
         String responseString = mockMvc.perform(
-                post("/login")    //请求的url,请求的方法是get
+                post("/loginmessage")    //请求的url,请求的方法是get
                         .contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root")
         ).andExpect(status().isOk())    //返回的状态是200
                 .andReturn().getResponse().getContentAsString();   //将相应的数据转换为字符串
@@ -78,7 +78,7 @@ public class UserControllerTest extends UnitTestDemoApplicationTests {
         jsonData2.put("username", "mikeshaw");
         jsonData2.put("password", "111111");
         String responseString2 = mockMvc.perform(
-                post("/login")    //请求的url,请求的方法是get
+                post("/loginmessage")    //请求的url,请求的方法是get
                         .contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData2)).param("pcode","root")
         ).andExpect(status().isOk())    //返回的状态是200
                 .andReturn().getResponse().getContentAsString();   //将相应的数据转换为字符串

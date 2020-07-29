@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Component
 public class Http403ForbiddenEntryPoint implements AuthenticationEntryPoint {
@@ -19,5 +20,9 @@ public class Http403ForbiddenEntryPoint implements AuthenticationEntryPoint {
         httpServletResponse.setHeader("Access-Control-Allow-Credentials", "true");
         httpServletResponse.setHeader("Access-Control-Allow-Methods", "*");
         httpServletResponse.setStatus(HttpStatus.FORBIDDEN.value());
+        PrintWriter out = httpServletResponse.getWriter();
+        out.write("{\"msg\":\"You don't have access!\"}");
+        out.flush();
+        out.close();
     }
 }

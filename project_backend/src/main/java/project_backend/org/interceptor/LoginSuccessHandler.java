@@ -24,7 +24,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         httpServletResponse.setHeader("Access-Control-Allow-Methods", "*");
         httpServletResponse.setStatus(HttpStatus.OK.value());
         PrintWriter out = httpServletResponse.getWriter();
-        out.write("{\"mes\":\"test\"}");
+        out.write("{\"msg\":\"Login successfully!\"}");
         out.flush();
         out.close();
     }

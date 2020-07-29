@@ -12,10 +12,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.cors.CorsUtils;
 import project_backend.org.interceptor.Http403ForbiddenEntryPoint;
 import project_backend.org.interceptor.LoginFailureHandler;
 import project_backend.org.interceptor.LoginSuccessHandler;
+import project_backend.org.interceptor.LogoutHandler;
 
 
 @Configuration
@@ -24,8 +24,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private LoginSuccessHandler loginSuccessHandler;
+
     @Autowired
     private LoginFailureHandler loginFailureHandler;
+
+    @Autowired
+    private LogoutHandler logoutHandler;
+
     @Autowired
     private Http403ForbiddenEntryPoint http403ForbiddenEntryPoint;
 
@@ -65,8 +70,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/DiseaseByName").permitAll()//所有匹配 "/DiseaseByName" 的请求放行
                     .antMatchers("/DiseaseByAccurateName").permitAll()
                     .antMatchers("/loginmessage").permitAll()
+                    .antMatchers("/getUsers").hasRole("ADMIN")
                     .antMatchers("/register").permitAll()
-                    .anyRequest().authenticated() //其余所有请求需要认证
+                    .anyRequest().permitAll() //其余所有请求需要认证.authenticated()
                     .and()
                 .formLogin()
                     .usernameParameter("username")
@@ -77,6 +83,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                     .and()
                 .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessHandler(logoutHandler)
                     .permitAll();
     }
 

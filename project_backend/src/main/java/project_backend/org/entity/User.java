@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 @Entity
@@ -17,6 +18,8 @@ public class User {
     private String password;
     private String email;
     private Boolean isAuth;
+    private String role;
+
     public User(){
         super();
     }
@@ -32,7 +35,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "username")
+    @Column(name = "name")
     public String getUsername(){return this.username;}
     public void setUsername(String name){this.username =name;}
 
@@ -59,6 +62,11 @@ public class User {
     public void setIs_auth(Boolean is_auth){
         this.isAuth=is_auth;
     }
+
+    @Basic
+    @Column(name = "role")
+    public String getRole() { return  this.role; }
+    public void setRole(String role) { this.role = role; }
 
 
 }

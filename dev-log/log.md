@@ -146,3 +146,87 @@ by--xy
 +-./neo4j_data
 
 by--zy
+
+## 2020.7.17
+
+### check  UnitTest of Backend
+
++-./project_backend
+
+by--xy
+
+## 2020.7.20
+
+### learn and commit a Jest Test demo
+
++-./frontend 
+
+by--xy
+
+### learning spring security
+
+by--wy
+
+### 完善业务逻辑
+
++-./frontend 
+
+by--zy
+
+## 2020.7.21
+
+### write package-josn and config for testing tools
+
++-./frontend 
+
+by--xy
+
+### learning cypress and conducting e2e test using cypress & learning spring service
+
++-./frontend 
+
+by--wy
+
+### 学习和应用spring security
+
+by--zy
+
+## 2020.7.22
+
+### check backend unit test after import web-security 
+
++-./project_backend
+
+by--xy
+
+### learning cypress and conducting e2e test using cypress & learning spring service
+
++-./frontend 
+
+by--wy
+
+### 添加更新词条功能
+
++-./frontend 
+
+by--zy
+
+## 2020.7.23
+
+### add React UnitTest with Jest
+
++-./frontend 
+
+by--xy
+
+### learning cypress and conducting e2e test using cypress & learning spring service
+
++-./frontend 
+
+by--wy
+
+### add web-security(2020.7.20-7.23)
+
++-./project_backend
+
+by--zmy

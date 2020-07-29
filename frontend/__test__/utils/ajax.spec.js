@@ -7,19 +7,19 @@ jest.setTimeout(30000);
 
 test('should return data when fetchData request success',  done => {
     const data={
-        username: "wy122963",
-        password: "wy13278649176",
+        username: "mikeshaw",
+        password: "123456",
     };
     const url = `http://localhost:8080/loginmessage`;
     const callback = (data) => {
         //console.info(`返回的data：`+JSON.stringify(data.data));
         //换环境时调用此测试请将以下expect中信息改为本地数据库中存在的信息
         expect(data.data).toEqual({
-            "email":"2529230361@qq.com",
+            "email":"1481796592@qq.com",
             "id":1,
-            "is_auth":false,
-            "password":"wy13278649176",
-            "username":"wy122963"
+            "is_auth":true,
+            "password":"123456",
+            "username":"mikeshaw"
         })
         done();
     };
@@ -44,8 +44,8 @@ test('should return data when fetchData request success',  done => {
 
 test('should return data when fetchData request success',  done => {
     const data={
-        username: "wy122963",
-        password: "wy13278649176",
+        username: "mikeshaw",
+        password: "123456",
     };
     const url = `http://localhost:8080/loginmessage`;
     const callback = (data) => {

@@ -9,6 +9,7 @@ import AddEntryView from "./view/AddEntryView";
 import ProfileView from "./view/ProfileView";
 import AddEntryDetailForm from "./components/AddEntryDetailForm";
 import AddEntryDetailView from "./view/AddEntryDetailView";
+import UpdateDetailView from "./view/UpdateDetailView";
 
 class BasicRoute extends React.Component{
 
@@ -31,6 +32,7 @@ class BasicRoute extends React.Component{
                     <Route exact path="/SignUp" component={SignUpView} />
                     <Route exact path="/AddEntry" component={AddEntryView} />
                     <Route exact path="/AddEntryDetail" component={AddEntryDetailView} />
+                    <Route exact path="/UpdateEntryDetail" component={UpdateDetailView} />
                     <Redirect from="/*" to="/" />
                 </Switch>
 
