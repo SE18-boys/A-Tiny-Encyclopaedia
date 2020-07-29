@@ -20,40 +20,33 @@ public class DiseaseController {
 
     //疾病
     @RequestMapping("/DiseaseByName")
-    public Disease findDiseaseByName(@RequestBody Map<String, String> parms){
+    public SearchUtil findDiseaseByName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
         int single_search=1;
         int multiple_search=2;
         int not_found=3;
-        int single_multiple_search=4;
         Disease disease=diseaseService.findDiseaseByName(name);
         if(disease==null){
-            return new Disease();
+            List<Disease> diseases=diseaseService.findDiseasesByNameContains(name);
+            if(diseases.size()==0){
+                return new SearchUtil(not_found);
+            }else{
+                List<String> names=new ArrayList<>();
+                for(Disease disease_tmp:diseases){
+                    names.add(disease_tmp.getName());
+                }
+                return new SearchUtil(multiple_search,names);
+            }
+        }else{
+                return new SearchUtil(single_search, disease);
         }
-        return disease;
-//        List<Disease> diseases=diseaseService.findDiseasesByNameContains(name);
-//        if(disease==null){
-//            if(diseases.size()==0){
-//                return new SearchUtil(not_found);
-//            }else{
-//                List<String> names=new ArrayList<>();
-//                for(Disease disease_tmp:diseases){
-//                    names.add(disease_tmp.getName());
-//                }
-//                return new SearchUtil(multiple_search,names);
-//            }
-//        }else{
-//            if(diseases.size()==1) {
-//                return new SearchUtil(single_search, disease);
-//            }else{
-//                List<String> names=new ArrayList<>();
-//                for(Disease disease_tmp:diseases){
-//                    names.add(disease_tmp.getName());
-//                }
-//                return new SearchUtil(single_multiple_search,names,disease);
-//            }
-//        }
-
+    }
+    @RequestMapping("/DiseaseByAccurateName")
+    public SearchUtil findDiseaseByAccurateName(@RequestBody Map<String, String> parms){
+        String name = parms.get("name");
+        Disease disease=diseaseService.findDiseaseByName(name);
+        int single_search=1;
+        return new SearchUtil(single_search, disease);
     }
 
     @RequestMapping("/AddDisease")

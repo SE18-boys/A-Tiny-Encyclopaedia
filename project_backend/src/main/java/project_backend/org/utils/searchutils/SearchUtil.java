@@ -27,12 +27,6 @@ public class SearchUtil {
         this.possible_names=possible_names;
     }
 
-    public SearchUtil(int status,List<String>possible_names,Disease disease){
-        this.result=disease;
-        this.status=status;
-        this.possible_names=possible_names;
-    }
-
     public Disease getResult() {
         return result;
     }
