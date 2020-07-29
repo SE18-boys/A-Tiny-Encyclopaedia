@@ -17,6 +17,17 @@ export const searchDetails = (data,callback) => {
     // };
     postRequest(url, data, callback);
 };
+export const searchAccurate = (data,callback) => {
+    const url = apiUrl+`/DiseaseByAccurateName`;
+    // const callback = (data) => {
+    // if(data.status >= 0) {
+    //     console.log('Received backend data: ', data);
+    // message.success(data.msg);
+    // message.error(data.msg);
+    // }
+    // };
+    postRequest(url, data, callback);
+};
 
 export const addSimpleDetails = (data) => {
     const url = apiUrl+`/AddDisease`;
