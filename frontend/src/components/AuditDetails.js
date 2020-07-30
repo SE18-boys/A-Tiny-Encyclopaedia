@@ -1,6 +1,7 @@
 import React from 'react'
-import {Button, message} from 'antd'
+import {Button, Divider, message, Row, Col} from 'antd'
 import '../css/BKDetail.css'
+import '../css/Audit.css'
 import {searchDetails} from "../services/SearchService";
 import {history} from "../utils/history";
 
@@ -175,61 +176,127 @@ export class AuditDetails extends React.Component{
     };
 
     render() {
-        const contentp =[];
-        const direction = [];
+        const beforeChange =[];
+        const afterChange = [];
+        const audit = [];
         for(let i=0; i<DiseaseMenu.length; ++i){
-            contentp.push(
-                <div class="content-p">
-                    <div class="title-1">
-                        <div class="bk-flex">
-                            <div class="title-detail">
+            audit.push(
+                <Row>
+                    <Col span={12}>
+                        <div className="content-p">
+                            <div className="title-1">
+                                <div className="bk-flex">
+                                    <div className="title-detail">
                                 <span>
                                     {DiseaseMenu[i]}
                                 </span>
-                                <a class="title-anchor"></a>
+                                        <a className="title-anchor"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                {this.getDetails(this.state.result, DiseaseMenu[i])}
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        {this.getDetails(this.state.Audit, DiseaseMenu[i])}
-                    </div>
-                </div>
+                    </Col>
+                    <Col span={12}>
+                        <div className="content-p">
+                            <div className="title-1">
+                                <div className="bk-flex">
+                                    <div className="title-detail">
+                                <span>
+                                    {DiseaseMenu[i]}
+                                </span>
+                                        <a className="title-anchor"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                {this.getDetails(this.state.Audit, DiseaseMenu[i])}
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
             );
-            direction.push(
-
-            )
         }
         return(
             <div>
-                <div class="bk-title bk-font36 content-title">
-                    {this.state.Audit.name}
-                    <a class="bk-color-darkgrey content-title-edit" onClick={this.update}>
-                        <i class="title-edit"/>
-                        编辑
-                    </a>
-                    <a class="bk-color-darkgrey content-title-add">
-                        <i class="wiki-add-icon"/>
-                        <span>添加义项</span>
-                    </a>
-                </div>
+                <Row>
+                    <Col span={12}>
+                        <div className="bk-title bk-font36 content-title">
+                            {this.state.result.name}
+                        </div>
 
-                <div class="bk-title bk-font14 bk-color-topagrey content-sub-title">
+                        <div class="bk-title bk-font14 bk-color-topagrey content-sub-title">
+                            (修改前)
+                        </div>
 
-                </div>
+                        <div className="content-summary">
+                            <span>{this.state.result.desc}<br/><br/></span>
+                        </div>
 
-                <div class="content-summary">
-                    <span>{this.state.result.desc}<br/><br/></span>
+                        {/*<div>*/}
+                        {/*    {beforeChange}*/}
+                        {/*</div>*/}
 
-                </div>
+                    </Col>
+                    <Col span={12}>
+                        <div className="bk-title bk-font36 content-title">
+                            {this.state.Audit.name}
+                        </div>
 
-                <div>
+                        <div class="bk-title bk-font14 bk-color-topagrey content-sub-title">
+                            (修改后)
+                        </div>
 
-                </div>
+                        <div className="content-summary">
+                            <span>{this.state.Audit.desc}<br/><br/></span>
+                        </div>
 
-                <div>
-                    {contentp}
-                </div>
+                        {/*<div>*/}
+                        {/*    {afterChange}*/}
+                        {/*</div>*/}
+                    </Col>
+                </Row>
+                {audit}
             </div>
+
         )
     }
 }
+
+//应该用不上的代码
+// beforeChange.push(
+//     <div class="content-p">
+//         <div class="title-1">
+//             <div class="bk-flex">
+//                 <div class="title-detail">
+//                                 <span>
+//                                     {DiseaseMenu[i]}
+//                                 </span>
+//                     <a class="title-anchor"></a>
+//                 </div>
+//             </div>
+//         </div>
+//         <div>
+//             {this.getDetails(this.state.result, DiseaseMenu[i])}
+//         </div>
+//     </div>
+// );
+// afterChange.push(
+//     <div className="content-p">
+//         <div className="title-1">
+//             <div className="bk-flex">
+//                 <div className="title-detail">
+//                                 <span>
+//                                     {DiseaseMenu[i]}
+//                                 </span>
+//                     <a className="title-anchor"></a>
+//                 </div>
+//             </div>
+//         </div>
+//         <div>
+//             {this.getDetails(this.state.Audit, DiseaseMenu[i])}
+//         </div>
+//     </div>
+// )

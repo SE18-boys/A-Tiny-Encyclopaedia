@@ -26,17 +26,20 @@ class EntryAuditsView extends React.Component {
                 <Header>
                     <HeaderInfo/>
                 </Header>
-                <Layout>
-                    {/*<SideBar select="1"/>*/}
-                    <Content style={{ padding: '0 50px' }}>
-                        <div className="home-content">
+                <Content>
+                    <Layout>
+                        {/*<SideBar select="1"/>*/}
+                        <Content style={{ padding: '0 50px' }}>
+                            <div className="home-content">
 
-                            <div className={"foot-wrapper"}>
-                                <AuditsTable/>
+                                <div className={"foot-wrapper"}>
+                                    <AuditsTable/>
+                                </div>
                             </div>
-                        </div>
-                    </Content>
-                </Layout>
+                        </Content>
+                    </Layout>
+                </Content>
+
             </Layout>
         );
     }

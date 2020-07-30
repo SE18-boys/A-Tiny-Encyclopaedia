@@ -47,10 +47,8 @@ class AuditDetailsView extends React.Component{
                         <HeaderInfo/>
                     </Header>
 
-                    <Content>
-                        <Content>
-                            <AuditDetails Audit={this.props.location.query}/>
-                        </Content>
+                    <Content style={{ padding: '0 100px' }}>
+                        <AuditDetails Audit={this.props.location.query}/>
                     </Content>
                 </Layout>
                 {/*这里css有问题，无法做到固定在页面最底部而非浏览器最底部*/}

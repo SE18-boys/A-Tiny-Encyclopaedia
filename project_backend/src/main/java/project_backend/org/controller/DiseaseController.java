@@ -54,7 +54,7 @@ public class DiseaseController {
     @RequestMapping("/UserAddDisease")
     public int UserAddDisease(@RequestBody DiseaseAudit one)
     {
-        System.out.println(one.getName());
+        System.out.println(one);
         diseaseService.UserAddDisease(one);
         return 0;
     }
