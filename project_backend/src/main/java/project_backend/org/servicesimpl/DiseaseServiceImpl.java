@@ -143,6 +143,16 @@ public class DiseaseServiceImpl implements DiseaseService {
             return null;
         }
     }
+
+    public int UserAddDisease(DiseaseAudit newOne)
+    {
+        newOne.setStatus("待审核");
+        diseaseDao.AddOrUpdateDiseaseAudit(newOne);
+
+        return 0;
+    }
+
+
     public List<Disease> findDiseasesByNameContains(String name){
         return diseaseDao.findDiseasesByNameContains(name);
     }

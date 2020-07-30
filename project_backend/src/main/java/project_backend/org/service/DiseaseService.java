@@ -25,4 +25,6 @@ public interface DiseaseService {
 
     DiseaseAudit SetAuditResult(ObjectId id, String result, String reason);
 
+    int UserAddDisease(DiseaseAudit newOne);
+
 }

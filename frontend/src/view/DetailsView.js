@@ -10,11 +10,6 @@ import {HomeHeaderInfo} from "../components/HomeHeaderInfo";
 import MyFooter from "../components/MyFooter";
 import {searchDetails} from "../services/SearchService";
 
-const name = "clannad";
-const type = 0;
-const number1 = 5;
-const meanings = ["日本Key公司发行的恋爱冒险游戏","日本东映动画改编制作的动画电影","爱尔兰克兰纳德家族乐团",
-"美崎树里绘制的Key社官方漫画","日本京都动画改编制作的电视动画",];
 const name1 = "幽语";
 const name2 = "伊妹";
 
@@ -32,7 +27,7 @@ class DetailsView extends React.Component{
         super(props);
         this.state={
             search: "",
-            result: [],
+            result: {},
         }
     }
 
@@ -54,29 +49,6 @@ class DetailsView extends React.Component{
         const query = this.props.location.search;
         const arr = query.split('&');
         value = arr[0].substr(8);
-        let themeans = [];
-        for(let i=0; i<meanings.length; ++i){
-            if(i === type){
-                themeans.push(
-                    <div class="poly-detail-item">
-                        <span class="poly-detail-item-icon">■</span>
-                        <span class="bk-margin-left bk-font14">
-                        <span>{meanings[i]}</span>
-                        </span>
-                    </div>
-                );
-            }
-            else{
-                themeans.push(
-                    <div class="poly-detail-item">
-                        <span class="poly-detail-item-icon">►</span>
-                        <span class="bk-margin-left bk-font14">
-                        <a>{meanings[i]}</a>
-                        </span>
-                    </div>
-                );
-            }
-        }
         return(
             <div>
                 <Layout>
