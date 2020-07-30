@@ -25,7 +25,7 @@ export class EntryDetails extends React.Component{
             message.info("暂未查询到有关"+value+"的任何结果！您可以添加此词条！")
             history.push('/')
         }
-  
+
         this.setState({
             result: data.result,
             names:data.possible_names,
@@ -176,11 +176,11 @@ export class EntryDetails extends React.Component{
         history.push(path);
 
 
-    }
+    };
     getAccurate=(name)=>{
         let params={'name':name};
         searchAccurate(params,this.callback);
-    }
+    };
 
 
     render() {

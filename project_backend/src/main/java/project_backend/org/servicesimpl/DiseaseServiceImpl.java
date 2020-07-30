@@ -147,6 +147,10 @@ public class DiseaseServiceImpl implements DiseaseService {
     public int UserAddDisease(DiseaseAudit newOne)
     {
         newOne.setStatus("待审核");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date now = new Date();
+        String date = dateFormat.format(now);
+        newOne.setSubmit_date(date);
         diseaseDao.AddOrUpdateDiseaseAudit(newOne);
 
         return 0;

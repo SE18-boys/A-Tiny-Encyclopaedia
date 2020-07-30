@@ -55,35 +55,35 @@ const DiseaseAttributes = [
     {name: 'common_drug', label: "常用药"},
     {name: 'common_drug', label: "推荐药物"},
     {name: 'drug_detail', label: "具体药物商品推荐"},
-]
+];
 
 const multiList = [
     'symptom', 'accompany', 'cure_department', 'cure_way', 'check', 'do_eat', 'not_eat', 'recommend_dish', 'common_drug', 'common_drug', 'drug_detail',
 ]
+
 
 export default class AddEntryDetailForm extends React.Component {
     constructor(props) {
         super(props);
         if(this.props.isUpdate===true)
         {
-
-
             let values=this.props.initValues
             console.log("before init values is ")
             console.log(values)
             let final=values
+
             for(const pro in values)
             {
                 // console.log(pro)
                 // console.log(values[pro])
                 if(values[pro]!==null && multiList.indexOf(pro)!==-1)
                 {
-                    console.log('enter for')
-                    let tmp=[]
-                    values[pro].forEach(item=>tmp.push(item.name))
-                    console.log("tmp is ")
-                    console.log(tmp)
-                    values[pro]=tmp
+                    console.log('enter for');
+                    let tmp=[];
+                    values[pro].forEach(item=>tmp.push(item.name));
+                    console.log("tmp is ");
+                    console.log(tmp);
+                    values[pro]=tmp;
                     console.log("values[pro] is "+values[pro])
                 }
                 if(values[pro]===null)
@@ -93,8 +93,8 @@ export default class AddEntryDetailForm extends React.Component {
 
             }
 
-            console.log("after init values is ")
-            console.log(values)
+            console.log("after init values is ");
+            console.log(values);
 
             this.setState({initValues:this.props.initValues})
         }
@@ -110,12 +110,12 @@ export default class AddEntryDetailForm extends React.Component {
         console.log(values);
         if(this.props.isUpdate===true)
         {
-            updateDetails(values)
+            updateDetails(values);
             message.info("成功更新词条！")
         }
         else
         {
-            addSimpleDetails(values)
+            addSimpleDetails(values);
             message.info("成功添加词条！")
 
         }
@@ -124,8 +124,8 @@ export default class AddEntryDetailForm extends React.Component {
 
     generateFormItem = item => {
 
-        console.log("enter gene")
-        console.log("item is ", item)
+        console.log("enter gene");
+        console.log("item is ", item);
         if (multiList.indexOf(item.name) !== -1) {
 
             // console.log("in muiltiList")
@@ -225,7 +225,7 @@ export default class AddEntryDetailForm extends React.Component {
             )
 
         }
-    }
+    };
 
 
     render() {
