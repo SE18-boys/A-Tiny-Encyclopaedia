@@ -49,44 +49,44 @@ export class AuditDetails extends React.Component{
             case "就诊科室":
                 // let department = [];
                 console.log("disease: ", Entry);
-                let department = Entry.related_department;
+                let department = Entry.cure_department;
                 if(department === null || department === undefined) return "暂无相关资料！";
-                for(let i=0; i<Entry.related_department.length; ++i){
+                for(let i=0; i<Entry.cure_department.length; ++i){
                     detail.push(<a>{department[i].name}<br/></a>)
                 }
-                console.log("department: ", Entry.related_department);
+                console.log("department: ", Entry.cure_department);
                 return detail;
             case "病因":
                 if(Entry.cause === null || Entry.cause === undefined) return "暂无相关资料！";
                 detail.push(<span>{Entry.cause}</span>);
                 return detail;
             case "症状":
-                let related_symptom = Entry.related_symptom;
+                let related_symptom = Entry.symptom;
                 if(related_symptom === null || related_symptom === undefined ) return "暂无相关资料！";
                 for(let i=0; i<related_symptom.length; ++i){
                     detail.push(<a>{related_symptom[i].name}<br/></a>)
                 }
                 return detail;
             case "检查":
-                let need_check = Entry.need_check;
+                let need_check = Entry.check;
                 if(need_check === null || need_check === undefined) return "暂无相关资料！";
                 for(let i=0; i<need_check.length; ++i){
                     detail.push(<a>{need_check[i].name}<br/></a>)
                 }
                 return detail;
             case "并发症":
-                let accompany_diseases = Entry.accompany_diseases;
+                let accompany_diseases = Entry.accompany;
                 if(accompany_diseases === null || accompany_diseases === undefined) return "无";
                 for(let i=0; i<accompany_diseases.length; ++i){
                     detail.push(<a>{accompany_diseases[i].name}<br/></a>)
                 }
                 return detail;
             case "治疗":
-                let cure_by = Entry.cure_by;
-                let cure_prob = Entry.cure_prob;
+                let cure_by = Entry.cure_way;
+                let cure_prob = Entry.cured_prob;
                 let yibao_status = Entry.yibao_status;
                 let cure_lasttime = Entry.cure_lasttime;
-                let cost_money = Entry.cost_money;
+                let cost_money = Entry.cost;
                 if(cure_by === null || cure_by === undefined) return "暂无相关资料！";
                 for(let i=0; i<cure_by.length; ++i){
                     detail.push(<a>{cure_by[i].name}<br/></a>)
@@ -139,7 +139,7 @@ export class AuditDetails extends React.Component{
             case "药物":
                 let flag = true;
                 let common_drug = Entry.common_drug;
-                let recommand_drug = Entry.recommand_drug;
+                let recommend_drug = Entry.recommend_drug;
                 if(common_drug !== null && common_drug !== undefined) {
                     detail.push(<span>常用药物:<br/></span>);
                     for(let i=0; i<common_drug.length; ++i){
@@ -147,10 +147,10 @@ export class AuditDetails extends React.Component{
                     }
                     flag = false;
                 }
-                if(recommand_drug !== null && recommand_drug !== undefined) {
+                if(recommend_drug !== null && recommend_drug !== undefined) {
                     detail.push(<span>推荐药物:<br/></span>);
-                    for(let i=0; i<recommand_drug.length; ++i){
-                        detail.push(<a>{recommand_drug[i].name}<br/></a>)
+                    for(let i=0; i<recommend_drug.length; ++i){
+                        detail.push(<a>{recommend_drug[i].name}<br/></a>)
                     }
                     flag = false;
                 }
