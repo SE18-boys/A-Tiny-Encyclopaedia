@@ -35,7 +35,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "username")
     public String getUsername(){return this.username;}
     public void setUsername(String name){this.username =name;}
 

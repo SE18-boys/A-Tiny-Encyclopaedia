@@ -28,6 +28,12 @@ public class DiseaseDaoImpl implements DiseaseDao {
     }
 
     @Override
+    public List<Disease> findDiseasesByNameContains(String name){
+        return diseaseRepository.findDiseasesByNameContains(name);
+
+    }
+
+    @Override
     public Disease addDisease(Disease disease) {
         return diseaseRepository.save(disease);
     }
@@ -54,11 +60,29 @@ public class DiseaseDaoImpl implements DiseaseDao {
     }
 
     @Override
+    public Optional<List<DiseaseAudit>> findApprovedEntryByName(String name) {
+        return diseaseAuditRepository.findApprovedEntryByName(name);
+    }
+
+    @Override
+    public Optional<List<DiseaseAudit>> findDisapprovingEntryByName(String name) {
+        return diseaseAuditRepository.findDisApprovingEntryByName(name);
+    }
+
+    @Override
+    public Optional<List<DiseaseAudit>> findUnauditedEntryByName(String name) {
+        return diseaseAuditRepository.findUnauditedEntryByName(name);
+    }
+
+    @Override
+    public Optional<List<DiseaseAudit>> findAllUnauditedEntry() {
+        return diseaseAuditRepository.findAllUnauditedEntry();
+    }
+
+    @Override
     public DiseaseAudit AddOrUpdateDiseaseAudit(DiseaseAudit diseaseAudit) {
         return diseaseAuditRepository.save(diseaseAudit);
     }
-    public List<Disease> findDiseasesByNameContains(String name){
-        return diseaseRepository.findDiseasesByNameContains(name);
 
-    }
+
 }

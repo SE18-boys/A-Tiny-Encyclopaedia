@@ -10,6 +10,8 @@ import ProfileView from "./view/ProfileView";
 import AddEntryDetailForm from "./components/AddEntryDetailForm";
 import AddEntryDetailView from "./view/AddEntryDetailView";
 import UpdateDetailView from "./view/UpdateDetailView";
+import EntryAuditsView from "./view/EntryAuditsView";
+import AuditDetailsView from "./view/AuditDetailsView";
 
 class BasicRoute extends React.Component{
 
@@ -33,6 +35,8 @@ class BasicRoute extends React.Component{
                     <Route exact path="/AddEntry" component={AddEntryView} />
                     <Route exact path="/AddEntryDetail" component={AddEntryDetailView} />
                     <Route exact path="/UpdateEntryDetail" component={UpdateDetailView} />
+                    <Route exact path="/EntryAudits" component={EntryAuditsView} />
+                    <Route exact path="/AuditsDetails" component={AuditDetailsView} />
                     <Redirect from="/*" to="/" />
                 </Switch>
 

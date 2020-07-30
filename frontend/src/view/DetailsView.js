@@ -26,7 +26,7 @@ const {Header, Content, Footer, Sider} = Layout;
 const {Grid} = Card;
 
 let value = "";
-class HomeView extends React.Component{
+class DetailsView extends React.Component{
 
     constructor(props) {
         super(props);
@@ -118,7 +118,7 @@ class HomeView extends React.Component{
     }
 }
 
-export default withRouter(HomeView);
+export default withRouter(DetailsView);
 
 
 //一些暂时用不上的代码

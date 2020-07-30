@@ -93,10 +93,21 @@ public class DiseaseController {
 
 
     //疾病审核
-    @RequestMapping("/DiseaseAuditByNmae")
+    @RequestMapping("/DiseaseAuditByName")
     public List<DiseaseAudit> findDiseaseAuditByName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
         return diseaseService.findDiseaseAuditByName(name);
+    }
+
+    @RequestMapping("/DiseaseUnauditByName")
+    public List<DiseaseAudit> findDiseaseUnauditedByNmae(@RequestBody Map<String, String> parms){
+        String name = parms.get("name");
+        return diseaseService.findUnauditedDiseaseByName(name);
+    }
+
+    @RequestMapping("/AllDiseaseUnauditByName")
+    public List<DiseaseAudit> findAllDiseaseUnaudited(){
+        return diseaseService.findAllUnauditedDisease();
     }
 
     @RequestMapping("/SetAuditResult")

@@ -4,28 +4,23 @@ import '../css/BKDetail.css'
 import {searchDetails} from "../services/SearchService";
 import {history} from "../utils/history";
 
-const summary = "《CLANNAD》是日本游戏品牌Key继《Kanon》、《AIR》后发行的第三款恋爱冒险游戏，游戏于2004年4月28日发行PC初回限定版，并依此为原作改编或扩充跨媒体制作的作品。\n\n" +
-    "游戏PC版在最初公开时的预定发售日期是2002年，后来预定发售日被延期至2003年，之后再一次被延期至2004年4月28日，相比最初的预定延期了2年。在剧情设计上，延续了Key社出品的前两部作品的特点。但与前两部有所不同的是，本作在发布伊始即确定为全年龄对象。因其剧情大部分发生于春季，亦被视为Key社游戏“季节组曲”中的“春”。\n";
-const name = "CLANNAD";
-const subtitle = "日本Key公司发行的恋爱冒险游戏";
-const menu = ["故事背景", "角色介绍", "用语解说", "游戏音乐", "制作人员", "游戏配置"];
 const DiseaseMenu = ["就诊科室","病因","症状","检查","并发症","治疗","药物","宜吃食物","忌吃食物","传播","预防措施"];
-export class EntryDetails extends React.Component{
+export class AuditDetails extends React.Component{
 
     constructor(props) {
         super(props);
         this.state={
-            result: [],
+            Audit: [],
+            result: []
         }
     }
 
     callback = (data) => {
         console.log("get ");
         console.log(data);
-        if(data.id===-1)
+        if(data.result.id === -1)
         {
-
-            message.info("暂未查询到结果！您可以添加此词条！")
+            message.info("此词条已被删除！")
             history.push('/')
         }
 
@@ -34,9 +29,11 @@ export class EntryDetails extends React.Component{
     };
 
     componentDidMount() {
-        console.log("name is", this.props.name);
-        let value = this.props.name;
+        console.log("Audit is", this.props.Audit);
+        let audit = this.props.Audit;
+        let value = audit.name;
         let params={'name':value};
+        this.setState({Audit: audit});
         searchDetails(params, this.callback);
     }
 
@@ -46,6 +43,7 @@ export class EntryDetails extends React.Component{
         if(Entry.id === -1) return "暂无信息";
 
         const detail = [];
+        //const audit = this.state.Audit;
         switch (menu) {
             case "就诊科室":
                 // let department = [];
@@ -168,9 +166,9 @@ export class EntryDetails extends React.Component{
         // this.
 
         let path= {
-                pathname:'/UpdateEntryDetail',
-                state:this.state.result
-            };
+            pathname:'/UpdateEntryDetail',
+            state:this.state.result
+        };
         history.push(path);
 
 
@@ -193,7 +191,7 @@ export class EntryDetails extends React.Component{
                         </div>
                     </div>
                     <div>
-                        {this.getDetails(this.state.result, DiseaseMenu[i])}
+                        {this.getDetails(this.state.Audit, DiseaseMenu[i])}
                     </div>
                 </div>
             );
@@ -204,7 +202,7 @@ export class EntryDetails extends React.Component{
         return(
             <div>
                 <div class="bk-title bk-font36 content-title">
-                    {this.state.result.name}
+                    {this.state.Audit.name}
                     <a class="bk-color-darkgrey content-title-edit" onClick={this.update}>
                         <i class="title-edit"/>
                         编辑

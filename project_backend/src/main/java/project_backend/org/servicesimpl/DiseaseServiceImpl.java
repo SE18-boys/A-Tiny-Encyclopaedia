@@ -67,11 +67,71 @@ public class DiseaseServiceImpl implements DiseaseService {
     }
 
     @Override
+    public List<DiseaseAudit> findUnauditedDiseaseByName(String name) {
+        Optional<List<DiseaseAudit>> optionalDiseaseAudits = diseaseDao.findUnauditedEntryByName(name);
+        if(optionalDiseaseAudits.isPresent()){
+            List<DiseaseAudit> diseaseAudits = optionalDiseaseAudits.get();
+            for(DiseaseAudit diseaseAudit : diseaseAudits){
+                diseaseAudit.setStringid(diseaseAudit.getId().toString());
+            }
+            return diseaseAudits;
+        }
+        else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<DiseaseAudit> findAllUnauditedDisease() {
+        Optional<List<DiseaseAudit>> optionalDiseaseAudits = diseaseDao.findAllUnauditedEntry();
+        if(optionalDiseaseAudits.isPresent()){
+            List<DiseaseAudit> diseaseAudits = optionalDiseaseAudits.get();
+            for(DiseaseAudit diseaseAudit : diseaseAudits){
+                diseaseAudit.setStringid(diseaseAudit.getId().toString());
+            }
+            return diseaseAudits;
+        }
+        else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<DiseaseAudit> findApprovedDiseaseByName(String name) {
+        Optional<List<DiseaseAudit>> optionalDiseaseAudits = diseaseDao.findApprovedEntryByName(name);
+        if(optionalDiseaseAudits.isPresent()){
+            List<DiseaseAudit> diseaseAudits = optionalDiseaseAudits.get();
+            for(DiseaseAudit diseaseAudit : diseaseAudits){
+                diseaseAudit.setStringid(diseaseAudit.getId().toString());
+            }
+            return diseaseAudits;
+        }
+        else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<DiseaseAudit> findDisapprovingDiseaseByName(String name) {
+        Optional<List<DiseaseAudit>> optionalDiseaseAudits = diseaseDao.findDisapprovingEntryByName(name);
+        if(optionalDiseaseAudits.isPresent()){
+            List<DiseaseAudit> diseaseAudits = optionalDiseaseAudits.get();
+            for(DiseaseAudit diseaseAudit : diseaseAudits){
+                diseaseAudit.setStringid(diseaseAudit.getId().toString());
+            }
+            return diseaseAudits;
+        }
+        else {
+            return null;
+        }
+    }
+
+    @Override
     public DiseaseAudit SetAuditResult(ObjectId id, String result, String reason) {
         Optional<DiseaseAudit> diseaseAuditOptional = diseaseDao.findAuditById(id);
         if (diseaseAuditOptional.isPresent()) {
             DiseaseAudit diseaseAudit = diseaseAuditOptional.get();
-            diseaseAudit.setStatues(result);
+            diseaseAudit.setStatus(result);
             diseaseAudit.setReason(reason);
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date now = new Date();

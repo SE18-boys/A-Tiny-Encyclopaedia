@@ -4,7 +4,6 @@ import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import javax.persistence.Transient;
 import java.util.List;
@@ -18,7 +17,7 @@ public class DiseaseAudit {
     private ObjectId id;
     @Transient
     private String stringid;
-    private String statues;
+    private String status;
     private String reason;
     private String submit_date;
     private String audit_date;
@@ -59,12 +58,12 @@ public class DiseaseAudit {
         return stringid;
     }
 
-    public String getStatues() {
-        return statues;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStatues(String statues) {
-        this.statues = statues;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getReason() {
