@@ -21,7 +21,7 @@ export const register = (data) => {
 };
 
 export const authenticate = (data, callback) => {
-    const url = `http://localhost:8080/login`+`?username=`+data.username+`&password=`+data.password;
+    const url = apiUrl+`/login`+`?username=`+data.username+`&password=`+data.password;
     postRequest_v3(url, data, callback);
 };
 
@@ -49,7 +49,7 @@ export const uploadAvatar = (userId, iconBase64, message) => {
     const data = {userId:userId,iconBase64:iconBase64};
     const url = apiUrl+`/uploadAvatar`;
     putRequest(url, data, message);
-}
+};
 
 export const logout = () => {
     const url = apiUrl+`/logout`;

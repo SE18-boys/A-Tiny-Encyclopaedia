@@ -72,7 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/loginmessage").permitAll()
                     .antMatchers("/getUsers").hasRole("ADMIN")
                     .antMatchers("/register").permitAll()
-                    .anyRequest().permitAll() //其余所有请求需要认证.authenticated()
+                    .anyRequest().authenticated() //其余所有请求需要认证.authenticated()
                     .and()
                 .formLogin()
                     .usernameParameter("username")

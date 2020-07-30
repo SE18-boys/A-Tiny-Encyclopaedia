@@ -2,43 +2,38 @@ import React from 'react'
 import {Button, message} from 'antd'
 import '../css/BKDetail.css'
 import {searchDetails} from "../services/SearchService";
-import {searchAccurate} from "../services/SearchService";
 import {history} from "../utils/history";
+
 const DiseaseMenu = ["就诊科室","病因","症状","检查","并发症","治疗","药物","宜吃食物","忌吃食物","传播","预防措施"];
-export class EntryDetails extends React.Component{
+export class AuditDetails extends React.Component{
 
     constructor(props) {
         super(props);
         this.state={
-            result: [],
-            names:[],
-            type:1
+            Audit: [],
+            result: []
         }
     }
 
     callback = (data) => {
-
-        if(data.status===3)
-
+        console.log("get ");
+        console.log(data);
+        if(data.result.id === -1)
         {
-            let value = this.props.name;
-            message.info("暂未查询到有关"+value+"的任何结果！您可以添加此词条！")
+            message.info("此词条已被删除！")
             history.push('/')
         }
-  
-        this.setState({
-            result: data.result,
-            names:data.possible_names,
-            type:data.status
-        });
 
+        this.setState({result: data.result});
         //console.log("received data is:", data);
     };
 
     componentDidMount() {
-        console.log("name is", this.props.name);
-        let value = this.props.name;
+        console.log("Audit is", this.props.Audit);
+        let audit = this.props.Audit;
+        let value = audit.name;
         let params={'name':value};
+        this.setState({Audit: audit});
         searchDetails(params, this.callback);
     }
 
@@ -48,6 +43,7 @@ export class EntryDetails extends React.Component{
         if(Entry.id === -1) return "暂无信息";
 
         const detail = [];
+        //const audit = this.state.Audit;
         switch (menu) {
             case "就诊科室":
                 // let department = [];
@@ -170,96 +166,70 @@ export class EntryDetails extends React.Component{
         // this.
 
         let path= {
-                pathname:'/UpdateEntryDetail',
-                state:this.state.result
-            };
+            pathname:'/UpdateEntryDetail',
+            state:this.state.result
+        };
         history.push(path);
 
 
-    }
-    getAccurate=(name)=>{
-        let params={'name':name};
-        searchAccurate(params,this.callback);
-    }
-
+    };
 
     render() {
-        if(this.state.type===1) {
-            const contentp = [];
-            const direction = [];
-            for (let i = 0; i < DiseaseMenu.length; ++i) {
-                contentp.push(
-                    <div class="content-p">
-                        <div class="title-1">
-                            <div class="bk-flex">
-                                <div class="title-detail">
+        const contentp =[];
+        const direction = [];
+        for(let i=0; i<DiseaseMenu.length; ++i){
+            contentp.push(
+                <div class="content-p">
+                    <div class="title-1">
+                        <div class="bk-flex">
+                            <div class="title-detail">
                                 <span>
                                     {DiseaseMenu[i]}
                                 </span>
-                                    <a class="title-anchor"></a>
-                                </div>
+                                <a class="title-anchor"></a>
                             </div>
                         </div>
-                        <div>
-                            {this.getDetails(this.state.result, DiseaseMenu[i])}
-                        </div>
                     </div>
-                );
-                direction.push(
-
-                )
-            }
-            return (
-                <div>
-                    <div class="bk-title bk-font36 content-title">
-                        {this.state.result.name}
-                        <a class="bk-color-darkgrey content-title-edit" onClick={this.update}>
-                            <i class="title-edit"/>
-                            编辑
-                        </a>
-                        <a class="bk-color-darkgrey content-title-add">
-                            <i class="wiki-add-icon"/>
-                            <span>添加义项</span>
-                        </a>
-                    </div>
-
-                    <div class="bk-title bk-font14 bk-color-topagrey content-sub-title">
-
-                    </div>
-
-                    <div class="content-summary">
-                        <span>{this.state.result.desc}<br/><br/></span>
-
-                    </div>
-
                     <div>
-
-                    </div>
-
-                    <div>
-                        {contentp}
+                        {this.getDetails(this.state.Audit, DiseaseMenu[i])}
                     </div>
                 </div>
-            )
-        }else{
-            let value = this.props.name;
-            let names=this.state.names;
-            let content=[];
-            for(let i=0;i<names.length;i++){
-                content.push(
-                    <a onClick={()=>{this.getAccurate(names[i])}}>{names[i]}<br/></a>
-                )
-            }
-            return (
-                <div>
-                    <div className="content-summary">
-                        <span>{"未找到名称为"+value+"的词条，您可以手动添加或从以下的可能结果中查找"}<br/></span>
-                    </div>
-                    <div>
-                        {content}
-                    </div>
-                </div>
+            );
+            direction.push(
+
             )
         }
+        return(
+            <div>
+                <div class="bk-title bk-font36 content-title">
+                    {this.state.Audit.name}
+                    <a class="bk-color-darkgrey content-title-edit" onClick={this.update}>
+                        <i class="title-edit"/>
+                        编辑
+                    </a>
+                    <a class="bk-color-darkgrey content-title-add">
+                        <i class="wiki-add-icon"/>
+                        <span>添加义项</span>
+                    </a>
+                </div>
+
+                <div class="bk-title bk-font14 bk-color-topagrey content-sub-title">
+
+                </div>
+
+                <div class="content-summary">
+                    <span>{this.state.result.desc}<br/><br/></span>
+
+                </div>
+
+                <div>
+
+                </div>
+
+                <div>
+                    {contentp}
+                </div>
+            </div>
+        )
     }
 }

@@ -16,4 +16,15 @@ public interface DiseaseAuditRepository extends MongoRepository<DiseaseAudit, Ob
 
     Optional<DiseaseAudit> findById(ObjectId id);
 
+    @Query("{'status': '通过', 'name': ?0}")
+    Optional<List<DiseaseAudit>> findApprovedEntryByName(String name);
+
+    @Query("{'status': '不通过', 'name': ?0}")
+    Optional<List<DiseaseAudit>> findDisApprovingEntryByName(String name);
+
+    @Query("{'status': '待审核', 'name': ?0}")
+    Optional<List<DiseaseAudit>> findUnauditedEntryByName(String name);
+
+    @Query("{'status': '待审核'}")
+    Optional<List<DiseaseAudit>> findAllUnauditedEntry();
 }

@@ -24,6 +24,10 @@ public interface DiseaseDao {
     //查
     Optional<List<DiseaseAudit>> findAuditByName(String name);
     Optional<DiseaseAudit> findAuditById(ObjectId id);
+    Optional<List<DiseaseAudit>> findApprovedEntryByName(String name);
+    Optional<List<DiseaseAudit>> findDisapprovingEntryByName(String name);
+    Optional<List<DiseaseAudit>> findUnauditedEntryByName(String name);
+    Optional<List<DiseaseAudit>> findAllUnauditedEntry();
 
     //增、改
     DiseaseAudit AddOrUpdateDiseaseAudit(DiseaseAudit diseaseAudit);
