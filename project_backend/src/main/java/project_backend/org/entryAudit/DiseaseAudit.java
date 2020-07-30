@@ -24,21 +24,21 @@ public class DiseaseAudit {
     private String audit_date;
 
     private String prevent;
-    private String yibao;
-    private String cost;
-    private String getprob;
+    private String yibao_status;
+    private String cost_money;
+    private String get_prob;
     private String name;
     private String cause;
-    private String curelasttime;
-    private String curedprob;
-    private String getway;
-    private String easyget;
+    private String cure_lasttime;
+    private String cured_prob;
+    private String get_way;
+    private String easy_get;
     private String desc;
 
-    private Set<String> acompony;
+    private Set<String> accompany;
     private Set<String> cure_department;
     private Set<String> common_drug;
-    private Set<String> recommand_drug;
+    private Set<String> recommend_drug;
     private Set<String> do_eat;
     private Set<String> drug_detail;
     private Set<String> not_eat;
@@ -103,31 +103,29 @@ public class DiseaseAudit {
         this.prevent = prevent;
     }
 
-    public String getYibao() {
-        return yibao;
+    public String getYibao_status() {
+        return yibao_status;
     }
 
-    public void setYibao(String yibao) {
-        this.yibao = yibao;
+    public void setYibao_status(String yibao_status) {
+        this.yibao_status = yibao_status;
     }
 
-    public String getCost() {
-        return cost;
+    public String getCost_money() {
+        return cost_money;
     }
 
-    public void setCost(String cost) {
-        this.cost = cost;
+    public void setCost_money(String cost_money) {
+        this.cost_money = cost_money;
     }
 
-    public void setCuredprob(String cureprob) {
-        this.curedprob = cureprob;
+    public String getGet_prob() {
+        return get_prob;
     }
 
-    public String getCuredprob() {
-        return curedprob;
+    public void setGet_prob(String get_prob) {
+        this.get_prob = get_prob;
     }
-
-
 
     public String getName() {
         return name;
@@ -145,36 +143,36 @@ public class DiseaseAudit {
         this.cause = cause;
     }
 
-    public String getCurelasttime() {
-        return curelasttime;
+    public String getCure_lasttime() {
+        return cure_lasttime;
     }
 
-    public void setCurelasttime(String curelasttime) {
-        this.curelasttime = curelasttime;
+    public void setCure_lasttime(String cure_lasttime) {
+        this.cure_lasttime = cure_lasttime;
     }
 
-    public void setGetprob(String getprob) {
-        this.getprob = getprob;
+    public String getCured_prob() {
+        return cured_prob;
     }
 
-    public String getGetprob() {
-        return getprob;
+    public void setCured_prob(String cured_prob) {
+        this.cured_prob = cured_prob;
     }
 
-    public String getGetway() {
-        return getway;
+    public String getGet_way() {
+        return get_way;
     }
 
-    public void setGetway(String getway) {
-        this.getway = getway;
+    public void setGet_way(String get_way) {
+        this.get_way = get_way;
     }
 
-    public String getEasyget() {
-        return easyget;
+    public String getEasy_get() {
+        return easy_get;
     }
 
-    public void setEasyget(String easyget) {
-        this.easyget = easyget;
+    public void setEasy_get(String easy_get) {
+        this.easy_get = easy_get;
     }
 
     public String getDesc() {
@@ -185,12 +183,12 @@ public class DiseaseAudit {
         this.desc = desc;
     }
 
-    public Set<String> getAcompony() {
-        return acompony;
+    public Set<String> getAccompany() {
+        return accompany;
     }
 
-    public void setAcompony(Set<String> acompony) {
-        this.acompony = acompony;
+    public void setAccompany(Set<String> accompany) {
+        this.accompany = accompany;
     }
 
     public Set<String> getCure_department() {
@@ -209,12 +207,12 @@ public class DiseaseAudit {
         this.common_drug = common_drug;
     }
 
-    public Set<String> getRecommand_drug() {
-        return recommand_drug;
+    public Set<String> getRecommend_drug() {
+        return recommend_drug;
     }
 
-    public void setRecommand_drug(Set<String> recommand_drug) {
-        this.recommand_drug = recommand_drug;
+    public void setRecommend_drug(Set<String> recommend_drug) {
+        this.recommend_drug = recommend_drug;
     }
 
     public Set<String> getDo_eat() {
@@ -233,12 +231,12 @@ public class DiseaseAudit {
         this.drug_detail = drug_detail;
     }
 
-    public Set<String> getNo_eat() {
+    public Set<String> getNot_eat() {
         return not_eat;
     }
 
-    public void setNo_eat(Set<String> no_eat) {
-        this.not_eat = no_eat;
+    public void setNot_eat(Set<String> not_eat) {
+        this.not_eat = not_eat;
     }
 
     public Set<String> getSymptom() {
