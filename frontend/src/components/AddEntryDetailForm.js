@@ -69,6 +69,8 @@ export default class AddEntryDetailForm extends React.Component {
 
 
             let values=this.props.initValues
+            console.log("before init values is ")
+            console.log(values)
             let final=values
             for(const pro in values)
             {
@@ -83,6 +85,10 @@ export default class AddEntryDetailForm extends React.Component {
                     console.log(tmp)
                     values[pro]=tmp
                     console.log("values[pro] is "+values[pro])
+                }
+                if(values[pro]===null)
+                {
+                    values[pro]=undefined;
                 }
 
             }
