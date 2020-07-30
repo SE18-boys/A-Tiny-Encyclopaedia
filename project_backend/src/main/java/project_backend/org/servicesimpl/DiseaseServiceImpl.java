@@ -71,7 +71,7 @@ public class DiseaseServiceImpl implements DiseaseService {
         Optional<DiseaseAudit> diseaseAuditOptional = diseaseDao.findAuditById(id);
         if (diseaseAuditOptional.isPresent()) {
             DiseaseAudit diseaseAudit = diseaseAuditOptional.get();
-            diseaseAudit.setStatues(result);
+            diseaseAudit.setStatus(result);
             diseaseAudit.setReason(reason);
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date now = new Date();
@@ -83,6 +83,16 @@ public class DiseaseServiceImpl implements DiseaseService {
             return null;
         }
     }
+
+    public int UserAddDisease(DiseaseAudit newOne)
+    {
+        newOne.setStatus("待审核");
+        diseaseDao.AddOrUpdateDiseaseAudit(newOne);
+
+        return 0;
+    }
+
+
     public List<Disease> findDiseasesByNameContains(String name){
         return diseaseDao.findDiseasesByNameContains(name);
     }
