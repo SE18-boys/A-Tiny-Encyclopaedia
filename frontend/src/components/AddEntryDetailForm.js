@@ -37,15 +37,15 @@ const formItemLayoutWithOutLabel = {
 const DiseaseAttributes = [
     {name: 'desc', label: "疾病描述"},
     {name: 'prevent', label: "预防方法"},
-    {name: 'yibao', label: "是否纳入医保"},
-    {name: 'getprob', label: "患病率"},
-    {name: 'easyget', label: "易感人群"},
-    {name: 'getway', label: "传播途径"},
-    {name: 'curelasttime', label: "疗程"},
-    {name: 'curedprob', label: "治愈率"},
+    {name: 'yibao_status', label: "是否纳入医保"},
+    {name: 'get_prob', label: "患病率"},
+    {name: 'easy_get', label: "易感人群"},
+    {name: 'get_way', label: "传播途径"},
+    {name: 'cure_lasttime', label: "疗程"},
+    {name: 'cured_prob', label: "治愈率"},
     {name: 'cost', label: "治疗费用"},
     {name: 'symptom', label: "症状"},
-    {name: 'acompony', label: "并发症"},
+    {name: 'accompany', label: "并发症"},
     {name: 'cure_department', label: "就诊科室"},
     {name: 'cure_way', label: "治疗方式"},
     {name: 'check', label: "检查项目"},
@@ -58,7 +58,7 @@ const DiseaseAttributes = [
 ]
 
 const multiList = [
-    'symptom', 'acompony', 'cure_department', 'cure_way', 'check', 'do_eat', 'not_eat', 'recommend_dish', 'common_drug', 'common_drug', 'drug_detail',
+    'symptom', 'accompany', 'cure_department', 'cure_way', 'check', 'do_eat', 'not_eat', 'recommend_dish', 'common_drug', 'common_drug', 'drug_detail',
 ]
 
 export default class AddEntryDetailForm extends React.Component {
