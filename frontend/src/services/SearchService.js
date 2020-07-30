@@ -30,7 +30,7 @@ export const searchAccurate = (data,callback) => {
 };
 
 export const addSimpleDetails = (data) => {
-    const url = apiUrl+`/AddDisease`;
+    const url = apiUrl+`/UserAddDisease`;
     const callback = (data) => {
         console.log('Received backend data: ', data);
     };
@@ -39,7 +39,7 @@ export const addSimpleDetails = (data) => {
 
 
 export const updateDetails = (data) => {
-    const url = apiUrl+`/AddDisease`;
+    const url = apiUrl+`/UserAddDisease`;
     const callback = (data) => {
         console.log('Received backend data: ', data);
     };

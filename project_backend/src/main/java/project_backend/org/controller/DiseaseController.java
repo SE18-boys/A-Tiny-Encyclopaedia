@@ -49,6 +49,18 @@ public class DiseaseController {
         return new SearchUtil(single_search, disease);
     }
 
+
+    //用户添加疾病词条，加到mongodb中
+    @RequestMapping("/UserAddDisease")
+    public int UserAddDisease(@RequestBody DiseaseAudit one)
+    {
+        System.out.println(one.getName());
+        diseaseService.UserAddDisease(one);
+        return 0;
+    }
+
+
+
     @RequestMapping("/AddDisease")
     public Disease addDisease(@RequestBody Map<String, String> parms){
         String prevent = parms.get("prevent");
