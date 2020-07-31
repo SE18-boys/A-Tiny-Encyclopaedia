@@ -230,3 +230,85 @@ by--wy
 +-./project_backend
 
 by--zmy
+
+## 2020.7.24 
+
+### learning testing tools and enhance backend and frontend
+
++-./project_backend
+
+by--wy,zmy
+
++-./frontend
+
+by--xy,zy
+
+download jmeter
+
+by--xy
+
+## 2020.7.27
+
+### discuss and arrange tasks of ths whole week and learning to using pression test tools
+three transactions arrangement:
+search:wy
+admin check for entry:zmy
+add or update entry through send request to admins:-zy
+
+using test tools :xy
+
+## 2020.7.28
+
+### promote unit tests
+
++-./frontend
+
+by--xy
+
+### rewrite codes of backend
+
++-./project_backend
+
+by--zy,zmy,wy
+
+## 2020.7.29
+
+### write jmeter jml and test backend connection
+
+by--xy
+
+### write frontend code and connect with backend
+
++-./frontend
+
+by--zy,zmy,wy
+
+## 2020.7.30
+
+### add actuator and Prometheus，generate web report by grafana
+
+by--xy
+
+### polish frontend and backend
+
++-./frontend,project_backend
+
+by--zy,zmy,wy
+
+## 2020.7.31
+
+### build aws server which is used to send request
+
+by--xy,zy
+
+### make conclusion and write logs
+
++./dev_log 
+
+by--wy 
+
+### repair some small bugs
+
++-./frontend,project_backend
+
+b--zmy
