@@ -65,7 +65,7 @@ public class DiseaseController {
     public Disease addDisease(@RequestBody Map<String, String> parms){
         String prevent = parms.get("prevent");
         String yibao_status = parms.get("yibao_status");
-        String cost_money = parms.get("cost");
+        String cost_money = parms.get("cost_money");
         String get_prob = parms.get("get_prob");
         String name = parms.get("name");
         String cause = parms.get("cause");
@@ -92,6 +92,11 @@ public class DiseaseController {
         disease.setEasy_get(easy_get);
         disease.setDesc(desc);
 
+        String result = "通过";
+        String stringid = parms.get("stringid");
+        ObjectId id = new ObjectId(stringid);
+        diseaseService.SetAuditResult(id, result, "通过");
+
         return diseaseService.AddDisease(disease);
     }
 
@@ -104,7 +109,7 @@ public class DiseaseController {
     }
 
 
-    //疾病审核
+    //下面是一些疾病审核的接口
     @RequestMapping("/DiseaseAuditByName")
     public List<DiseaseAudit> findDiseaseAuditByName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
@@ -117,7 +122,7 @@ public class DiseaseController {
         return diseaseService.findUnauditedDiseaseByName(name);
     }
 
-    @RequestMapping("/AllDiseaseUnauditByName")
+    @RequestMapping("/AllDiseaseUnaudit")
     public List<DiseaseAudit> findAllDiseaseUnaudited(){
         return diseaseService.findAllUnauditedDisease();
     }

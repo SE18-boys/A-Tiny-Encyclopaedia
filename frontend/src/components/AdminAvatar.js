@@ -1,5 +1,5 @@
 import React from 'react';
-import {Avatar, Dropdown, Menu,Button} from 'antd';
+import {Avatar, Dropdown, Menu, Button, message} from 'antd';
 import '../css/index.css'
 import {
     SettingFilled,
@@ -13,13 +13,14 @@ export class AdminAvatar extends React.Component {
     state = {
         isSignIn: false,
         username: null,
+        user: [],
     }
 
     componentDidMount() {
         const user = JSON.parse(localStorage.getItem("user"));
         console.log("user info:", user);
         if (user !== null) {
-            this.setState({username: user.username, isSignIn: true})
+            this.setState({username: user.username, user: user,isSignIn: true})
         }
     }
 
@@ -50,22 +51,54 @@ export class AdminAvatar extends React.Component {
             history.push("/Profile")
     }
 
+    callback = () => {
+        this.setState({
+            isSignIn: false,
+            username: null,}
+            );
+        localStorage.removeItem("user");
+        message.success("登出成功!");
+        history.push("/");
+
+    };
+
+    logout = () => {
+        userService.logout(this.callback());
+    };
+
     render() {
+
+        const menuitem = [];
+        menuitem.push(
+            <Menu.Item>
+                <a onClick={this.showProfile}>
+                    Show Profile
+                </a>
+            </Menu.Item>
+        );
+        menuitem.push(
+            <Menu.Item>
+                <a href="#" onClick={() => this.logout()}>
+                    Log Out
+                </a>
+            </Menu.Item>
+        );
+        if(this.state.user.role === "ROLE_ADMIN"){
+            menuitem.push(
+                <Menu.Item>
+                    <a href="/EntryAuditS" >
+                        Entry Audit
+                    </a>
+                </Menu.Item>
+            )
+        }
 
         const menu = (
             <Menu>
-                <Menu.Item>
-                    <a onClick={this.showProfile}>
-                        Show Profile
-                    </a>
-                </Menu.Item>
-                <Menu.Item>
-                    <a href="#" onClick={userService.logout}>
-                        Log Out
-                    </a>
-                </Menu.Item>
+                {menuitem}
             </Menu>
         );
+
 
         // const {user} = this.props;
 

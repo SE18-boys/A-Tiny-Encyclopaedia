@@ -51,19 +51,19 @@ export const uploadAvatar = (userId, iconBase64, message) => {
     putRequest(url, data, message);
 };
 
-export const logout = () => {
+export const logout = (callback) => {
     const url = apiUrl+`/logout`;
 
-    const callback = (data) => {
-        if(data.status >= 0) {
-            localStorage.removeItem("user");
-            history.push("/login");
-            message.success(data.msg);
-        }
-        else{
-            message.error(data.msg);
-        }
-    };
+    // const callback = (data) => {
+    //     if(data.status >= 0) {
+    //         localStorage.removeItem("user");
+    //         history.push("/login");
+    //         message.success(data.msg);
+    //     }
+    //     else{
+    //         message.error(data.msg);
+    //     }
+    // };
     postRequest(url, {}, callback);
 };
 

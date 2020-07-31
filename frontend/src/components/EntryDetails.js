@@ -52,9 +52,9 @@ export class EntryDetails extends React.Component{
             case "就诊科室":
                 // let department = [];
                 console.log("disease: ", Entry);
-                let department = Entry.related_department;
+                let department = Entry.cure_department;
                 if(department === null || department === undefined) return "暂无相关资料！";
-                for(let i=0; i<Entry.related_department.length; ++i){
+                for(let i=0; i<department.length; ++i){
                     detail.push(<a>{department[i].name}<br/></a>)
                 }
                 console.log("department: ", Entry.related_department);
@@ -64,29 +64,29 @@ export class EntryDetails extends React.Component{
                 detail.push(<span>{Entry.cause}</span>);
                 return detail;
             case "症状":
-                let related_symptom = Entry.related_symptom;
+                let related_symptom = Entry.symptom;
                 if(related_symptom === null || related_symptom === undefined ) return "暂无相关资料！";
                 for(let i=0; i<related_symptom.length; ++i){
                     detail.push(<a>{related_symptom[i].name}<br/></a>)
                 }
                 return detail;
             case "检查":
-                let need_check = Entry.need_check;
+                let need_check = Entry.check;
                 if(need_check === null || need_check === undefined) return "暂无相关资料！";
                 for(let i=0; i<need_check.length; ++i){
                     detail.push(<a>{need_check[i].name}<br/></a>)
                 }
                 return detail;
             case "并发症":
-                let accompany_diseases = Entry.accompany_diseases;
+                let accompany_diseases = Entry.accompany;
                 if(accompany_diseases === null || accompany_diseases === undefined) return "无";
                 for(let i=0; i<accompany_diseases.length; ++i){
                     detail.push(<a>{accompany_diseases[i].name}<br/></a>)
                 }
                 return detail;
             case "治疗":
-                let cure_by = Entry.cure_by;
-                let cure_prob = Entry.cure_prob;
+                let cure_by = Entry.cure_way;
+                let cure_prob = Entry.cured_prob;
                 let yibao_status = Entry.yibao_status;
                 let cure_lasttime = Entry.cure_lasttime;
                 let cost_money = Entry.cost_money;
