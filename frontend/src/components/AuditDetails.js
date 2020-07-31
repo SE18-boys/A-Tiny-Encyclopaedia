@@ -1,10 +1,11 @@
 import React from 'react'
-import {Button, Divider, message, Row, Col} from 'antd'
+import {Button, Divider, message, Row, Col, Input} from 'antd'
 import '../css/BKDetail.css'
 import '../css/Audit.css'
 import {searchDetails} from "../services/SearchService";
 import {history} from "../utils/history";
 import {updateDiseaseinNeo4j} from "../services/DiseaseService";
+import {disaproving} from "../services/AuditService";
 
 const DiseaseMenu = ["就诊科室","病因","症状","检查","并发症","治疗","药物","宜吃食物","忌吃食物","传播","预防措施"];
 export class AuditDetails extends React.Component{
@@ -13,7 +14,8 @@ export class AuditDetails extends React.Component{
         super(props);
         this.state={
             Audit: [],
-            result: []
+            result: [],
+            reason: "不通过",
         }
     }
 
@@ -49,7 +51,7 @@ export class AuditDetails extends React.Component{
         switch (menu) {
             case "就诊科室":
                 // let department = [];
-                console.log("disease: ", Entry);
+                //console.log("disease: ", Entry);
                 let department = Entry.cure_department;
                 if(department === null || department === undefined) return "暂无相关资料！";
                 for(let i=0; i<Entry.cure_department.length; ++i){
@@ -177,13 +179,26 @@ export class AuditDetails extends React.Component{
         updateDiseaseinNeo4j(this.state.Audit, this.message);
     };
 
+    disaproving = () => {
+        let audit = this.state.Audit;
+        console.log("reason", this.state.reason);
+        disaproving(audit.stringid, this.state.reason, this.message);
+    };
+
+    handelChange(e){
+        console.log(e.target.value);
+        this.setState({
+            reason:e.target.value
+        })
+    }
+
     message = (data) => {
         if(data !== null && data !== undefined){
-            message.success("添加成功!");
+            message.success("操作成功!");
             history.push("/");
         }
         else  {
-            message.error("添加失败!");
+            message.error("操作失败!");
         }
 
     };
@@ -274,7 +289,12 @@ export class AuditDetails extends React.Component{
                 {audit}
                 <div>
                     <Button onClick={()=>this.updateNeo4j()}>通过</Button>
-                    <Button type={"danger"}>不通过</Button>
+                    <Button type={"danger"} onClick={()=>this.disaproving()}>不通过</Button>
+                    <div>
+                        <span>理由: </span>
+                        <Input defaultValue="不通过" onChange={this.handelChange.bind(this)}/>
+                    </div>
+
                 </div>
             </div>
 

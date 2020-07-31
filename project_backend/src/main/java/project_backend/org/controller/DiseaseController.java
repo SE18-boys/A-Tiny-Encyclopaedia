@@ -122,7 +122,7 @@ public class DiseaseController {
         return diseaseService.findUnauditedDiseaseByName(name);
     }
 
-    @RequestMapping("/AllDiseaseUnauditByName")
+    @RequestMapping("/AllDiseaseUnaudit")
     public List<DiseaseAudit> findAllDiseaseUnaudited(){
         return diseaseService.findAllUnauditedDisease();
     }
