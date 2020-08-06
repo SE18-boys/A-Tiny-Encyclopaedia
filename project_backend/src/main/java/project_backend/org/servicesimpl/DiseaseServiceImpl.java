@@ -55,7 +55,8 @@ public class DiseaseServiceImpl implements DiseaseService {
     public List<DiseaseAudit> findDiseaseAuditByName(String name) {
         Optional<List<DiseaseAudit>> DiseaseAudits = diseaseDao.findAuditByName(name);
         if (DiseaseAudits.isPresent()) {
-            //System.out.println(DiseaseAudits.get().get(0));
+            System.out.print("diseaseAudits:\n");
+            System.out.println(DiseaseAudits.get());
             List<DiseaseAudit> diseaseAudits = DiseaseAudits.get();
             for (DiseaseAudit diseaseAudit : diseaseAudits) {
                 diseaseAudit.setStringid(diseaseAudit.getId().toString());
@@ -112,8 +113,38 @@ public class DiseaseServiceImpl implements DiseaseService {
     }
 
     @Override
+    public List<DiseaseAudit> findAllApprovedDisease() {
+        Optional<List<DiseaseAudit>> optionalDiseaseAudits = diseaseDao.findAllApprovedEntry();
+        if(optionalDiseaseAudits.isPresent()){
+            List<DiseaseAudit> diseaseAudits = optionalDiseaseAudits.get();
+            for(DiseaseAudit diseaseAudit : diseaseAudits){
+                diseaseAudit.setStringid(diseaseAudit.getId().toString());
+            }
+            return diseaseAudits;
+        }
+        else {
+            return null;
+        }
+    }
+
+    @Override
     public List<DiseaseAudit> findDisapprovingDiseaseByName(String name) {
         Optional<List<DiseaseAudit>> optionalDiseaseAudits = diseaseDao.findDisapprovingEntryByName(name);
+        if(optionalDiseaseAudits.isPresent()){
+            List<DiseaseAudit> diseaseAudits = optionalDiseaseAudits.get();
+            for(DiseaseAudit diseaseAudit : diseaseAudits){
+                diseaseAudit.setStringid(diseaseAudit.getId().toString());
+            }
+            return diseaseAudits;
+        }
+        else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<DiseaseAudit> findAllDisapprovingDisease() {
+        Optional<List<DiseaseAudit>> optionalDiseaseAudits = diseaseDao.findAllDisapprovingEntry();
         if(optionalDiseaseAudits.isPresent()){
             List<DiseaseAudit> diseaseAudits = optionalDiseaseAudits.get();
             for(DiseaseAudit diseaseAudit : diseaseAudits){
