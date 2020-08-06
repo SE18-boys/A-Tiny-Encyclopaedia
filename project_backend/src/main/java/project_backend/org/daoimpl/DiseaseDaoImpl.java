@@ -75,6 +75,16 @@ public class DiseaseDaoImpl implements DiseaseDao {
     }
 
     @Override
+    public Optional<List<DiseaseAudit>> findAllApprovedEntry() {
+        return diseaseAuditRepository.findAllApprovedEntry();
+    }
+
+    @Override
+    public Optional<List<DiseaseAudit>> findAllDisapprovingEntry() {
+        return diseaseAuditRepository.findAllDisApprovingEntry();
+    }
+
+    @Override
     public Optional<List<DiseaseAudit>> findAllUnauditedEntry() {
         return diseaseAuditRepository.findAllUnauditedEntry();
     }

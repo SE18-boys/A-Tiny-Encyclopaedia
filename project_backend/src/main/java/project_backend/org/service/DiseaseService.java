@@ -17,10 +17,15 @@ public interface DiseaseService {
 
     //疾病审核
     List<DiseaseAudit> findDiseaseAuditByName(String name);
+
     List<DiseaseAudit> findUnauditedDiseaseByName(String name);
     List<DiseaseAudit> findAllUnauditedDisease();
+
     List<DiseaseAudit> findApprovedDiseaseByName(String name);
+    List<DiseaseAudit> findAllApprovedDisease();
+
     List<DiseaseAudit> findDisapprovingDiseaseByName(String name);
+    List<DiseaseAudit> findAllDisapprovingDisease();
 
 
     DiseaseAudit SetAuditResult(ObjectId id, String result, String reason);

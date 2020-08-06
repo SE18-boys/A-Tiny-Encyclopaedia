@@ -18,15 +18,20 @@ public interface DiseaseDao {
     //增
     Disease addDisease(Disease disease);
     void updateAccompany_diseases(Disease disease, Set<Disease> accompany_diseases);
+    //删
     void deleteByName(String name);
 
     //疾病审核
     //查
     Optional<List<DiseaseAudit>> findAuditByName(String name);
     Optional<DiseaseAudit> findAuditById(ObjectId id);
+
     Optional<List<DiseaseAudit>> findApprovedEntryByName(String name);
     Optional<List<DiseaseAudit>> findDisapprovingEntryByName(String name);
     Optional<List<DiseaseAudit>> findUnauditedEntryByName(String name);
+
+    Optional<List<DiseaseAudit>> findAllApprovedEntry();
+    Optional<List<DiseaseAudit>> findAllDisapprovingEntry();
     Optional<List<DiseaseAudit>> findAllUnauditedEntry();
 
     //增、改

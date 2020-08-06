@@ -127,6 +127,16 @@ public class DiseaseController {
         return diseaseService.findAllUnauditedDisease();
     }
 
+    @RequestMapping("/AllDiseaseApproved")
+    public List<DiseaseAudit> findAllDiseaseApproved(){
+        return diseaseService.findAllApprovedDisease();
+    }
+
+    @RequestMapping("/AllDiseaseDisapproving")
+    public List<DiseaseAudit> findAllDiseaseDisapproving(){
+        return diseaseService.findAllDisapprovingDisease();
+    }
+
     @RequestMapping("/SetAuditResult")
     public DiseaseAudit SetAuditResult(@RequestBody Map<String, String> parms){
         String reason = parms.get("reason");
