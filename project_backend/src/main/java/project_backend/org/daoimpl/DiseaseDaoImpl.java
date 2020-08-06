@@ -40,7 +40,7 @@ public class DiseaseDaoImpl implements DiseaseDao {
 
     @Override
     public void updateAccompany_diseases(Disease disease, Set<Disease> accompany_diseases) {
-        disease.setAccompany_diseases(accompany_diseases);
+        disease.setAccompany(accompany_diseases);
         diseaseRepository.save(disease);
     }
 

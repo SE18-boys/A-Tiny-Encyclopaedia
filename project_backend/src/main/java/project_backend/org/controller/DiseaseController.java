@@ -54,7 +54,7 @@ public class DiseaseController {
     @RequestMapping("/UserAddDisease")
     public int UserAddDisease(@RequestBody DiseaseAudit one)
     {
-        System.out.println(one.getName());
+        System.out.println(one);
         diseaseService.UserAddDisease(one);
         return 0;
     }
@@ -64,15 +64,15 @@ public class DiseaseController {
     @RequestMapping("/AddDisease")
     public Disease addDisease(@RequestBody Map<String, String> parms){
         String prevent = parms.get("prevent");
-        String yibao_status = parms.get("yibao");
-        String cost_money = parms.get("cost");
-        String get_prob = parms.get("getprob");
+        String yibao_status = parms.get("yibao_status");
+        String cost_money = parms.get("cost_money");
+        String get_prob = parms.get("get_prob");
         String name = parms.get("name");
         String cause = parms.get("cause");
-        String cure_lasttime = parms.get("curelasttime");
-        String cure_prob = parms.get("cureprob");
-        String get_way = parms.get("getway");
-        String easy_get = parms.get("easyget");
+        String cure_lasttime = parms.get("cure_lasttime");
+        String cure_prob = parms.get("cured_prob");
+        String get_way = parms.get("get_way");
+        String easy_get = parms.get("easy_get");
         String desc = parms.get("desc");
         Disease disease = new Disease();
         Disease d = diseaseService.findDiseaseByName(name);
@@ -87,10 +87,15 @@ public class DiseaseController {
         disease.setName(name);
         disease.setCause(cause);
         disease.setCure_lasttime(cure_lasttime);
-        disease.setCure_prob(cure_prob);
+        disease.setCured_prob(cure_prob);
         disease.setGet_way(get_way);
         disease.setEasy_get(easy_get);
         disease.setDesc(desc);
+
+        String result = "通过";
+        String stringid = parms.get("stringid");
+        ObjectId id = new ObjectId(stringid);
+        diseaseService.SetAuditResult(id, result, "通过");
 
         return diseaseService.AddDisease(disease);
     }
@@ -98,13 +103,13 @@ public class DiseaseController {
     @RequestMapping("/UpdateDisease")
     public void updateDisease(@RequestBody Map<String, Object> parms){
         String name = String.valueOf(parms.get("name"));
-        List<String> names = (List<String>) parms.get("accompanyDiseases");
+        List<String> names = (List<String>) parms.get("accompany");
         Set<String> accompany_names = new HashSet<>(names);
         diseaseService.UpdateAccompany_diseasesToDisease(name, accompany_names);
     }
 
 
-    //疾病审核
+    //下面是一些疾病审核的接口
     @RequestMapping("/DiseaseAuditByName")
     public List<DiseaseAudit> findDiseaseAuditByName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
@@ -117,7 +122,7 @@ public class DiseaseController {
         return diseaseService.findUnauditedDiseaseByName(name);
     }
 
-    @RequestMapping("/AllDiseaseUnauditByName")
+    @RequestMapping("/AllDiseaseUnaudit")
     public List<DiseaseAudit> findAllDiseaseUnaudited(){
         return diseaseService.findAllUnauditedDisease();
     }

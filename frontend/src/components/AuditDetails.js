@@ -1,8 +1,11 @@
 import React from 'react'
-import {Button, message} from 'antd'
+import {Button, Divider, message, Row, Col, Input} from 'antd'
 import '../css/BKDetail.css'
+import '../css/Audit.css'
 import {searchDetails} from "../services/SearchService";
 import {history} from "../utils/history";
+import {updateDiseaseinNeo4j} from "../services/DiseaseService";
+import {disaproving} from "../services/AuditService";
 
 const DiseaseMenu = ["就诊科室","病因","症状","检查","并发症","治疗","药物","宜吃食物","忌吃食物","传播","预防措施"];
 export class AuditDetails extends React.Component{
@@ -11,7 +14,8 @@ export class AuditDetails extends React.Component{
         super(props);
         this.state={
             Audit: [],
-            result: []
+            result: [],
+            reason: "不通过",
         }
     }
 
@@ -47,45 +51,45 @@ export class AuditDetails extends React.Component{
         switch (menu) {
             case "就诊科室":
                 // let department = [];
-                console.log("disease: ", Entry);
-                let department = Entry.related_department;
+                //console.log("disease: ", Entry);
+                let department = Entry.cure_department;
                 if(department === null || department === undefined) return "暂无相关资料！";
-                for(let i=0; i<Entry.related_department.length; ++i){
+                for(let i=0; i<Entry.cure_department.length; ++i){
                     detail.push(<a>{department[i].name}<br/></a>)
                 }
-                console.log("department: ", Entry.related_department);
+                console.log("department: ", Entry.cure_department);
                 return detail;
             case "病因":
                 if(Entry.cause === null || Entry.cause === undefined) return "暂无相关资料！";
                 detail.push(<span>{Entry.cause}</span>);
                 return detail;
             case "症状":
-                let related_symptom = Entry.related_symptom;
+                let related_symptom = Entry.symptom;
                 if(related_symptom === null || related_symptom === undefined ) return "暂无相关资料！";
                 for(let i=0; i<related_symptom.length; ++i){
                     detail.push(<a>{related_symptom[i].name}<br/></a>)
                 }
                 return detail;
             case "检查":
-                let need_check = Entry.need_check;
+                let need_check = Entry.check;
                 if(need_check === null || need_check === undefined) return "暂无相关资料！";
                 for(let i=0; i<need_check.length; ++i){
                     detail.push(<a>{need_check[i].name}<br/></a>)
                 }
                 return detail;
             case "并发症":
-                let accompany_diseases = Entry.accompany_diseases;
+                let accompany_diseases = Entry.accompany;
                 if(accompany_diseases === null || accompany_diseases === undefined) return "无";
                 for(let i=0; i<accompany_diseases.length; ++i){
                     detail.push(<a>{accompany_diseases[i].name}<br/></a>)
                 }
                 return detail;
             case "治疗":
-                let cure_by = Entry.cure_by;
-                let cure_prob = Entry.cure_prob;
+                let cure_by = Entry.cure_way;
+                let cure_prob = Entry.cured_prob;
                 let yibao_status = Entry.yibao_status;
                 let cure_lasttime = Entry.cure_lasttime;
-                let cost_money = Entry.cost_money;
+                let cost_money = Entry.cost;
                 if(cure_by === null || cure_by === undefined) return "暂无相关资料！";
                 for(let i=0; i<cure_by.length; ++i){
                     detail.push(<a>{cure_by[i].name}<br/></a>)
@@ -138,7 +142,7 @@ export class AuditDetails extends React.Component{
             case "药物":
                 let flag = true;
                 let common_drug = Entry.common_drug;
-                let recommand_drug = Entry.recommand_drug;
+                let recommend_drug = Entry.recommend_drug;
                 if(common_drug !== null && common_drug !== undefined) {
                     detail.push(<span>常用药物:<br/></span>);
                     for(let i=0; i<common_drug.length; ++i){
@@ -146,10 +150,10 @@ export class AuditDetails extends React.Component{
                     }
                     flag = false;
                 }
-                if(recommand_drug !== null && recommand_drug !== undefined) {
+                if(recommend_drug !== null && recommend_drug !== undefined) {
                     detail.push(<span>推荐药物:<br/></span>);
-                    for(let i=0; i<recommand_drug.length; ++i){
-                        detail.push(<a>{recommand_drug[i].name}<br/></a>)
+                    for(let i=0; i<recommend_drug.length; ++i){
+                        detail.push(<a>{recommend_drug[i].name}<br/></a>)
                     }
                     flag = false;
                 }
@@ -161,7 +165,6 @@ export class AuditDetails extends React.Component{
     };
 
     update=()=>{
-
         let value=this.state.result;
         // this.
 
@@ -170,66 +173,167 @@ export class AuditDetails extends React.Component{
             state:this.state.result
         };
         history.push(path);
+    };
 
+    updateNeo4j = () => {
+        updateDiseaseinNeo4j(this.state.Audit, this.message);
+    };
+
+    disaproving = () => {
+        let audit = this.state.Audit;
+        console.log("reason", this.state.reason);
+        disaproving(audit.stringid, this.state.reason, this.message);
+    };
+
+    handelChange(e){
+        console.log(e.target.value);
+        this.setState({
+            reason:e.target.value
+        })
+    }
+
+    message = (data) => {
+        if(data !== null && data !== undefined){
+            message.success("操作成功!");
+            history.push("/");
+        }
+        else  {
+            message.error("操作失败!");
+        }
 
     };
 
     render() {
-        const contentp =[];
-        const direction = [];
+        // const beforeChange =[];
+        // const afterChange = [];
+        const audit = [];
         for(let i=0; i<DiseaseMenu.length; ++i){
-            contentp.push(
-                <div class="content-p">
-                    <div class="title-1">
-                        <div class="bk-flex">
-                            <div class="title-detail">
+            audit.push(
+                <Row>
+                    <Col span={12}>
+                        <div className="content-p">
+                            <div className="title-1">
+                                <div className="bk-flex">
+                                    <div className="title-detail">
                                 <span>
                                     {DiseaseMenu[i]}
                                 </span>
-                                <a class="title-anchor"></a>
+                                        <a className="title-anchor"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                {this.getDetails(this.state.result, DiseaseMenu[i])}
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        {this.getDetails(this.state.Audit, DiseaseMenu[i])}
-                    </div>
-                </div>
+                    </Col>
+                    <Col span={12}>
+                        <div className="content-p">
+                            <div className="title-1">
+                                <div className="bk-flex">
+                                    <div className="title-detail">
+                                <span>
+                                    {DiseaseMenu[i]}
+                                </span>
+                                        <a className="title-anchor"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                {this.getDetails(this.state.Audit, DiseaseMenu[i])}
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
             );
-            direction.push(
-
-            )
         }
         return(
             <div>
-                <div class="bk-title bk-font36 content-title">
-                    {this.state.Audit.name}
-                    <a class="bk-color-darkgrey content-title-edit" onClick={this.update}>
-                        <i class="title-edit"/>
-                        编辑
-                    </a>
-                    <a class="bk-color-darkgrey content-title-add">
-                        <i class="wiki-add-icon"/>
-                        <span>添加义项</span>
-                    </a>
-                </div>
+                <Row>
+                    <Col span={12}>
+                        <div className="bk-title bk-font36 content-title">
+                            {this.state.result.name}
+                        </div>
 
-                <div class="bk-title bk-font14 bk-color-topagrey content-sub-title">
+                        <div className="bk-title bk-font14 bk-color-topagrey content-sub-title">
+                            (修改前)
+                        </div>
 
-                </div>
+                        <div className="content-summary">
+                            <span>{this.state.result.desc}<br/><br/></span>
+                        </div>
 
-                <div class="content-summary">
-                    <span>{this.state.result.desc}<br/><br/></span>
+                        {/*<div>*/}
+                        {/*    {beforeChange}*/}
+                        {/*</div>*/}
 
-                </div>
+                    </Col>
+                    <Col span={12}>
+                        <div className="bk-title bk-font36 content-title">
+                            {this.state.Audit.name}
+                        </div>
 
+                        <div className="bk-title bk-font14 bk-color-topagrey content-sub-title">
+                            (修改后)
+                        </div>
+
+                        <div className="content-summary">
+                            <span>{this.state.Audit.desc}<br/><br/></span>
+                        </div>
+
+                        {/*<div>*/}
+                        {/*    {afterChange}*/}
+                        {/*</div>*/}
+                    </Col>
+                </Row>
+                {audit}
                 <div>
+                    <Button onClick={()=>this.updateNeo4j()}>通过</Button>
+                    <Button type={"danger"} onClick={()=>this.disaproving()}>不通过</Button>
+                    <div>
+                        <span>理由: </span>
+                        <Input defaultValue="不通过" onChange={this.handelChange.bind(this)}/>
+                    </div>
 
-                </div>
-
-                <div>
-                    {contentp}
                 </div>
             </div>
+
         )
     }
 }
+
+//应该用不上的代码
+// beforeChange.push(
+//     <div class="content-p">
+//         <div class="title-1">
+//             <div class="bk-flex">
+//                 <div class="title-detail">
+//                                 <span>
+//                                     {DiseaseMenu[i]}
+//                                 </span>
+//                     <a class="title-anchor"></a>
+//                 </div>
+//             </div>
+//         </div>
+//         <div>
+//             {this.getDetails(this.state.result, DiseaseMenu[i])}
+//         </div>
+//     </div>
+// );
+// afterChange.push(
+//     <div className="content-p">
+//         <div className="title-1">
+//             <div className="bk-flex">
+//                 <div className="title-detail">
+//                                 <span>
+//                                     {DiseaseMenu[i]}
+//                                 </span>
+//                     <a className="title-anchor"></a>
+//                 </div>
+//             </div>
+//         </div>
+//         <div>
+//             {this.getDetails(this.state.Audit, DiseaseMenu[i])}
+//         </div>
+//     </div>
+// )
