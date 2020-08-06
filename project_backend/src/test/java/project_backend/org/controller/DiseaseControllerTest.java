@@ -25,6 +25,7 @@ import org.springframework.web.context.WebApplicationContext;
 import project_backend.org.UnitTestDemoApplicationTests;
 import project_backend.org.entity.Disease;
 import project_backend.org.service.DiseaseService;
+import project_backend.org.utils.searchutils.SearchUtil;
 
 import java.util.List;
 
@@ -75,19 +76,28 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
         String responseString = mockMvc.perform(post("/DiseaseByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
-        Disease disease = om.readValue(responseString, new TypeReference<Disease>() {});
-        System.out.println("feedback result: " + "肺炎" +" : "+ disease);
+//        SearchUtil searchUtil = om.readValue(responseString, new TypeReference<SearchUtil>() {});
+//        System.out.println("feedback result: " + "肺炎" +" : "+ searchUtil);
 
-        //test failed example
+        //test if else example
         JSONObject jsonData2 = new JSONObject();
         jsonData2.put("name", "歪比歪比");
 
         String responseString2 = mockMvc.perform(post("/DiseaseByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData2)).param("pcode","root"))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
-        Disease disease2 = om.readValue(responseString2, new TypeReference<Disease>() {});
-        System.out.println("feedback result: " + "failed" +" : "+ disease2);
+//        Disease disease2 = om.readValue(responseString2, new TypeReference<Disease>() {});
+//        System.out.println("feedback result: " + "failed" +" : "+ disease2);
 
+        //test failed example
+        JSONObject jsonData3 = new JSONObject();
+        jsonData3.put("name", "肺");
+
+        String responseString3 = mockMvc.perform(post("/DiseaseByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData3)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+//        Disease disease2 = om.readValue(responseString3, new TypeReference<Disease>() {});
+//        System.out.println("feedback result: " + "failed" +" : "+ disease3);
     }
     @Test
     @Rollback
