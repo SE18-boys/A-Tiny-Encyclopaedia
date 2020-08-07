@@ -1,5 +1,6 @@
 package project_backend.org.controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.minidev.json.JSONObject;
@@ -24,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 import project_backend.org.UnitTestDemoApplicationTests;
 import project_backend.org.entity.Disease;
+import project_backend.org.entryAudit.DiseaseAudit;
 import project_backend.org.service.DiseaseService;
 
 import java.util.List;
@@ -87,7 +89,6 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
                 .andReturn().getResponse().getContentAsString();
         Disease disease2 = om.readValue(responseString2, new TypeReference<Disease>() {});
         System.out.println("feedback result: " + "failed" +" : "+ disease2);
-
     }
     @Test
     @Rollback
@@ -95,7 +96,7 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
         String name="testData";
         JSONObject jsonData = new JSONObject();
         jsonData.put("name", name);
-        jsonData.put("accompanyDiseases", new String[]{"testData2"});
+        jsonData.put("accompany", new String[]{"testData2"});
 
         String responseString = mockMvc.perform(post("/UpdateDisease").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
                 .andExpect(status().isOk())
@@ -121,6 +122,7 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
         jsonData.put("getway", "testData");
         jsonData.put("easyget", "testData");
         jsonData.put("desc", "testData");
+        jsonData.put("stringid", "5f22afc21c8e266e19680df7");
 
         //this entity doesn't exist, go if.
         String responseString = mockMvc.perform(post("/AddDisease").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
@@ -139,5 +141,77 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
         //delete it anyway.
         diseaseService.deleteDiseaseByName(name);
 
+    }
+
+    @Test
+    public void DiseaseAuditByName() throws Exception {
+        String name = "test";
+        JSONObject jsonData = new JSONObject();
+        jsonData.put("name", name);
+
+        String responseString = mockMvc.perform(post("/DiseaseAuditByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        List<DiseaseAudit> diseaseAudits = om.readValue(responseString, new TypeReference<List<DiseaseAudit>>() {});
+        assertEquals(3, diseaseAudits.size());
+    }
+
+    @Test
+    public void DiseaseUnauditByName() throws Exception {
+        String name = "test";
+        JSONObject jsonData = new JSONObject();
+        jsonData.put("name", name);
+
+        String responseString = mockMvc.perform(post("/DiseaseUnauditByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        List<DiseaseAudit> diseaseAudits = om.readValue(responseString, new TypeReference<List<DiseaseAudit>>() {});
+        assertEquals(1, diseaseAudits.size());
+    }
+
+    @Test
+    public void AllDiseaseUnaudit() throws Exception {
+        JSONObject jsonData = new JSONObject();
+        String responseString = mockMvc.perform(post("/AllDiseaseUnaudit").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        List<DiseaseAudit> diseaseAudits = om.readValue(responseString, new TypeReference<List<DiseaseAudit>>() {});
+        System.out.println("feedback result: " +" : "+ diseaseAudits.size());
+    }
+
+    @Test
+    public void AllDiseaseApproved() throws Exception {
+        JSONObject jsonData = new JSONObject();
+        String responseString = mockMvc.perform(post("/AllDiseaseApproved").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        List<DiseaseAudit> diseaseAudits = om.readValue(responseString, new TypeReference<List<DiseaseAudit>>() {});
+        System.out.println("feedback result: " +" : "+ diseaseAudits.size());
+    }
+
+    @Test
+    public void AllDiseaseDisapproving() throws Exception {
+        JSONObject jsonData = new JSONObject();
+        String responseString = mockMvc.perform(post("/AllDiseaseDisapproving").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        List<DiseaseAudit> diseaseAudits = om.readValue(responseString, new TypeReference<List<DiseaseAudit>>() {});
+        System.out.println("feedback result: " +" : "+ diseaseAudits.size());
+    }
+
+    @Test
+    @Rollback
+    public void SetAuditResult() throws Exception {
+        String name = "test";
+        JSONObject jsonData = new JSONObject();
+        jsonData.put("id", "5f22afc21c8e266e19680df7");
+        jsonData.put("reason", "testreason");
+        jsonData.put("result", "testresult");
+
+        String responseString = mockMvc.perform(post("/SetAuditResult").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        DiseaseAudit diseaseAudit = om.readValue(responseString, new TypeReference<>() {});
+        System.out.println("feedback result: " +" : "+ diseaseAudit);
     }
 }

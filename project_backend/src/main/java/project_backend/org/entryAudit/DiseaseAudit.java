@@ -1,5 +1,6 @@
 package project_backend.org.entryAudit;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -9,7 +10,7 @@ import javax.persistence.Transient;
 import java.util.List;
 import java.util.Set;
 
-
+@JsonIgnoreProperties({ "id" })
 @Document(collection="audit")
 @Data
 public class DiseaseAudit {
