@@ -55,8 +55,8 @@ public class DiseaseServiceImpl implements DiseaseService {
     public List<DiseaseAudit> findDiseaseAuditByName(String name) {
         Optional<List<DiseaseAudit>> DiseaseAudits = diseaseDao.findAuditByName(name);
         if (DiseaseAudits.isPresent()) {
-            System.out.print("diseaseAudits:\n");
-            System.out.println(DiseaseAudits.get());
+            //System.out.print("diseaseAudits:\n");
+            //System.out.println(DiseaseAudits.get());
             List<DiseaseAudit> diseaseAudits = DiseaseAudits.get();
             for (DiseaseAudit diseaseAudit : diseaseAudits) {
                 diseaseAudit.setStringid(diseaseAudit.getId().toString());
