@@ -5,6 +5,16 @@ export const getUnauditedEntry = (callback) => {
     postRequest(url, "", callback);
 };
 
+export const getApprovedEntry = (callback) => {
+    const url = apiUrl + `/AllDiseaseApproved`;
+    postRequest(url, "", callback);
+};
+
+export const getDisapprovingEntry = (callback) => {
+    const url = apiUrl + `/AllDiseaseDisapproving`;
+    postRequest(url, "", callback);
+};
+
 export const disaproving = (id, reason ,callback) => {
     const url = apiUrl + `/SetAuditResult`;
     const data = {id: id, result: "未通过", reason: reason};

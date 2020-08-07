@@ -4,6 +4,7 @@ import {Layout} from "antd";
 import {getUnauditedEntry} from "../services/AuditService";
 import {AuditsTable} from "../components/AuditsTable";
 import {HeaderInfo} from "../components/HeaderInfo";
+import {AuditSideBar} from "../components/AuditSideBar";
 
 const { Header, Content, Footer } = Layout;
 
@@ -28,7 +29,7 @@ class EntryAuditsView extends React.Component {
                 </Header>
                 <Content>
                     <Layout>
-                        {/*<SideBar select="1"/>*/}
+                        {/*<AuditSideBar/>*/}
                         <Content style={{ padding: '0 50px' }}>
                             <div className="home-content">
 

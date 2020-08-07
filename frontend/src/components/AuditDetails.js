@@ -22,10 +22,12 @@ export class AuditDetails extends React.Component{
     callback = (data) => {
         console.log("get ");
         console.log(data);
-        if(data.result.id === -1)
+        if(data.result === null)
         {
-            message.info("此词条已被删除！")
-            history.push('/')
+            //message.info("此词条已被删除或这是一个新词条！")
+            // history.push('/')
+            data.result = {name: "这是一个新词条"};
+            this.setState({result: data.result });
         }
 
         this.setState({result: data.result});
