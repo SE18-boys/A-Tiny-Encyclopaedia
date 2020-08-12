@@ -21,8 +21,7 @@ import project_backend.org.repository.UserRepository;
 
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
@@ -74,15 +73,37 @@ public class DiseaseServiceTest extends UnitTestDemoApplicationTests {
     @Test
     @Rollback
     public void UpdateAccompany_diseasesToDisease(){
+        Disease noaccompany = new Disease();
+        noaccompany.setId(-1);
+        Disease testdisease = new Disease();
+        testdisease.setName("testdisease");
+        Disease accompany = new Disease();
+        accompany.setId(1);
+        accompany.setName("accompany");
 
-        Set<String> accompany_diseases = new HashSet<>();
-        String name = "aDiseaseNobodyCare";
-        String other_name = "itsAccompany";
-        accompany_diseases.add(other_name);
+        Set<String> accompany_diseases1 = new HashSet<>();
+        accompany_diseases1.add("noaccompany");
+        Set<String> accompany_diseases2 = new HashSet<>();
+        accompany_diseases2.add("accompany");
 
-        diseaseService.UpdateAccompany_diseasesToDisease(name,accompany_diseases);
+        Set<Disease> diseases = new HashSet<>();
+        diseases.add(accompany);
 
-        verify(diseaseDao, times(1)).findByName(name);
+        when(diseaseDao.findByName("nodisease")).thenReturn(null);
+        when(diseaseDao.findByName("noaccompany")).thenReturn(noaccompany);
+        when(diseaseDao.findByName("accompany")).thenReturn(accompany);
+        when(diseaseDao.findByName("testdisease")).thenReturn(testdisease);
+
+        assertFalse(diseaseService.UpdateAccompany_diseasesToDisease("nodisease", accompany_diseases1));
+        assertFalse(diseaseService.UpdateAccompany_diseasesToDisease("testdisease", accompany_diseases1));
+        assertTrue(diseaseService.UpdateAccompany_diseasesToDisease("testdisease", accompany_diseases2));
+
+
+        //diseaseService.UpdateAccompany_diseasesToDisease(name,accompany_diseases);
+
+        verify(diseaseDao, times(1)).updateAccompany_diseases(testdisease, diseases);
+
+
     }
 
     @Test
@@ -97,7 +118,7 @@ public class DiseaseServiceTest extends UnitTestDemoApplicationTests {
     }
 
     @Test
-    public void findUnauditedDiseaseByName(){
+    public void findAuditedDiseaseByName(){
         String name = "DiseaseAudit";
         List<DiseaseAudit> diseaseAudits = new ArrayList<>();
 
@@ -120,8 +141,29 @@ public class DiseaseServiceTest extends UnitTestDemoApplicationTests {
         assertEquals(diseaseAudits, diseaseService.findAllUnauditedDisease());
         assertEquals(diseaseAudits, diseaseService.findApprovedDiseaseByName(name));
         assertEquals(diseaseAudits, diseaseService.findAllApprovedDisease());
-        assertEquals(diseaseAudits, diseaseService.findDiseaseAuditByName(name));
+        assertEquals(diseaseAudits, diseaseService.findDisapprovingDiseaseByName(name));
         assertEquals(diseaseAudits, diseaseService.findAllDisapprovingDisease());
+    }
+
+    @Test
+    public void findAuditedDiseaseByName_NoResult(){
+        String name = "nodisease";
+
+        when(diseaseDao.findAuditByName(name)).thenReturn(Optional.empty());
+        when(diseaseDao.findUnauditedEntryByName(name)).thenReturn(Optional.empty());
+        when(diseaseDao.findAllUnauditedEntry()).thenReturn(Optional.empty());
+        when(diseaseDao.findApprovedEntryByName(name)).thenReturn(Optional.empty());
+        when(diseaseDao.findAllApprovedEntry()).thenReturn(Optional.empty());
+        when(diseaseDao.findDisapprovingEntryByName(name)).thenReturn(Optional.empty());
+        when(diseaseDao.findAllDisapprovingEntry()).thenReturn(Optional.empty());
+
+        assertNull(diseaseService.findDiseaseAuditByName(name));
+        assertNull(diseaseService.findUnauditedDiseaseByName(name));
+        assertNull(diseaseService.findAllUnauditedDisease());
+        assertNull(diseaseService.findApprovedDiseaseByName(name));
+        assertNull(diseaseService.findAllApprovedDisease());
+        assertNull(diseaseService.findDisapprovingDiseaseByName(name));
+        assertNull(diseaseService.findAllDisapprovingDisease());
     }
 
 }
