@@ -12,7 +12,9 @@ export class EntryDetails extends React.Component{
         this.state={
             result: [],
             names:[],
-            type:1
+            type:1,
+            loading: true,
+            noresult: false,
         }
     }
 
@@ -23,14 +25,25 @@ export class EntryDetails extends React.Component{
         {
             let value = this.props.name;
             message.info("暂未查询到有关"+value+"的任何结果！您可以添加此词条！")
-            history.push('/')
+            this.setState(
+                {
+                    result: ["1"],
+                    names: ["1"],
+                    type:1,
+                    loading: false,
+                    noresult: true,
+                }
+            )
+        }
+        else{
+            this.setState({
+                result: data.result,
+                names:data.possible_names,
+                type:data.status,
+                loading: false
+            });
         }
 
-        this.setState({
-            result: data.result,
-            names:data.possible_names,
-            type:data.status
-        });
 
         //console.log("received data is:", data);
     };
@@ -209,6 +222,21 @@ export class EntryDetails extends React.Component{
 
                 )
             }
+            if(this.state.loading){
+                return (
+                    <div>
+                        加载中
+                    </div>
+                )
+            }
+            else if(this.state.noresult){
+                return (
+                    <div>
+                        没找到！你是傻逼吗？
+                    </div>
+                )
+            }
+            else
             return (
                 <div>
                     <div class="bk-title bk-font36 content-title">
@@ -243,7 +271,7 @@ export class EntryDetails extends React.Component{
             )
         }else{
             let value = this.props.name;
-            let names=this.state.names;
+            let names= this.state.names;
             let content=[];
             for(let i=0;i<names.length;i++){
                 content.push(
