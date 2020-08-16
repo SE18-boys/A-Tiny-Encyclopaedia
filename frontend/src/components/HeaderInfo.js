@@ -13,6 +13,15 @@ export class HeaderInfo extends React.Component {
         history.push("/")
     }
 
+    search = (value) => {
+        console.log(value);
+        //let params={'name':value};
+        // if (history.location.pathname !== "/Details")
+            history.push('/Details?search='+value);
+        //console.log(params);
+        //searchDetails(params)
+    };
+
     render(){
         // const user = JSON.parse(localStorage.getItem("user"));
         // console.log("user info:",user);
@@ -24,7 +33,12 @@ export class HeaderInfo extends React.Component {
                          <a>  <img alt="logo" onClick={this.backToHome} src={logo} style={{height: 60}} id="logo"/> </a>
                         </Col>
                         <Col span={6}>
-                            <Search/>
+                            <Search
+                                placeholder="输入词条"
+                                // enterButton=<SearchOutlined/>
+                            size="large"
+                            onSearch={(value) => this.search(value)}
+                            />
                         </Col>
                         <Col span={6} offset={9}>
                             <AdminAvatar/>

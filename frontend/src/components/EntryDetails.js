@@ -24,7 +24,7 @@ export class EntryDetails extends React.Component{
 
         {
             let value = this.props.name;
-            message.info("暂未查询到有关"+value+"的任何结果！您可以添加此词条！")
+            // message.info("暂未查询到有关"+value+"的任何结果！您可以添加此词条！")
             this.setState(
                 {
                     result: ["1"],
@@ -55,6 +55,7 @@ export class EntryDetails extends React.Component{
         searchDetails(params, this.callback);
     }
 
+
     getDetails = (Entry, menu) => {
         if(Entry === null) return "暂无信息";
         if(Entry.length === 0) return "暂无信息";
@@ -68,7 +69,7 @@ export class EntryDetails extends React.Component{
                 let department = Entry.cure_department;
                 if(department === null || department === undefined) return "暂无相关资料！";
                 for(let i=0; i<department.length; ++i){
-                    detail.push(<a>{department[i].name}<br/></a>)
+                    detail.push(<span>{department[i].name}<br/></span>)
                 }
                 console.log("department: ", Entry.related_department);
                 return detail;
@@ -80,14 +81,14 @@ export class EntryDetails extends React.Component{
                 let related_symptom = Entry.symptom;
                 if(related_symptom === null || related_symptom === undefined ) return "暂无相关资料！";
                 for(let i=0; i<related_symptom.length; ++i){
-                    detail.push(<a>{related_symptom[i].name}<br/></a>)
+                    detail.push(<span>{related_symptom[i].name}<br/></span>)
                 }
                 return detail;
             case "检查":
                 let need_check = Entry.check;
                 if(need_check === null || need_check === undefined) return "暂无相关资料！";
                 for(let i=0; i<need_check.length; ++i){
-                    detail.push(<a>{need_check[i].name}<br/></a>)
+                    detail.push(<span>{need_check[i].name}<br/></span>)
                 }
                 return detail;
             case "并发症":
@@ -105,7 +106,7 @@ export class EntryDetails extends React.Component{
                 let cost_money = Entry.cost_money;
                 if(cure_by === null || cure_by === undefined) return "暂无相关资料！";
                 for(let i=0; i<cure_by.length; ++i){
-                    detail.push(<a>{cure_by[i].name}<br/></a>)
+                    detail.push(<span>{cure_by[i].name}<br/></span>)
                 }
                 if(cure_prob !== null && cure_prob !== undefined)
                     detail.push(<span><br/>治愈率: {cure_prob}</span>);
@@ -125,14 +126,14 @@ export class EntryDetails extends React.Component{
                 let do_eat = Entry.do_eat;
                 if(do_eat === null || do_eat === undefined) return "无";
                 for(let i=0; i<do_eat.length; ++i){
-                    detail.push(<a>{do_eat[i].name}<br/></a>)
+                    detail.push(<span>{do_eat[i].name}<br/></span>)
                 }
                 return detail;
             case "忌吃食物":
                 let no_eat = Entry.no_eat;
                 if(no_eat === null || no_eat === undefined) return "无";
                 for(let i=0; i<no_eat.length; ++i){
-                    detail.push(<a>{no_eat[i].name}<br/></a>)
+                    detail.push(<span>{no_eat[i].name}<br/></span>)
                 }
                 return detail;
             case "传播":
@@ -159,14 +160,14 @@ export class EntryDetails extends React.Component{
                 if(common_drug !== null && common_drug !== undefined) {
                     detail.push(<span>常用药物:<br/></span>);
                     for(let i=0; i<common_drug.length; ++i){
-                        detail.push(<a>{common_drug[i].name}<br/></a>)
+                        detail.push(<span>{common_drug[i].name}<br/></span>)
                     }
                     flag = false;
                 }
                 if(recommand_drug !== null && recommand_drug !== undefined) {
                     detail.push(<span>推荐药物:<br/></span>);
                     for(let i=0; i<recommand_drug.length; ++i){
-                        detail.push(<a>{recommand_drug[i].name}<br/></a>)
+                        detail.push(<span>{recommand_drug[i].name}<br/></span>)
                     }
                     flag = false;
                 }

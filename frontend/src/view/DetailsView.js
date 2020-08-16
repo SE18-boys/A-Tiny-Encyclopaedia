@@ -40,6 +40,7 @@ class DetailsView extends React.Component{
         const query = this.props.location.search;
         const arr = query.split('&');
         value = arr[0].substr(8);
+        console.log("value here is "+value)
         this.setState({search: value});
         // let params={'name':value};
         // searchDetails(params, this.callback);
@@ -62,22 +63,22 @@ class DetailsView extends React.Component{
                             <EntryDetails name={value}/>
                         </Content>
                         <Sider theme="light">
-                            <Card title="词条统计">
-                                <p>
-                                    创建者&emsp;&emsp;&emsp; {name1}
-                                </p>
-                                <p>
-                                    浏览次数&emsp;&emsp; 1次
-                                </p>
-                                <p>
-                                    编辑次数&emsp;&emsp; 2次<br/>
-                                    <a>查看历史</a>
-                                </p>
+                            {/*<Card title="词条统计">*/}
+                            {/*    <p>*/}
+                            {/*        创建者&emsp;&emsp;&emsp; {name1}*/}
+                            {/*    </p>*/}
+                            {/*    <p>*/}
+                            {/*        浏览次数&emsp;&emsp; 1次*/}
+                            {/*    </p>*/}
+                            {/*    <p>*/}
+                            {/*        编辑次数&emsp;&emsp; 2次<br/>*/}
+                            {/*        <a>查看历史</a>*/}
+                            {/*    </p>*/}
 
-                                <p>
-                                    最后修改者&emsp; {name2}
-                                </p>
-                            </Card>
+                            {/*    <p>*/}
+                            {/*        最后修改者&emsp; {name2}*/}
+                            {/*    </p>*/}
+                            {/*</Card>*/}
                         </Sider>
                     </Layout>
                     </Content>
