@@ -29,7 +29,7 @@ public class Disease {
 
     }
 
-    @Relationship(type ="accompany_with",direction = Relationship.OUTGOING)
+    @Relationship(type ="acompany_with",direction = Relationship.OUTGOING)
     private Set<Disease> accompany;
     public void addAccompany_disease(Disease disease){
         if(accompany == null) {
@@ -83,7 +83,7 @@ public class Disease {
         drug_detail.add(detail);
     }
 
-    @Relationship(type = "no_eat",direction = Relationship.OUTGOING)
+    @Relationship(type = "not_eat",direction = Relationship.OUTGOING)
     private Set<Food> no_eat;
 
     @Relationship(type = "has_symptom",direction = Relationship.OUTGOING)
@@ -113,7 +113,7 @@ public class Disease {
         cure_way.add(newOne);
     }
 
-    @Relationship(type = "recommand_dish",direction = Relationship.OUTGOING)
+    @Relationship(type = "recommend_dish",direction = Relationship.OUTGOING)
     private Set<Dish> recommend_dish;
     public void addRecommend_dish(Dish dish){
         if(recommend_dish == null) {

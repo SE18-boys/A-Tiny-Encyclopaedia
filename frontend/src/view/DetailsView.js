@@ -61,6 +61,7 @@ class DetailsView extends React.Component{
         const query = this.props.location.search;
         const arr = query.split('&');
         value = arr[0].substr(8);
+        console.log("value here is "+value)
         this.setState({search: value});
         // let params={'name':value};
         // searchDetails(params, this.callback);

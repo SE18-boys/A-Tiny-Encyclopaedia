@@ -42,8 +42,8 @@ export class AdminAvatar extends React.Component {
     }
     handleAdd = () => {
 
-        if (history.location.pathname !== "/AddEntry")
-            history.push("/AddEntry")
+        if (history.location.pathname !== "/AddEntryDetail")
+            history.push("/AddEntryDetail")
     }
 
     showProfile = () => {
