@@ -245,10 +245,10 @@ export class EntryDetails extends React.Component{
                             <i class="title-edit"/>
                             编辑
                         </a>
-                        <a class="bk-color-darkgrey content-title-add">
-                            <i class="wiki-add-icon"/>
-                            <span>添加义项</span>
-                        </a>
+                        {/*<a class="bk-color-darkgrey content-title-add">*/}
+                        {/*    <i class="wiki-add-icon"/>*/}
+                        {/*    <span>添加义项</span>*/}
+                        {/*</a>*/}
                     </div>
 
                     <div class="bk-title bk-font14 bk-color-topagrey content-sub-title">
