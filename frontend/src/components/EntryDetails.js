@@ -40,13 +40,23 @@ export class EntryDetails extends React.Component{
                 result: data.result,
                 names:data.possible_names,
                 type:data.status,
-                loading: false
+                loading: false,
+                noresult: false,
             });
         }
 
 
         //console.log("received data is:", data);
     };
+
+    componentWillReceiveProps(nextProps) {
+        if(this.props.name !== nextProps.name){
+            let value = nextProps.name;
+            let params={'name':value};
+            this.setState({loading: true});
+            searchDetails(params, this.callback);
+        }
+    }
 
     componentDidMount() {
         console.log("name is", this.props.name);
