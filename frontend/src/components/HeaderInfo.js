@@ -25,14 +25,14 @@ export class HeaderInfo extends React.Component {
         }
     };
 
-    search = (value) => {
-        console.log(value);
-        //let params={'name':value};
-        // if (history.location.pathname !== "/Details")
-            history.push('/Details?search='+value);
-        //console.log(params);
-        //searchDetails(params)
-    };
+    // search = (value) => {
+    //     console.log(value);
+    //     //let params={'name':value};
+    //     // if (history.location.pathname !== "/Details")
+    //         history.push('/Details?search='+value);
+    //     //console.log(params);
+    //     //searchDetails(params)
+    // };
 
     render(){
         // const user = JSON.parse(localStorage.getItem("user"));
