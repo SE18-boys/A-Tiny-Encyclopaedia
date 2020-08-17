@@ -33,6 +33,7 @@ class ProfileView extends React.Component {
     }
 
     componentDidMount() {
+        document.title = 'TouchFish-Profile'
         const user = JSON.parse(localStorage.getItem("user"));
         console.log("user info:", user);
         if (user == null) {
