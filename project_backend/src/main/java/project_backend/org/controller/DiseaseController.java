@@ -26,8 +26,11 @@ public class DiseaseController {
         int multiple_search=2;
         int not_found=3;
         Disease disease=diseaseService.findDiseaseByName(name);
+        System.out.println("findDiseaseByName(name) is ok");
         if(disease==null){
             List<Disease> diseases=diseaseService.findDiseasesByNameContains(name);
+            System.out.println("findDiseaseByNameContains(name) is ok");
+
             if(diseases.size()==0){
                 return new SearchUtil(not_found);
             }else{

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Input, AutoComplete} from 'antd';
+import {Button, Input, AutoComplete,message} from 'antd';
 import SearchOutlined from "@ant-design/icons/lib/icons/SearchOutlined";
 import {history} from "../utils/history";
 import logo from "../assets/logo1.png";
@@ -25,11 +25,16 @@ export class SearchBar extends React.Component {
 
     search = (value) => {
         console.log(value);
+        if(value===''){
+            message.info("查询的词条不能为空！",1)
+        }
         //let params={'name':value};
-        if (history.location.pathname !== "/Details")
-            history.push('/Details?search='+value);
-        //console.log(params);
-        //searchDetails(params)
+        else {
+            if (history.location.pathname !== "/Details")
+                history.push('/Details?search=' + value);
+            //console.log(params);
+            //searchDetails(params)
+        }
     };
 
     render() {
