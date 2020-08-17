@@ -18,6 +18,7 @@ export default class AddEntryDetailView extends React.Component {
     }
 
     componentDidMount() {
+        document.title = 'TouchFish-AddEntry'
     }
 
     render() {

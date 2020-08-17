@@ -72,6 +72,7 @@ class DetailsView extends React.Component{
     }
 
     componentDidMount(){
+        document.title = 'TouchFish-Search'
         const query = this.props.location.search;
         const arr = query.split('&');
         value = arr[0].substr(8);

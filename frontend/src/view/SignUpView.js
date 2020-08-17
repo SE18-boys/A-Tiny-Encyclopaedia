@@ -23,6 +23,7 @@ class SignUpView extends React.Component {
 
 
     componentDidMount() {
+        document.title = 'TouchFish-Register'
         const user = JSON.parse(localStorage.getItem("user"));
         console.log("user info:", user);
         if (user !== null) {
