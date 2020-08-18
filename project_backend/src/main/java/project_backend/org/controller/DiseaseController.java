@@ -29,9 +29,13 @@ public class DiseaseController {
         Disease disease=diseaseService.findDiseaseByName(name);
         System.out.println("findDiseaseByName(name) is ok");
         if(disease==null){
-            List<Disease> diseases=diseaseService.findDiseasesByNameContains(name);
+            List<Disease>diseases=new ArrayList<Disease>();
+            if(flag.equals("false")){
+                diseases=diseaseService.findDiseasesByNameContains(name);
+            }else{
+                diseases=diseaseService.findDiseasesByNameContainsLimited(name);
+            }
             System.out.println("findDiseaseByNameContains(name) is ok");
-
             if(diseases.size()==0){
                 return new SearchUtil(not_found);
             }else{

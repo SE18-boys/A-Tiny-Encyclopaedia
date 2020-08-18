@@ -187,8 +187,13 @@ public class DiseaseServiceImpl implements DiseaseService {
         return 0;
     }
 
-
+    @Override
     public List<Disease> findDiseasesByNameContains(String name){
         return diseaseDao.findDiseasesByNameContains(name);
+    }
+
+    @Override
+    public List<Disease> findDiseasesByNameContainsLimited(String name){
+        return diseaseDao.findDiseasesByNameContainsLimited(name);
     }
 }
