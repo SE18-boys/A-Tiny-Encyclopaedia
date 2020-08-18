@@ -14,5 +14,5 @@ public interface DiseaseRepository extends Neo4jRepository<Disease, Long> {
     @Query("MATCH(disease:Disease)"+
             "WHERE disease.name=~$name "+
              "RETURN disease LIMIT 15")
-    List<Disease> find(String name);
+    List<Disease> findByNameContainingLimited(String name);
 }

@@ -14,6 +14,7 @@ public interface DiseaseDao {
     //查
     Disease findByName(String name);
     List<Disease> findDiseasesByNameContains(String name);
+    List<Disease> findDiseasesByNameContainsLimited(String name);
 
     //增
     Disease addDisease(Disease disease);

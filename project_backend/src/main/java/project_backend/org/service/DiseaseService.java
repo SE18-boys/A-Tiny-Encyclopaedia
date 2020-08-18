@@ -11,6 +11,7 @@ public interface DiseaseService {
     //疾病
     Disease findDiseaseByName(String name);
     List<Disease> findDiseasesByNameContains(String name);
+    List<Disease> findDiseasesByNameContainsLimited(String name);
     Disease AddDisease(Disease disease);
     boolean UpdateAccompany_diseasesToDisease(String name, Set<String> accompany_names);
     void deleteDiseaseByName(String name);
