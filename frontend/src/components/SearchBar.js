@@ -3,7 +3,6 @@ import {Button, Input, AutoComplete,message} from 'antd';
 import SearchOutlined from "@ant-design/icons/lib/icons/SearchOutlined";
 import {history} from "../utils/history";
 import logo from "../assets/logo1.png";
-import {searchDetails} from "../services/SearchService";
 
 const {Option} = AutoComplete;
 const {Search} = Input;

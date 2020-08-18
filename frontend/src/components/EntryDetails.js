@@ -61,10 +61,15 @@ export class EntryDetails extends React.Component{
     componentDidMount() {
         console.log("name is", this.props.name);
         let value = this.props.name;
-        let params={'name':value};
+        let params={'name':value,'flag':true};
         searchDetails(params, this.callback);
     }
 
+    getAllResult(){
+        let value = this.props.name;
+        let params={'name':value,'flag':false};
+        searchDetails(params, this.callback);
+    }
 
     getDetails = (Entry, menu) => {
         if(Entry === null) return "暂无信息";
@@ -293,6 +298,7 @@ export class EntryDetails extends React.Component{
                 <div>
                     <div className="content-summary">
                         <span>{"未找到名称为"+value+"的词条，您可以手动添加或从以下的可能结果中查找"}<br/></span>
+                        <a onClick={()=>{this.getAllResult()}}>查看全部<br/></a>
                     </div>
                     <div>
                         {content}
