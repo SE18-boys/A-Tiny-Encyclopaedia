@@ -10,6 +10,7 @@ import {HeaderInfo} from "../components/HeaderInfo";
 import {EntryDetails} from "../components/EntryDetails";
 import MyFooter from "../components/MyFooter";
 import {history} from "../utils/history";
+import {searchDetails} from "../services/SearchService";
 
 const {Search} = Input;
 const name1 = "幽语";
@@ -52,15 +53,30 @@ class DetailsView extends React.Component{
         //let params={'name':value};
         else {
             this.setState({search: value});
+            history.push('/Details?search=' + value);
             //console.log(params);
             //searchDetails(params)
         }
     };
 
+    componentWillReceiveProps(nextProps) {
+
+        if(this.props.location.search !== nextProps.location.search){
+            console.log("whether go to here");
+            const query = nextProps.location.search;
+            const arr = query.split('&');
+            value = arr[0].substr(8);
+            console.log("value here is "+value);
+            this.setState({search: value});
+        }
+    }
+
     componentDidMount(){
+        document.title = 'TouchFish-Search'
         const query = this.props.location.search;
         const arr = query.split('&');
         value = arr[0].substr(8);
+        console.log("value here is "+value);
         this.setState({search: value});
         // let params={'name':value};
         // searchDetails(params, this.callback);

@@ -15,6 +15,7 @@ class HomeView extends React.Component{
     }
 
     componentDidMount(){
+        document.title = 'TouchFish-Homepage'
     }
 
     render(){

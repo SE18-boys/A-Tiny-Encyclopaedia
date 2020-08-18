@@ -16,6 +16,7 @@ class EntryAuditsView extends React.Component {
     }
 
     componentDidMount(){
+        document.title = 'TouchFish-AdminCheck'
         let user = localStorage.getItem("user");
         this.setState({user:user});
     }

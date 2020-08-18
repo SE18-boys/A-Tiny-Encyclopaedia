@@ -32,6 +32,7 @@ class AuditDetailsView extends React.Component{
     };
 
     componentDidMount(){
+        document.title = 'TouchFish-CheckDetails'
         const query = this.props.location.query;
         console.log("get", query);
         this.setState({Audit: query});

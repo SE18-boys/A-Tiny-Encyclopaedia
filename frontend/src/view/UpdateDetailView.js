@@ -17,6 +17,7 @@ export default class UpdateDetailView extends React.Component {
     }
 
     componentDidMount() {
+        document.title = 'TouchFish-Modify'
     }
 
     render() {
