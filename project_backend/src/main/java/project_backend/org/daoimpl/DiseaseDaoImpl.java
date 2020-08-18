@@ -29,7 +29,7 @@ public class DiseaseDaoImpl implements DiseaseDao {
 
     @Override
     public List<Disease> findDiseasesByNameContains(String name){
-        return diseaseRepository.findDiseasesByNameContains(name);
+        return diseaseRepository.find(".*"+name+".*");
 
     }
 

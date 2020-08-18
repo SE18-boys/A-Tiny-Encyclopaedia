@@ -17,7 +17,6 @@ public class DiseaseController {
     @Autowired
     private DiseaseService diseaseService;
 
-
     //疾病
     @RequestMapping("/DiseaseByName")
     public SearchUtil findDiseaseByName(@RequestBody Map<String, String> parms){
