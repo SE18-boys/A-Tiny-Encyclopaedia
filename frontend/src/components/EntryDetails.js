@@ -53,7 +53,7 @@ export class EntryDetails extends React.Component{
     componentWillReceiveProps(nextProps) {
         if(this.props.name !== nextProps.name){
             let value = nextProps.name;
-            let params={'name':value};
+            let params={'name':value, 'flag': true};
             this.setState({loading: true});
             searchDetails(params, this.callback);
         }

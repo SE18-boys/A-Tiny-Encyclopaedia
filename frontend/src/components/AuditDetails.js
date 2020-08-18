@@ -38,7 +38,7 @@ export class AuditDetails extends React.Component{
         console.log("Audit is", this.props.Audit);
         let audit = this.props.Audit;
         let value = audit.name;
-        let params={'name':value};
+        let params={'name':value, 'flag':true};
         this.setState({Audit: audit});
         searchDetails(params, this.callback);
     }
