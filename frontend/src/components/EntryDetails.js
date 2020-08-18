@@ -4,6 +4,7 @@ import '../css/BKDetail.css'
 import {searchDetails} from "../services/SearchService";
 import {searchAccurate} from "../services/SearchService";
 import {history} from "../utils/history";
+import {Link} from "react-router-dom";
 const DiseaseMenu = ["就诊科室","病因","症状","检查","并发症","治疗","药物","宜吃食物","忌吃食物","传播","预防措施"];
 export class EntryDetails extends React.Component{
 
@@ -62,6 +63,7 @@ export class EntryDetails extends React.Component{
         console.log("name is", this.props.name);
         let value = this.props.name;
         let params={'name':value,'flag':true};
+        //console.log("ttt", value);
         searchDetails(params, this.callback);
     }
 
@@ -70,6 +72,10 @@ export class EntryDetails extends React.Component{
         let params={'name':value,'flag':false};
         searchDetails(params, this.callback);
     }
+
+    linkto = (value) => {
+        history.push('/Details?search=' + value);
+    };
 
     getDetails = (Entry, menu) => {
         if(Entry === null) return "暂无信息";
@@ -110,7 +116,10 @@ export class EntryDetails extends React.Component{
                 let accompany_diseases = Entry.accompany;
                 if(accompany_diseases === null || accompany_diseases === undefined) return "无";
                 for(let i=0; i<accompany_diseases.length; ++i){
-                    detail.push(<a>{accompany_diseases[i].name}<br/></a>)
+                    detail.push(
+                        <a onClick={()=>this.linkto(accompany_diseases[i].name)}>
+                            {accompany_diseases[i].name}<br/>
+                        </a>)
                 }
                 return detail;
             case "治疗":
