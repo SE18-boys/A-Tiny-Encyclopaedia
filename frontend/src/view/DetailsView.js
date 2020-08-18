@@ -10,7 +10,6 @@ import {HeaderInfo} from "../components/HeaderInfo";
 import {EntryDetails} from "../components/EntryDetails";
 import MyFooter from "../components/MyFooter";
 import {history} from "../utils/history";
-import {searchDetails} from "../services/SearchService";
 
 const {Search} = Input;
 const name1 = "幽语";

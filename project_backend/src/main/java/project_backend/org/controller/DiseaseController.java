@@ -21,6 +21,8 @@ public class DiseaseController {
     @RequestMapping("/DiseaseByName")
     public SearchUtil findDiseaseByName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
+        String flag = parms.get("flag");
+        System.out.print("flag value: "+flag+'\n');
         int single_search=1;
         int multiple_search=2;
         int not_found=3;
