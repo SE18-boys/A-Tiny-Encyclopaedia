@@ -55,15 +55,6 @@ public class User {
     }
 
     @Basic
-    @Column(name = "isAuth")
-    public Boolean getIs_auth(){
-        return this.isAuth;
-    }
-    public void setIs_auth(Boolean is_auth){
-        this.isAuth=is_auth;
-    }
-
-    @Basic
     @Column(name = "role")
     public String getRole() { return  this.role; }
     public void setRole(String role) { this.role = role; }
