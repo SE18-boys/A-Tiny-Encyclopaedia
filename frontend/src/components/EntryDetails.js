@@ -257,7 +257,7 @@ export class EntryDetails extends React.Component{
             else if(this.state.noresult){
                 return (
                     <div>
-                        没找到！你是傻逼吗？
+                        没找到！
                     </div>
                 )
             }
@@ -270,10 +270,6 @@ export class EntryDetails extends React.Component{
                             <i class="title-edit"/>
                             编辑
                         </a>
-                        {/*<a class="bk-color-darkgrey content-title-add">*/}
-                        {/*    <i class="wiki-add-icon"/>*/}
-                        {/*    <span>添加义项</span>*/}
-                        {/*</a>*/}
                     </div>
 
                     <div class="bk-title bk-font14 bk-color-topagrey content-sub-title">
@@ -300,14 +296,14 @@ export class EntryDetails extends React.Component{
             let content=[];
             for(let i=0;i<names.length;i++){
                 content.push(
-                    <a onClick={()=>{this.getAccurate(names[i])}}>{names[i]}<br/></a>
+                    <a id={names[i]} onClick={()=>{this.getAccurate(names[i])}}>{names[i]}<br/></a>
                 )
             }
             return (
                 <div>
                     <div className="content-summary">
                         <span>{"未找到名称为"+value+"的词条，您可以手动添加或从以下的可能结果中查找"}<br/></span>
-                        <a onClick={()=>{this.getAllResult()}}>查看全部<br/></a>
+                        <a id="see_all" onClick={()=>{this.getAllResult()}}>查看全部<br/></a>
                     </div>
                     <div>
                         {content}
