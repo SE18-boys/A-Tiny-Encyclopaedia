@@ -1,4 +1,4 @@
-import {Form, Input, InputNumber, Button, message} from 'antd';
+import {Form, Input, Button, message} from 'antd';
 import React from "react";
 import "../css/addEntryForm.css"
 import MinusCircleOutlined from "@ant-design/icons/lib/icons/MinusCircleOutlined";
@@ -70,12 +70,9 @@ export default class AddEntryDetailForm extends React.Component {
             let values=this.props.initValues
             console.log("before init values is ")
             console.log(values)
-            let final=values
 
             for(const pro in values)
             {
-                // console.log(pro)
-                // console.log(values[pro])
                 if(values[pro]!==null && multiList.indexOf(pro)!==-1)
                 {
                     console.log('enter for');

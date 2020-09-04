@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Divider, message, Row, Col, Input} from 'antd'
+import {Button, message, Row, Col, Input} from 'antd'
 import '../css/BKDetail.css'
 import '../css/Audit.css'
 import {searchDetails} from "../services/SearchService";
@@ -24,15 +24,12 @@ export class AuditDetails extends React.Component{
         console.log(data);
         if(data.result === null)
         {
-            //message.info("此词条已被删除或这是一个新词条！")
-            // history.push('/')
             data.result = {name: "这是一个新词条"};
             this.setState({result: data.result });
         }
 
         this.setState({result: data.result});
         console.log("result", data.result);
-        //console.log("received data is:", data);
     };
 
     componentDidMount() {
@@ -50,11 +47,8 @@ export class AuditDetails extends React.Component{
         if(Entry.id === -1) return "暂无信息";
 
         const detail = [];
-        //const audit = this.state.Audit;
         switch (menu) {
             case "就诊科室":
-                // let department = [];
-                //console.log("disease: ", Entry);
                 let department = Entry.cure_department;
                 if(department === null || department === undefined) return "暂无相关资料！";
                 for(let i=0; i<Entry.cure_department.length; ++i){
@@ -173,11 +167,8 @@ export class AuditDetails extends React.Component{
         if(Entry.id === -1) return "暂无信息";
 
         const detail = [];
-        //const audit = this.state.Audit;
         switch (menu) {
             case "就诊科室":
-                // let department = [];
-                //console.log("disease: ", Entry);
                 let department = Entry.cure_department;
                 if(department === null || department === undefined) return "暂无相关资料！";
                 for(let i=0; i<Entry.cure_department.length; ++i){
@@ -291,9 +282,6 @@ export class AuditDetails extends React.Component{
     };
 
     update=()=>{
-        let value=this.state.result;
-        // this.
-
         let path= {
             pathname:'/UpdateEntryDetail',
             state:this.state.result
@@ -330,8 +318,6 @@ export class AuditDetails extends React.Component{
     };
 
     render() {
-        // const beforeChange =[];
-        // const afterChange = [];
         const audit = [];
         for(let i=0; i<DiseaseMenu.length; ++i){
             audit.push(
@@ -389,10 +375,6 @@ export class AuditDetails extends React.Component{
                             <span>{this.state.result.desc}<br/><br/></span>
                         </div>
 
-                        {/*<div>*/}
-                        {/*    {beforeChange}*/}
-                        {/*</div>*/}
-
                     </Col>
                     <Col span={12}>
                         <div className="bk-title bk-font36 content-title">
@@ -406,10 +388,6 @@ export class AuditDetails extends React.Component{
                         <div className="content-summary">
                             <span>{this.state.Audit.desc}<br/><br/></span>
                         </div>
-
-                        {/*<div>*/}
-                        {/*    {afterChange}*/}
-                        {/*</div>*/}
                     </Col>
                 </Row>
                 {audit}
@@ -428,38 +406,3 @@ export class AuditDetails extends React.Component{
     }
 }
 
-//应该用不上的代码
-// beforeChange.push(
-//     <div class="content-p">
-//         <div class="title-1">
-//             <div class="bk-flex">
-//                 <div class="title-detail">
-//                                 <span>
-//                                     {DiseaseMenu[i]}
-//                                 </span>
-//                     <a class="title-anchor"></a>
-//                 </div>
-//             </div>
-//         </div>
-//         <div>
-//             {this.getDetails(this.state.result, DiseaseMenu[i])}
-//         </div>
-//     </div>
-// );
-// afterChange.push(
-//     <div className="content-p">
-//         <div className="title-1">
-//             <div className="bk-flex">
-//                 <div className="title-detail">
-//                                 <span>
-//                                     {DiseaseMenu[i]}
-//                                 </span>
-//                     <a className="title-anchor"></a>
-//                 </div>
-//             </div>
-//         </div>
-//         <div>
-//             {this.getDetails(this.state.Audit, DiseaseMenu[i])}
-//         </div>
-//     </div>
-// )

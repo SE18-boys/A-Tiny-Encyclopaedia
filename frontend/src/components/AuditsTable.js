@@ -56,11 +56,6 @@ export class AuditsTable extends React.Component {
                 title: '申请日期',
                 dataIndex: 'submit_date',
                 key: 'date',
-                // render : (id) => {
-                //     return (
-                //         <span>{id.date}</span>
-                //     )
-                // }
             },
             {
                 title: '操作',
