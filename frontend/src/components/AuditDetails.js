@@ -31,6 +31,7 @@ export class AuditDetails extends React.Component{
         }
 
         this.setState({result: data.result});
+        console.log("result", data.result);
         //console.log("received data is:", data);
     };
 
@@ -166,6 +167,129 @@ export class AuditDetails extends React.Component{
         }
     };
 
+    getAuditDetails = (Entry, menu) => {
+        if(Entry === null) return "暂无信息";
+        if(Entry.length === 0) return "暂无信息";
+        if(Entry.id === -1) return "暂无信息";
+
+        const detail = [];
+        //const audit = this.state.Audit;
+        switch (menu) {
+            case "就诊科室":
+                // let department = [];
+                //console.log("disease: ", Entry);
+                let department = Entry.cure_department;
+                if(department === null || department === undefined) return "暂无相关资料！";
+                for(let i=0; i<Entry.cure_department.length; ++i){
+                    detail.push(<a>{department[i]}<br/></a>)
+                }
+                console.log("department: ", Entry.cure_department);
+                return detail;
+            case "病因":
+                if(Entry.cause === null || Entry.cause === undefined) return "暂无相关资料！";
+                detail.push(<span>{Entry.cause}</span>);
+                return detail;
+            case "症状":
+                let related_symptom = Entry.symptom;
+                if(related_symptom === null || related_symptom === undefined ) return "暂无相关资料！";
+                for(let i=0; i<related_symptom.length; ++i){
+                    detail.push(<a>{related_symptom[i]}<br/></a>)
+                }
+                return detail;
+            case "检查":
+                let need_check = Entry.check;
+                if(need_check === null || need_check === undefined) return "暂无相关资料！";
+                for(let i=0; i<need_check.length; ++i){
+                    detail.push(<a>{need_check[i]}<br/></a>)
+                }
+                return detail;
+            case "并发症":
+                let accompany_diseases = Entry.accompany;
+                if(accompany_diseases === null || accompany_diseases === undefined) return "无";
+                for(let i=0; i<accompany_diseases.length; ++i){
+                    detail.push(<a>{accompany_diseases[i]}<br/></a>)
+                }
+                return detail;
+            case "治疗":
+                let cure_by = Entry.cure_way;
+                let cure_prob = Entry.cured_prob;
+                let yibao_status = Entry.yibao_status;
+                let cure_lasttime = Entry.cure_lasttime;
+                let cost_money = Entry.cost;
+                if(cure_by === null || cure_by === undefined) return "暂无相关资料！";
+                for(let i=0; i<cure_by.length; ++i){
+                    detail.push(<a>{cure_by[i]}<br/></a>)
+                }
+                if(cure_prob !== null && cure_prob !== undefined)
+                    detail.push(<span><br/>治愈率: {cure_prob}</span>);
+                if(yibao_status !== null && yibao_status !== undefined){
+                    if(yibao_status === "是")
+                        detail.push(<span><br/>已加入医保</span>);
+                    else
+                        detail.push(<span><br/>未加入医保</span>)
+                }
+
+                if(cure_lasttime !== null && cure_lasttime !== undefined)
+                    detail.push(<span><br/>最晚治愈时间: {cure_lasttime}</span>);
+                if(cost_money !== null && cost_money !== undefined)
+                    detail.push(<span><br/>治疗花费: {cost_money}</span>);
+                return detail;
+            case "宜吃食物":
+                let do_eat = Entry.do_eat;
+                if(do_eat === null || do_eat === undefined) return "无";
+                for(let i=0; i<do_eat.length; ++i){
+                    detail.push(<a>{do_eat[i]}<br/></a>)
+                }
+                return detail;
+            case "忌吃食物":
+                let no_eat = Entry.not_eat;
+                if(no_eat === null || no_eat === undefined) return "无";
+                for(let i=0; i<no_eat.length; ++i){
+                    detail.push(<a>{no_eat[i]}<br/></a>)
+                }
+                return detail;
+            case "传播":
+                let get_way = Entry.get_way;
+                let easy_get = Entry.easy_get;
+                let get_prob = Entry.get_prob;
+                if(get_way !== null && get_way !== undefined)
+                    detail.push(<span>感染途径: {get_way}<br/></span>);
+                if(easy_get !== null && get_way !== undefined)
+                    detail.push(<span>易感人群: {easy_get}<br/></span>);
+                if(get_prob !== null && get_prob !== undefined)
+                    detail.push(<span>感染率: {get_prob}<br/></span>);
+                return detail;
+            case "预防措施":
+                let prevent = Entry.prevent;
+                if(prevent === null || prevent === undefined)
+                    return "暂无相关资料！";
+                detail.push(<span>{prevent}</span>);
+                return detail;
+            case "药物":
+                let flag = true;
+                let common_drug = Entry.common_drug;
+                let recommend_drug = Entry.recommend_drug;
+                if(common_drug !== null && common_drug !== undefined) {
+                    detail.push(<span>常用药物:<br/></span>);
+                    for(let i=0; i<common_drug.length; ++i){
+                        detail.push(<a>{common_drug[i]}<br/></a>)
+                    }
+                    flag = false;
+                }
+                if(recommend_drug !== null && recommend_drug !== undefined) {
+                    detail.push(<span>推荐药物:<br/></span>);
+                    for(let i=0; i<recommend_drug.length; ++i){
+                        detail.push(<a>{recommend_drug[i]}<br/></a>)
+                    }
+                    flag = false;
+                }
+                if(flag)
+                    detail.push(<span>暂无相关资料！</span>)
+                return detail;
+            default: return detail;
+        }
+    };
+
     update=()=>{
         let value=this.state.result;
         // this.
@@ -242,7 +366,7 @@ export class AuditDetails extends React.Component{
                                 </div>
                             </div>
                             <div>
-                                {this.getDetails(this.state.Audit, DiseaseMenu[i])}
+                                {this.getAuditDetails(this.state.Audit, DiseaseMenu[i])}
                             </div>
                         </div>
                     </Col>
