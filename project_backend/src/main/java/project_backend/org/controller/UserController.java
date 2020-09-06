@@ -1,6 +1,7 @@
 package project_backend.org.controller;
 
 import net.sf.json.JSONObject;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,8 +34,12 @@ public class UserController {
             obj.put("role",auth.getRole());
             SessionUtil.setSession(obj);
             JSONObject data=JSONObject.fromObject(auth);
+            Logger logger = Logger.getLogger(UserController.class);
+            logger.info("Path:loginmessage,status:access!"+"username:"+name+"\t"+"role:"+auth.getRole());
             return MsgUtil.makeMsg(MsgUtil.SUCCESS,MsgUtil.LOGIN_SUCCESS_MSG,data);
         }else{
+            Logger logger = Logger.getLogger(UserController.class);
+            logger.error("Path:loginmessage,status:fail!"+"username:"+name+"\t"+"password:"+password);
             return MsgUtil.makeMsg(MsgUtil.LOGIN_USER_ERROR,MsgUtil.LOGIN_USER_ERROR_MSG);
         }
     }
@@ -54,8 +59,12 @@ public class UserController {
             user.setEmail(email);
             user.setRole("ROLE_USER");
             userService.addUser(user);
+            Logger logger = Logger.getLogger(UserController.class);
+            logger.info("Path:register,status:access!"+"username:"+name+"\t"+"email:"+email);
             return MsgUtil.makeMsg(MsgUtil.SUCCESS,MsgUtil.REGISTER_SUCCESS_MSG);
         }else{
+            Logger logger = Logger.getLogger(UserController.class);
+            logger.error("Path:register,status:fail!"+"username:"+name+"\t"+"email:"+email);
             return MsgUtil.makeMsg(MsgUtil.REGISTER_ERROR,MsgUtil.REGISTER_ERROR_MSG);
         }
     }
