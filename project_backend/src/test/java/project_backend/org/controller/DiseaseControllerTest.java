@@ -74,7 +74,7 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
         //test success example
         JSONObject jsonData = new JSONObject();
         jsonData.put("name", "肺炎");
-
+        jsonData.put("flag", false);
         String responseString = mockMvc.perform(post("/DiseaseByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData)).param("pcode","root"))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
@@ -84,8 +84,19 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
         //test if else example
         JSONObject jsonData2 = new JSONObject();
         jsonData2.put("name", "歪比歪比");
-
+        jsonData2.put("flag", false);
         String responseString2 = mockMvc.perform(post("/DiseaseByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData2)).param("pcode","root"))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+
+//        Disease disease2 = om.readValue(responseString2, new TypeReference<Disease>() {});
+//        System.out.println("feedback result: " + "failed" +" : "+ disease2);
+
+        //test if else example
+        JSONObject jsonData2else = new JSONObject();
+        jsonData2else.put("name", "歪比歪比");
+        jsonData2else.put("flag", true);
+        String responseString4 = mockMvc.perform(post("/DiseaseByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData2else)).param("pcode","root"))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
@@ -95,7 +106,7 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
         //test failed example
         JSONObject jsonData3 = new JSONObject();
         jsonData3.put("name", "肺");
-
+        jsonData3.put("flag", false);
         String responseString3 = mockMvc.perform(post("/DiseaseByName").contentType(MediaType.APPLICATION_JSON).content(String.valueOf(jsonData3)).param("pcode","root"))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
