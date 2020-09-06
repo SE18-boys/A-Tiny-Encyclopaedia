@@ -37,6 +37,7 @@ const formItemLayoutWithOutLabel = {
 const DiseaseAttributes = [
     {name: 'desc', label: "疾病描述"},
     {name: 'prevent', label: "预防方法"},
+    {name: 'cause', label: "病因"},
     {name: 'yibao_status', label: "是否纳入医保"},
     {name: 'get_prob', label: "患病率"},
     {name: 'easy_get', label: "易感人群"},
