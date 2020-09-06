@@ -10,10 +10,29 @@ import {
 import "../css/addEntryForm.css"
 import {history} from "../utils/history";
 
+
 const {Option} =Select;
 
 export default class EntryAttributeForm extends React.Component {
 
+
+    constructor(props) {
+        super(props);
+        this.state={
+            isSignIn: false,
+        }
+    }
+
+    componentDidMount() {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user !== null) {
+            this.setState({isSignIn: true})
+        }
+        else {
+            message.error("请先登录再进行此操作！");
+            history.push("/SignUp");
+        }
+    }
 
     onChange=(value)=>{
         console.log(value);

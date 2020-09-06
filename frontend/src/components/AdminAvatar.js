@@ -63,7 +63,7 @@ export class AdminAvatar extends React.Component {
     };
 
     logout = () => {
-        userService.logout(this.callback());
+        userService.logout(this.callback);
     };
 
     render() {
@@ -103,17 +103,32 @@ export class AdminAvatar extends React.Component {
         // const {user} = this.props;
 
 
-        return (
-            <div id="avatar">
+        if(this.state.isSignIn){
+            return (
+                <div id="avatar">
                 <span style={{padding: "10px"}}>
                     <Button onClick={this.handleAdd} id="add_entry">创建词条</Button>
                 </span>
-                <span className="name">{this.signUpInfo()}</span>
-                <Dropdown overlay={menu} placement="bottomRight">
-                    <SettingFilled/>
-                </Dropdown>
-            </div>
-        );
+
+                    <span className="name">{this.signUpInfo()}</span>
+                    <Dropdown overlay={menu} placement="bottomRight">
+                        {/*<Avatar src={user.userIcon.iconBase64} style={{cursor:"pointer"}}/>*/}
+                        <SettingFilled/>
+                    </Dropdown>
+                </div>
+            );
+        }
+        else {
+            return (
+                <div id="avatar">
+                <span style={{padding: "10px"}}>
+                    <Button onClick={this.handleAdd} id="add_entry">创建词条</Button>
+                </span>
+                    <span className="name">{this.signUpInfo()}</span>
+                </div>
+            );
+        }
+
     }
 }
 
