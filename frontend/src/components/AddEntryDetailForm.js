@@ -65,6 +65,14 @@ const multiList = [
 export default class AddEntryDetailForm extends React.Component {
     constructor(props) {
         super(props);
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user !== null) {
+            this.setState({isSignIn: true})
+        }
+        else {
+            message.error("请先登录再进行此操作！");
+            history.push("/SignUp");
+        }
         if(this.props.isUpdate===true)
         {
             let values=this.props.initValues

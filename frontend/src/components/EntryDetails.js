@@ -53,6 +53,10 @@ export class EntryDetails extends React.Component{
 
     componentWillReceiveProps(nextProps) {
         if(this.props.name !== nextProps.name){
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (user !== null) {
+                this.setState({isSignIn: true})
+            }
             let value = nextProps.name;
             let params={'name':value, 'flag': true};
             this.setState({loading: true});
