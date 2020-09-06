@@ -84,7 +84,7 @@ public class Disease {
     }
 
     @Relationship(type = "not_eat",direction = Relationship.OUTGOING)
-    private Set<Food> no_eat;
+    private Set<Food> not_eat;
 
     @Relationship(type = "has_symptom",direction = Relationship.OUTGOING)
     private Set<Symptom> symptom;
@@ -268,11 +268,11 @@ public class Disease {
     }
 
     public Set<Food> getNo_eat() {
-        return no_eat;
+        return not_eat;
     }
 
     public void setNo_eat(Set<Food> no_eat) {
-        this.no_eat = no_eat;
+        this.not_eat = no_eat;
     }
 
     public Set<Symptom> getSymptom() {

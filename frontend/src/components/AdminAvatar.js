@@ -86,7 +86,7 @@ export class AdminAvatar extends React.Component {
         if(this.state.user.role === "ROLE_ADMIN"){
             menuitem.push(
                 <Menu.Item>
-                    <a href="/EntryAuditS" >
+                    <a id="EntryAudit" href="/EntryAuditS" >
                         Entry Audit
                     </a>
                 </Menu.Item>
@@ -109,6 +109,7 @@ export class AdminAvatar extends React.Component {
                 <span style={{padding: "10px"}}>
                     <Button onClick={this.handleAdd} id="add_entry">创建词条</Button>
                 </span>
+
                     <span className="name">{this.signUpInfo()}</span>
                     <Dropdown overlay={menu} placement="bottomRight">
                         {/*<Avatar src={user.userIcon.iconBase64} style={{cursor:"pointer"}}/>*/}

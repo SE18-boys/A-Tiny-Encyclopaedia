@@ -1,5 +1,6 @@
 package project_backend.org.controller;
 
+import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +23,8 @@ public class DiseaseController {
     public SearchUtil findDiseaseByName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
         String flag = parms.get("flag");
-        System.out.print("flag value: "+flag+'\n');
+        Logger logger = Logger.getLogger(DiseaseController.class);
+        logger.info("Path:DiseaseByName,"+"name:"+name+"\t"+"flag:"+flag);
         int single_search=1;
         int multiple_search=2;
         int not_found=3;

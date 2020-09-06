@@ -3,7 +3,7 @@ import {history} from "./history";
 
 
 // 后端的url
-export const apiUrl='http://localhost:8088';
+export const apiUrl='http://localhost:8080';
 
 let deleteRequest = (url, json, callback) => {
     let opts = {

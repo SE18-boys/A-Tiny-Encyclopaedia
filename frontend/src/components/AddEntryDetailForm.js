@@ -1,4 +1,4 @@
-import {Form, Input, InputNumber, Button, message} from 'antd';
+import {Form, Input, Button, message} from 'antd';
 import React from "react";
 import "../css/addEntryForm.css"
 import MinusCircleOutlined from "@ant-design/icons/lib/icons/MinusCircleOutlined";
@@ -37,6 +37,7 @@ const formItemLayoutWithOutLabel = {
 const DiseaseAttributes = [
     {name: 'desc', label: "疾病描述"},
     {name: 'prevent', label: "预防方法"},
+    {name: 'cause', label: "病因"},
     {name: 'yibao_status', label: "是否纳入医保"},
     {name: 'get_prob', label: "患病率"},
     {name: 'easy_get', label: "易感人群"},
@@ -78,12 +79,9 @@ export default class AddEntryDetailForm extends React.Component {
             let values=this.props.initValues
             console.log("before init values is ")
             console.log(values)
-            let final=values
 
             for(const pro in values)
             {
-                // console.log(pro)
-                // console.log(values[pro])
                 if(values[pro]!==null && multiList.indexOf(pro)!==-1)
                 {
                     console.log('enter for');

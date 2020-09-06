@@ -1,10 +1,8 @@
 import React from 'react'
-import {Button, message} from 'antd'
 import '../css/BKDetail.css'
 import {searchDetails} from "../services/SearchService";
 import {searchAccurate} from "../services/SearchService";
 import {history} from "../utils/history";
-import {Link} from "react-router-dom";
 const DiseaseMenu = ["就诊科室","病因","症状","检查","并发症","治疗","药物","宜吃食物","忌吃食物","传播","预防措施"];
 export class EntryDetails extends React.Component{
 
@@ -26,7 +24,6 @@ export class EntryDetails extends React.Component{
 
         {
             let value = this.props.name;
-            // message.info("暂未查询到有关"+value+"的任何结果！您可以添加此词条！")
             this.setState(
                 {
                     result: ["1"],
@@ -46,9 +43,6 @@ export class EntryDetails extends React.Component{
                 noresult: false,
             });
         }
-
-
-        //console.log("received data is:", data);
     };
 
     componentWillReceiveProps(nextProps) {
@@ -94,7 +88,6 @@ export class EntryDetails extends React.Component{
         const detail = [];
         switch (menu) {
             case "就诊科室":
-                // let department = [];
                 console.log("disease: ", Entry);
                 let department = Entry.cure_department;
                 if(department === null || department === undefined) return "暂无相关资料！";
@@ -269,7 +262,7 @@ export class EntryDetails extends React.Component{
             else if(this.state.noresult){
                 return (
                     <div>
-                        没有找到结果！
+                        没找到！
                     </div>
                 )
             }
@@ -282,10 +275,6 @@ export class EntryDetails extends React.Component{
                             <i class="title-edit"/>
                             编辑
                         </a>
-                        {/*<a class="bk-color-darkgrey content-title-add">*/}
-                        {/*    <i class="wiki-add-icon"/>*/}
-                        {/*    <span>添加义项</span>*/}
-                        {/*</a>*/}
                     </div>
 
                     <div class="bk-title bk-font14 bk-color-topagrey content-sub-title">
@@ -312,14 +301,14 @@ export class EntryDetails extends React.Component{
             let content=[];
             for(let i=0;i<names.length;i++){
                 content.push(
-                    <a onClick={()=>{this.getAccurate(names[i])}}>{names[i]}<br/></a>
+                    <a id={names[i]} onClick={()=>{this.getAccurate(names[i])}}>{names[i]}<br/></a>
                 )
             }
             return (
                 <div>
                     <div className="content-summary">
                         <span>{"未找到名称为"+value+"的词条，您可以手动添加或从以下的可能结果中查找"}<br/></span>
-                        <a onClick={()=>{this.getAllResult()}}>查看全部<br/></a>
+                        <a id="see_all" onClick={()=>{this.getAllResult()}}>查看全部<br/></a>
                     </div>
                     <div>
                         {content}
