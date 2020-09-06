@@ -16,6 +16,7 @@ export class EntryDetails extends React.Component{
             type:1,
             loading: true,
             noresult: false,
+            isSignIn: false,
         }
     }
 
@@ -61,6 +62,10 @@ export class EntryDetails extends React.Component{
 
     componentDidMount() {
         console.log("name is", this.props.name);
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user !== null) {
+            this.setState({isSignIn: true})
+        }
         let value = this.props.name;
         let params={'name':value,'flag':true};
         //console.log("ttt", value);
@@ -204,14 +209,17 @@ export class EntryDetails extends React.Component{
 
     update=()=>{
 
-        let value=this.state.result;
-        // this.
-
-        let path= {
+        if(this.state.isSignIn){
+            let path= {
                 pathname:'/UpdateEntryDetail',
                 state:this.state.result
             };
-        history.push(path);
+            history.push(path);
+        }
+        else {
+            message.error("请先登录再进行此操作！");
+            history.push("/SignUp")
+        }
 
 
     };
@@ -257,7 +265,7 @@ export class EntryDetails extends React.Component{
             else if(this.state.noresult){
                 return (
                     <div>
-                        没找到！你是傻逼吗？
+                        没有找到结果！
                     </div>
                 )
             }

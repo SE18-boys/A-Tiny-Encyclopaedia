@@ -333,6 +333,7 @@ export class AuditDetails extends React.Component{
         // const beforeChange =[];
         // const afterChange = [];
         const audit = [];
+        const foot = [];
         for(let i=0; i<DiseaseMenu.length; ++i){
             audit.push(
                 <Row>
@@ -373,6 +374,51 @@ export class AuditDetails extends React.Component{
                 </Row>
             );
         }
+
+        if(this.state.Audit.status === "待审核"){
+            foot.push(
+                <div>
+                    <Button onClick={()=>this.updateNeo4j()}>通过</Button>
+                    <Button type={"danger"} onClick={()=>this.disaproving()}>不通过</Button>
+                    <div>
+                        <span>理由: </span>
+                        <Input defaultValue="不通过" onChange={this.handelChange.bind(this)}/>
+                    </div>
+
+                </div>
+            )
+        }
+        else if(this.state.Audit.status === "未通过"){
+            let reason = this.state.Audit.reason;
+            if(reason === null || reason === ""){
+                reason = "无";
+            }
+            foot.push(
+                <div>
+                    <div>
+                        <p className="title-2">未通过！</p>
+                        <span>理由: </span>
+                        <p>{reason}</p>
+                        <span>审核时间:</span>
+                        <p>{this.state.Audit.audit_date}</p>
+                    </div>
+                </div>
+            )
+        }
+        else {
+            foot.push(
+                <div>
+                    <div>
+                        <p className="title-3">已通过！</p>
+                        <span>审核时间:</span>
+                        <p>{this.state.Audit.audit_date}</p>
+                    </div>
+
+                </div>
+            )
+        }
+
+
         return(
             <div>
                 <Row>
@@ -413,15 +459,7 @@ export class AuditDetails extends React.Component{
                     </Col>
                 </Row>
                 {audit}
-                <div>
-                    <Button onClick={()=>this.updateNeo4j()}>通过</Button>
-                    <Button type={"danger"} onClick={()=>this.disaproving()}>不通过</Button>
-                    <div>
-                        <span>理由: </span>
-                        <Input defaultValue="不通过" onChange={this.handelChange.bind(this)}/>
-                    </div>
-
-                </div>
+                {foot}
             </div>
 
         )
