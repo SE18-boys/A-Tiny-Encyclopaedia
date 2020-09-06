@@ -68,7 +68,7 @@ export default class EntryAttributeForm extends React.Component {
                         </Select>
                     </Form.Item>
                     <Form.Item >
-                        <Button type="primary" htmlType="submit" className="form-button" size={"large"}>创建词条</Button>
+                        <Button id="add" type="primary" htmlType="submit" className="form-button" size={"large"}>创建词条</Button>
                     </Form.Item>
                 </Form>
             </div>

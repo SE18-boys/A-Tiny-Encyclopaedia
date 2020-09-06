@@ -309,7 +309,7 @@ export class AuditDetails extends React.Component{
     message = (data) => {
         if(data !== null && data !== undefined){
             message.success("操作成功!");
-            history.push("/");
+            history.push("/EntryAuditS");
         }
         else  {
             message.error("操作失败!");
@@ -363,7 +363,7 @@ export class AuditDetails extends React.Component{
             <div>
                 <Row>
                     <Col span={12}>
-                        <div className="bk-title bk-font36 content-title">
+                        <div id="name_before" className="bk-title bk-font36 content-title">
                             {this.state.result.name}
                         </div>
 
@@ -377,7 +377,7 @@ export class AuditDetails extends React.Component{
 
                     </Col>
                     <Col span={12}>
-                        <div className="bk-title bk-font36 content-title">
+                        <div id="name_after" className="bk-title bk-font36 content-title">
                             {this.state.Audit.name}
                         </div>
 
@@ -392,11 +392,11 @@ export class AuditDetails extends React.Component{
                 </Row>
                 {audit}
                 <div>
-                    <Button onClick={()=>this.updateNeo4j()}>通过</Button>
-                    <Button type={"danger"} onClick={()=>this.disaproving()}>不通过</Button>
+                    <Button id="permit" onClick={()=>this.updateNeo4j()}>通过</Button>
+                    <Button id="reject" type={"danger"} onClick={()=>this.disaproving()}>不通过</Button>
                     <div>
                         <span>理由: </span>
-                        <Input defaultValue="不通过" onChange={this.handelChange.bind(this)}/>
+                        <Input id="reason" defaultValue="不通过" onChange={this.handelChange.bind(this)}/>
                     </div>
 
                 </div>
