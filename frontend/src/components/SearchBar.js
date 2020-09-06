@@ -19,7 +19,6 @@ export class SearchBar extends React.Component {
     };
 
     componentDidMount() {
-        // getDetails({"search": null} ,this.callback);
     };
 
     search = (value) => {
@@ -39,19 +38,6 @@ export class SearchBar extends React.Component {
     render() {
         return (
             <div className="global-search-wrapper" style={{width: 300}}>
-                {/*<Input*/}
-                {/*    suffix={*/}
-                {/*        <Button*/}
-                {/*            className="search-btn"*/}
-                {/*            style={{ marginRight: -12 }}*/}
-                {/*            size="large"*/}
-                {/*            type="primary"*/}
-                {/*            //onClick={()=> this.search()}*/}
-                {/*        >*/}
-                {/*            <SearchOutlined />*/}
-                {/*        </Button>*/}
-                {/*    }*/}
-                {/*/>*/}
                 <div align="center">
                     <img alt="logo" src={logo}
                          style={{textAlign: 'center', background: '#fff', padding: 0, height: 150}}/>

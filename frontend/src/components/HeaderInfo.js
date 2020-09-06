@@ -17,26 +17,12 @@ export class HeaderInfo extends React.Component {
         if(value===''){
             message.info("查询的词条不能为空！",1)
         }
-        //let params={'name':value};
         else {
                 history.push('/Details?search=' + value);
-            //console.log(params);
-            //searchDetails(params)
         }
     };
 
-    // search = (value) => {
-    //     console.log(value);
-    //     //let params={'name':value};
-    //     // if (history.location.pathname !== "/Details")
-    //         history.push('/Details?search='+value);
-    //     //console.log(params);
-    //     //searchDetails(params)
-    // };
-
     render(){
-        // const user = JSON.parse(localStorage.getItem("user"));
-        // console.log("user info:",user);
         return(
             <div id="header">
                 <div id="header-content" >
@@ -48,7 +34,6 @@ export class HeaderInfo extends React.Component {
 
                             <Search
                                 placeholder="输入词条"
-                                // enterButton=<SearchOutlined/>
                             size="large"
                             onSearch={(value) => this.search(value)}
                             />
