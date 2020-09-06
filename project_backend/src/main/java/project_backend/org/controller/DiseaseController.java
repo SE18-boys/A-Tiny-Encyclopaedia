@@ -24,7 +24,7 @@ public class DiseaseController {
         String name = parms.get("name");
         String flag = parms.get("flag");
         Logger logger = Logger.getLogger(DiseaseController.class);
-        logger.info("name:"+name+"\t"+"flag:"+flag);
+        logger.info("Path:DiseaseByName,"+"name:"+name+"\t"+"flag:"+flag);
         int single_search=1;
         int multiple_search=2;
         int not_found=3;
