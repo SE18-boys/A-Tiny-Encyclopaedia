@@ -13,18 +13,21 @@ import json
 from py2neo import Graph, Node
 
 
+
+
+
 class MedicalGraph:
     def __init__(self):
         # cur_dir = '/'.join(os.path.abspath(__file__).split('/')[:-1])
 
         # self.data_path = os.path.join(cur_dir, 'data/medical.json')
-        # self.data_path = 'C:/Users/BoringYang/Desktop/summer/medical.json'  # absolute path
-        self.data_path = 'D:/test1.json'  # test json
+        self.data_path = 'C:\\Users\\Yang\\Desktop\\summer\\A-Tiny-Encyclopaedia\\neo4j_data\\test1.json'  # absolute path
+        # self.data_path = 'D:/test1.json'  # test json
         self.g = Graph(
-            host="localhost",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
+            host="139.196.200.26",  # neo4j 搭载服务器的ip地址，ifconfig可获取到
             http_port=7474,  # neo4j 服务器监听的端口号
             user="neo4j",  # 数据库user name，如果没有更改过，应该是neo4j
-            password="123456")
+            password="neo4j")
 
     '''读取文件'''
 

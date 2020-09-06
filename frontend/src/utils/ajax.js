@@ -2,7 +2,7 @@ import {message} from 'antd';
 
 
 // 后端的url
-export const apiUrl='http://localhost:8080';
+export const apiUrl='http://139.196.200.26:8080';
 
 let deleteRequest = (url, json, callback) => {
     let opts = {
