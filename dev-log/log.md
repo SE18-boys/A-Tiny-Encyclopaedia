@@ -311,4 +311,46 @@ by--wy
 
 +-./frontend,project_backend
 
-b--zmy
+by--zmy
+
+##2020.8.1-2020.8.6
+
+###update tests of backend and frontend
+
++-./project_backend
+
+by --xy
+
+###add simle audit function
+
++-./frontend
+
+by --zmy
+
+##2020.8.7-2020.8.18
+
+###polish audit function
+
++-./frontend
+
+by --zmy,zy
+
+###add new e2e test
+
++-./frontend
+
+by --wy
+
+##2020.8.19-2020.9.6
+
+###fix bugs of frontend and backend
+
++-./frontend,project_backend
+
+by --wy,zmy,zy,xy
+
+##2020.8.1-2020.9.6
+
+###send codes and datas to AWS server
+
+-- by zy
