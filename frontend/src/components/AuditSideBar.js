@@ -3,7 +3,7 @@ import {history} from "../utils/history";
 import {Menu, Layout} from "antd";
 import "../css/index.css"
 
-const { SubMenu } = Menu;
+// const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 export class AuditSideBar extends React.Component{
@@ -19,9 +19,9 @@ export class AuditSideBar extends React.Component{
         this.setState({ collapsed });
     };
 
-    bookOnClick = () => {
-        history.push("/");
-    };
+    // bookOnClick = () => {
+    //     history.push("/");
+    // };
 
     buttonOnClick = (path) => {
         history.push('/'+path)
@@ -34,7 +34,6 @@ export class AuditSideBar extends React.Component{
         {
             flag = false;
         }
-
         let num=1;
         let select=[num];
 

@@ -56,11 +56,6 @@ export class AuditsTable extends React.Component {
                 title: '申请日期',
                 dataIndex: 'submit_date',
                 key: 'date',
-                // render : (id) => {
-                //     return (
-                //         <span>{id.date}</span>
-                //     )
-                // }
             },
             {
                 title: '操作',
@@ -71,7 +66,7 @@ export class AuditsTable extends React.Component {
                         history.push({pathname: "/AuditsDetails", query: Audit});
                     }
                     return(
-                        <a onClick={()=> AuditDetails(Audit)}>查看详情</a>
+                        <a id="looking_for_detail" onClick={()=> AuditDetails(Audit)}>查看详情</a>
                     )
                 }
             }
@@ -90,9 +85,9 @@ export class AuditsTable extends React.Component {
         return(
             <div>
                 <div>
-                    <Button onClick={()=>this.getUnaudited()}>待审核</Button>
-                    <Button onClick={()=>this.getApproved()}>已通过</Button>
-                    <Button onClick={()=>this.getDisapproving()}>未通过</Button>
+                    <Button id="waiting_for_audit" onClick={()=>this.getUnaudited()}>待审核</Button>
+                    <Button id="permitted" onClick={()=>this.getApproved()}>已通过</Button>
+                    <Button id="rejected" onClick={()=>this.getDisapproving()}>未通过</Button>
                 </div>
                 <Table
                     columns={columns}

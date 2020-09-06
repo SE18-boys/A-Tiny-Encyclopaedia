@@ -7,7 +7,7 @@ describe('My third test',function () {
        cy.url().should('eq','http://localhost:3000/')
        cy.get('#add_entry').should('contain','创建词条')
            .click();
-       cy.url().should('eq','http://localhost:3000/AddEntry')
+       cy.url().should('eq','http://localhost:3000/AddEntryDetail')
        cy.get('#logo').click()
        cy.url().should('eq','http://localhost:3000/')
    })

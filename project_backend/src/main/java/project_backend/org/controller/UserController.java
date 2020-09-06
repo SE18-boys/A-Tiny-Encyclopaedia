@@ -30,7 +30,7 @@ public class UserController {
             obj.put("id",auth.getId());
             obj.put("name",auth.getUsername());
             obj.put("email",auth.getEmail());
-            obj.put("isAuth",auth.getIs_auth());
+            obj.put("role",auth.getRole());
             SessionUtil.setSession(obj);
             JSONObject data=JSONObject.fromObject(auth);
             return MsgUtil.makeMsg(MsgUtil.SUCCESS,MsgUtil.LOGIN_SUCCESS_MSG,data);
@@ -38,17 +38,6 @@ public class UserController {
             return MsgUtil.makeMsg(MsgUtil.LOGIN_USER_ERROR,MsgUtil.LOGIN_USER_ERROR_MSG);
         }
     }
-//    @RequestMapping("/checkSession")
-//    public Msg checkSession(){
-//        JSONObject auth = SessionUtil.getAuth();
-//
-//        if(auth == null){
-//            return MsgUtil.makeMsg(MsgUtil.NOT_LOGGED_IN_ERROR,MsgUtil.NOT_LOGGED_IN_ERROR_MSG);
-//        }
-//        else{
-//            return MsgUtil.makeMsg(MsgUtil.SUCCESS,MsgUtil.LOGIN_SUCCESS_MSG,auth);
-//        }
-//    }
     @RequestMapping("/getUsers")
     public List<User> getUsers(){return userService.getUsers();}
 
@@ -63,7 +52,7 @@ public class UserController {
             user.setUsername(name);
             user.setPassword(password);
             user.setEmail(email);
-            user.setIs_auth(Boolean.FALSE);
+            user.setRole("ROLE_USER");
             userService.addUser(user);
             return MsgUtil.makeMsg(MsgUtil.SUCCESS,MsgUtil.REGISTER_SUCCESS_MSG);
         }else{
