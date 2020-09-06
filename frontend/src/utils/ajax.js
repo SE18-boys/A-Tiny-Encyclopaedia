@@ -1,4 +1,5 @@
 import {message} from 'antd';
+import {history} from "./history";
 
 
 // 后端的url
@@ -112,7 +113,11 @@ let postRequest = (url, json, callback) => {
     fetch(url,opts)
         .then((response) => {
             // if(response) {
-                 //console.log(response)
+                if(response.status === 403){
+                    var error = new Error("403 Forbidden!");
+                    error.response = response;
+                    throw error
+                }
                 return response.json()
             // }
             // else{
@@ -125,6 +130,8 @@ let postRequest = (url, json, callback) => {
         })
         .catch((error) => {
             console.log(error);
+            message.error("您没有权限！");
+            history.push("/");
         });
 };
 
