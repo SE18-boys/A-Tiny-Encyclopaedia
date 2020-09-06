@@ -17,7 +17,7 @@ test('should return data when fetchData request success',  done => {
         expect(data.data).toEqual({
             "email":"1481796592@qq.com",
             "id":1,
-            "is_auth":true,
+            "role": "ROLE_ADMIN",
             "password":"123456",
             "username":"mikeshaw"
         })
