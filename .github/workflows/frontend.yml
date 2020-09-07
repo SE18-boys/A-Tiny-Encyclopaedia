@@ -12,8 +12,12 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: cd dir
-      run: cd frontend
+#     - name: cd dir
+#       run: cd frontend
+    - name: show path
+      run:  pwd
+    - name: show files
+      run: ls -a -1
     - name: Checkout
       uses: actions/checkout@master
 
