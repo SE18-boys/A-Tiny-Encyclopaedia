@@ -34,16 +34,12 @@ export default class EntryAttributeForm extends React.Component {
         }
     }
 
-    onChange=(value)=>{
-        console.log(value);
-    }
-
     addSimpleEntry = (values)=>
     {
-        console.log("add simple entry")
-        console.log(values)
+        console.log("add simple entry");
+        console.log(values);
         message.info("暂时只支持添加疾病")
-    }
+    };
 
 
     onFinish = values => {

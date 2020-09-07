@@ -188,3 +188,8 @@ i.title-edit, .wiki-add-icon {
     clear: both;
     color: greenyellow;
 }
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

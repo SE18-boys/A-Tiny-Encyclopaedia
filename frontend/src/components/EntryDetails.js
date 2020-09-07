@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/BKDetail.css'
-import {message} from 'antd';
+import {message, Spin} from "antd";
+
 import {searchDetails} from "../services/SearchService";
 import {searchAccurate} from "../services/SearchService";
 import {history} from "../utils/history";
@@ -16,15 +17,16 @@ export class EntryDetails extends React.Component{
             loading: true,
             noresult: false,
             isSignIn: false,
+            showAll: false,
+            showAllLoading: false,
         }
     }
 
     callback = (data) => {
-
+        this.setState({showAllLoading: false});
         if(data.status===3)
 
         {
-            let value = this.props.name;
             this.setState(
                 {
                     result: ["1"],
@@ -48,6 +50,7 @@ export class EntryDetails extends React.Component{
 
     componentWillReceiveProps(nextProps) {
         if(this.props.name !== nextProps.name){
+            this.setState({showAll: false});
             const user = JSON.parse(localStorage.getItem("user"));
             if (user !== null) {
                 this.setState({isSignIn: true})
@@ -72,6 +75,10 @@ export class EntryDetails extends React.Component{
     }
 
     getAllResult(){
+        this.setState({
+            showAllLoading: true,
+            showAll: true,
+        });
         let value = this.props.name;
         let params={'name':value,'flag':false};
         searchDetails(params, this.callback);
@@ -99,7 +106,7 @@ export class EntryDetails extends React.Component{
                 return detail;
             case "病因":
                 if(Entry.cause === null || Entry.cause === undefined) return "暂无相关资料！";
-                detail.push(<span>{Entry.cause}</span>);
+                detail.push(<pre>{Entry.cause}</pre>);
                 return detail;
             case "症状":
                 let related_symptom = Entry.symptom;
@@ -199,7 +206,7 @@ export class EntryDetails extends React.Component{
                     flag = false;
                 }
                 if(flag)
-                    detail.push(<span>暂无相关资料！</span>)
+                    detail.push(<span>暂无相关资料！</span>);
                 return detail;
             default: return detail;
         }
@@ -230,17 +237,15 @@ export class EntryDetails extends React.Component{
     render() {
         if(this.state.type===1) {
             const contentp = [];
-            const direction = [];
             for (let i = 0; i < DiseaseMenu.length; ++i) {
                 contentp.push(
-                    <div class="content-p">
-                        <div class="title-1">
-                            <div class="bk-flex">
-                                <div class="title-detail">
+                    <div className="content-p">
+                        <div className="title-1">
+                            <div className="bk-flex">
+                                <div className="title-detail">
                                 <span>
                                     {DiseaseMenu[i]}
                                 </span>
-                                    <a class="title-anchor"></a>
                                 </div>
                             </div>
                         </div>
@@ -249,9 +254,6 @@ export class EntryDetails extends React.Component{
                         </div>
                     </div>
                 );
-                direction.push(
-
-                )
             }
             if(this.state.loading){
                 return (
@@ -270,20 +272,20 @@ export class EntryDetails extends React.Component{
             else
             return (
                 <div>
-                    <div class="bk-title bk-font36 content-title">
+                    <div className="bk-title bk-font36 content-title">
                         {this.state.result.name}
-                        <a class="bk-color-darkgrey content-title-edit" onClick={this.update}>
-                            <i class="title-edit"/>
+                        <a className="bk-color-darkgrey content-title-edit" onClick={this.update}>
+                            <i className="title-edit"/>
                             编辑
                         </a>
                     </div>
 
-                    <div class="bk-title bk-font14 bk-color-topagrey content-sub-title">
+                    <div className="bk-title bk-font14 bk-color-topagrey content-sub-title">
 
                     </div>
 
-                    <div class="content-summary">
-                        <span>{this.state.result.desc}<br/><br/></span>
+                    <div className="content-summary">
+                        <pre>{this.state.result.desc}<br/><br/></pre>
 
                     </div>
 
@@ -305,17 +307,45 @@ export class EntryDetails extends React.Component{
                     <a id={names[i]} onClick={()=>{this.getAccurate(names[i])}}>{names[i]}<br/></a>
                 )
             }
-            return (
-                <div>
-                    <div className="content-summary">
-                        <span>{"未找到名称为"+value+"的词条，您可以手动添加或从以下的可能结果中查找"}<br/></span>
-                        <a id="see_all" onClick={()=>{this.getAllResult()}}>查看全部<br/></a>
-                    </div>
+            if(this.state.showAllLoading){
+                return (
                     <div>
-                        {content}
+                        <div className="content-summary">
+                            <span>{"未找到名称为"+value+"的词条，您可以手动添加或从以下的可能结果中查找"}<br/></span>
+                            <p>加载中<Spin/><br/></p>
+                        </div>
+                        <div>
+                            {content}
+                        </div>
                     </div>
-                </div>
-            )
+                )
+            }
+            else if(this.state.showAll){
+                return (
+                    <div>
+                        <div className="content-summary">
+                            <span>{"未找到名称为"+value+"的词条，您可以手动添加或从以下的可能结果中查找"}<br/></span>
+                            <p>已显示全部结果<br/></p>
+                        </div>
+                        <div>
+                            {content}
+                        </div>
+                    </div>
+                )
+            }
+            else {
+                return (
+                    <div>
+                        <div className="content-summary">
+                            <span>{"未找到名称为"+value+"的词条，您可以手动添加或从以下的可能结果中查找"}<br/></span>
+                            <a id="see_all" onClick={()=>{this.getAllResult()}}>查看全部<br/></a>
+                        </div>
+                        <div>
+                            {content}
+                        </div>
+                    </div>
+                )
+            }
         }
     }
 }

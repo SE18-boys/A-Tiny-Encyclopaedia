@@ -60,7 +60,7 @@ const DiseaseAttributes = [
 
 const multiList = [
     'symptom', 'accompany', 'cure_department', 'cure_way', 'check', 'do_eat', 'not_eat', 'recommend_dish', 'common_drug', 'common_drug', 'drug_detail',
-]
+];
 
 
 export default class AddEntryDetailForm extends React.Component {
@@ -76,9 +76,9 @@ export default class AddEntryDetailForm extends React.Component {
         }
         if(this.props.isUpdate===true)
         {
-            let values=this.props.initValues
-            console.log("before init values is ")
-            console.log(values)
+            let values=this.props.initValues;
+            console.log("before init values is ");
+            console.log(values);
 
             for(const pro in values)
             {
@@ -117,12 +117,12 @@ export default class AddEntryDetailForm extends React.Component {
         if(this.props.isUpdate===true)
         {
             updateDetails(values);
-            message.info("成功更新词条！")
+            message.info("成功提交审核！")
         }
         else
         {
             addSimpleDetails(values);
-            message.info("成功添加词条！")
+            message.info("成功提交审核！")
 
         }
         history.push('/')
