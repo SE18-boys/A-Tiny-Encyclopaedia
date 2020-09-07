@@ -363,11 +363,11 @@ export class AuditDetails extends React.Component{
         if(this.state.Audit.status === "待审核"){
             foot.push(
                 <div>
-                    <Button onClick={()=>this.updateNeo4j()}>通过</Button>
-                    <Button type={"danger"} onClick={()=>this.disaproving()}>不通过</Button>
+                    <Button id="permit" onClick={()=>this.updateNeo4j()}>通过</Button>
+                    <Button id="reject" type={"danger"} onClick={()=>this.disaproving()}>不通过</Button>
                     <div>
                         <span>理由: </span>
-                        <Input defaultValue="不通过" onChange={this.handelChange.bind(this)}/>
+                        <Input id="reason" defaultValue="不通过" onChange={this.handelChange.bind(this)}/>
                     </div>
 
                 </div>
@@ -417,7 +417,7 @@ export class AuditDetails extends React.Component{
                         </div>
 
                         <div className="content-summary">
-                            <span>{this.state.result.desc}<br/><br/></span>
+                            <span id="desc_before">{this.state.result.desc}<br/><br/></span>
                         </div>
 
                     </Col>
@@ -431,7 +431,7 @@ export class AuditDetails extends React.Component{
                         </div>
 
                         <div className="content-summary">
-                            <span>{this.state.Audit.desc}<br/><br/></span>
+                            <span id="desc_after">{this.state.Audit.desc}<br/><br/></span>
                         </div>
                     </Col>
                 </Row>

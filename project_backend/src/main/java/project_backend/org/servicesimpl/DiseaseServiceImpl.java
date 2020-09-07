@@ -2,6 +2,7 @@ package project_backend.org.servicesimpl;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import project_backend.org.dao.DiseaseDao;
 import project_backend.org.entity.Disease;
@@ -20,6 +21,7 @@ public class DiseaseServiceImpl implements DiseaseService {
     DiseaseDao diseaseDao;
 
     @Override
+    @Cacheable(value = "search")
     public Disease findDiseaseByName(String name) {
         return diseaseDao.findByName(name);
     }

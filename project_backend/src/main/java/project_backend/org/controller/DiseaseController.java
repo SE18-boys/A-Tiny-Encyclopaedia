@@ -23,8 +23,10 @@ public class DiseaseController {
     public SearchUtil findDiseaseByName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
         String flag = parms.get("flag");
+
         Logger logger = Logger.getLogger(DiseaseController.class);
         logger.info("Path:DiseaseByName,"+"name:"+name+"\t"+"flag:"+flag);
+
         int single_search=1;
         int multiple_search=2;
         int not_found=3;
@@ -54,6 +56,8 @@ public class DiseaseController {
     @RequestMapping("/DiseaseByAccurateName")
     public SearchUtil findDiseaseByAccurateName(@RequestBody Map<String, String> parms){
         String name = parms.get("name");
+        Logger logger = Logger.getLogger(DiseaseController.class);
+        logger.info("Path:DiseaseByAccurateName,"+"name:"+name);
         Disease disease=diseaseService.findDiseaseByName(name);
         int single_search=1;
         return new SearchUtil(single_search, disease);
@@ -64,7 +68,9 @@ public class DiseaseController {
     @RequestMapping("/UserAddDisease")
     public int UserAddDisease(@RequestBody DiseaseAudit one)
     {
-        System.out.println(one);
+        Logger logger = Logger.getLogger(DiseaseController.class);
+        logger.info("Path:UserAddDisease,"+"content:"+one);
+//        System.out.println(one);
         diseaseService.UserAddDisease(one);
         return 0;
     }
@@ -86,6 +92,8 @@ public class DiseaseController {
         String desc = parms.get("desc");
         Disease disease = new Disease();
         Disease d = diseaseService.findDiseaseByName(name);
+        Logger logger = Logger.getLogger(DiseaseController.class);
+        logger.info("Path:AddDisease,"+"name:"+name);
         if(d == null)
             disease.setId(-1);
         else
@@ -114,6 +122,8 @@ public class DiseaseController {
     public void updateDisease(@RequestBody Map<String, Object> parms){
         String name = String.valueOf(parms.get("name"));
         List<String> names = (List<String>) parms.get("accompany");
+        Logger logger = Logger.getLogger(DiseaseController.class);
+        logger.info("Path:UpdateDisease,"+"name:"+name+"\t"+"names:"+names);
         Set<String> accompany_names = new HashSet<>(names);
         diseaseService.UpdateAccompany_diseasesToDisease(name, accompany_names);
     }

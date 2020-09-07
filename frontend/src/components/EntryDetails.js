@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/BKDetail.css'
 import {message, Spin} from "antd";
+
 import {searchDetails} from "../services/SearchService";
 import {searchAccurate} from "../services/SearchService";
 import {history} from "../utils/history";
