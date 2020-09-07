@@ -1,57 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
     Form,
     Input,
-    Tooltip,
-    Cascader,
-    Select,
-    Row,
-    Col,
-    Checkbox,
     Button,
-    AutoComplete,
 } from 'antd';
-import {QuestionCircleOutlined} from '@ant-design/icons';
 import logo from "../assets/logo1.png";
 import '../css/signUp.css'
 import {history} from "../utils/history";
 import {withRouter} from "react-router";
 import {register} from "../services/userService";
 
-
-const {Option} = Select;
-const AutoCompleteOption = AutoComplete.Option;
-
-const formItemLayout = {
-    labelCol: {
-        xs: {
-            span: 24,
-        },
-        sm: {
-            span: 8,
-        },
-    },
-    wrapperCol: {
-        xs: {
-            span: 24,
-        },
-        sm: {
-            span: 16,
-        },
-    },
-};
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 0,
-        },
-        sm: {
-            span: 16,
-            offset: 8,
-        },
-    },
-};
 
 class RegisterForm extends React.Component {
 
@@ -67,12 +25,12 @@ class RegisterForm extends React.Component {
     handleChange = () => {
         this.props.handleChange();
         console.log("enter handleChange")
-    }
+    };
 
     backToHome = () => {
         if (history.location.pathname !== "/")
             history.push("/");
-    }
+    };
 
     // onClickRegister=()
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Avatar, Dropdown, Menu, Button, message} from 'antd';
+import { Dropdown, Menu, Button, message} from 'antd';
 import '../css/index.css'
 import {
     SettingFilled,
@@ -14,7 +14,7 @@ export class AdminAvatar extends React.Component {
         isSignIn: false,
         username: null,
         user: [],
-    }
+    };
 
     componentDidMount() {
         const user = JSON.parse(localStorage.getItem("user"));
@@ -27,29 +27,29 @@ export class AdminAvatar extends React.Component {
     onClickSignUp = () => {
         if (history.location.pathname !== "/SignUp")
             history.push("/SignUp")
-    }
+    };
 
     signUpInfo = () => {
         if (this.state.isSignIn)
             return (
                 <span className="name" id="username">Hi,{this.state.username}</span>
-            )
+            );
         else
             return (
                 <span className="name" onClick={this.onClickSignUp}><a id="signIn">登录</a></span>
             )
 
-    }
+    };
     handleAdd = () => {
 
         if (history.location.pathname !== "/AddEntryDetail")
             history.push("/AddEntryDetail")
-    }
+    };
 
     showProfile = () => {
         if (history.location.pathname !== "/Profile")
             history.push("/Profile")
-    }
+    };
 
     callback = () => {
         this.setState({
@@ -86,7 +86,7 @@ export class AdminAvatar extends React.Component {
         if(this.state.user.role === "ROLE_ADMIN"){
             menuitem.push(
                 <Menu.Item>
-                    <a id="EntryAudit" href="/EntryAuditS" >
+                    <a id="EntryAudit" href="/EntryAudits" >
                         Entry Audit
                     </a>
                 </Menu.Item>
