@@ -86,7 +86,7 @@ export class AdminAvatar extends React.Component {
         if(this.state.user.role === "ROLE_ADMIN"){
             menuitem.push(
                 <Menu.Item>
-                    <a id="EntryAudit" href="/EntryAuditS" >
+                    <a id="EntryAudit" href="/EntryAudits" >
                         Entry Audit
                     </a>
                 </Menu.Item>
