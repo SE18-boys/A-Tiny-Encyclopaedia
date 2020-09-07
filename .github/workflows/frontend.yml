@@ -20,10 +20,14 @@ jobs:
       run:  pwd
     - name: cd to higher
       run:  cd ../
+    - name: show path
+      run:  pwd
     - name: show files
       run: ls -a -1
     - name: cd dir
       run: cd ./frontend
+    - name: show path
+      run:  pwd
     - name: show files
       run: ls -a -1
 #     - name: Checkout
