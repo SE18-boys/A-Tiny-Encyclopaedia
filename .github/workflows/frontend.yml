@@ -24,6 +24,8 @@ jobs:
       run: ls -a -1
     - name: cd dir
       run: cd frontend
+    - name: show files
+      run: ls -a -1
 #     - name: Checkout
 #       uses: actions/checkout@master
 
