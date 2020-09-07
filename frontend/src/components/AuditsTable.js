@@ -66,7 +66,7 @@ export class AuditsTable extends React.Component {
                         history.push({pathname: "/AuditsDetails", query: Audit});
                     }
                     return(
-                        <a id="looking_for_detail" onClick={()=> AuditDetails(Audit)}>查看详情</a>
+                        <a className="detail" onClick={()=> AuditDetails(Audit)}>查看详情</a>
                     )
                 }
             }
