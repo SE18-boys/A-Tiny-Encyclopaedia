@@ -24,5 +24,5 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build
-        run:  mvn spring-boot:run
+        run:  mvn test
         working-directory: ./project_backend
