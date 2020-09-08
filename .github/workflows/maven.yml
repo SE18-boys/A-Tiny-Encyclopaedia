@@ -23,6 +23,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Build
+      - name: Test
         run:  mvn test
         working-directory: ./project_backend
