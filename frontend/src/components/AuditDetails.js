@@ -58,7 +58,7 @@ export class AuditDetails extends React.Component{
                 return detail;
             case "病因":
                 if(Entry.cause === null || Entry.cause === undefined) return "暂无相关资料！";
-                detail.push(<span>{Entry.cause}</span>);
+                detail.push(<pre>{Entry.cause}</pre>);
                 return detail;
             case "症状":
                 let related_symptom = Entry.symptom;
@@ -134,7 +134,7 @@ export class AuditDetails extends React.Component{
                 let prevent = Entry.prevent;
                 if(prevent === null || prevent === undefined)
                     return "暂无相关资料！";
-                detail.push(<span>{prevent}</span>);
+                detail.push(<pre>{prevent}</pre>);
                 return detail;
             case "药物":
                 let flag = true;
@@ -178,7 +178,7 @@ export class AuditDetails extends React.Component{
                 return detail;
             case "病因":
                 if(Entry.cause === null || Entry.cause === undefined) return "暂无相关资料！";
-                detail.push(<span>{Entry.cause}</span>);
+                detail.push(<pre>{Entry.cause}</pre>);
                 return detail;
             case "症状":
                 let related_symptom = Entry.symptom;
@@ -254,7 +254,7 @@ export class AuditDetails extends React.Component{
                 let prevent = Entry.prevent;
                 if(prevent === null || prevent === undefined)
                     return "暂无相关资料！";
-                detail.push(<span>{prevent}</span>);
+                detail.push(<pre>{prevent}</pre>);
                 return detail;
             case "药物":
                 let flag = true;

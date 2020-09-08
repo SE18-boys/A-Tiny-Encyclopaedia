@@ -4,6 +4,7 @@ import {message, Spin} from "antd";
 import {searchDetails} from "../services/SearchService";
 import {searchAccurate} from "../services/SearchService";
 import {history} from "../utils/history";
+import {EntryDetailRadar} from "../amCharts/EntryDetailRadar";
 const DiseaseMenu = ["就诊科室","病因","症状","检查","并发症","治疗","药物","宜吃食物","忌吃食物","传播","预防措施"];
 export class EntryDetails extends React.Component{
 
@@ -91,7 +92,6 @@ export class EntryDetails extends React.Component{
         if(Entry === null) return "暂无信息";
         if(Entry.length === 0) return "暂无信息";
         if(Entry.id === -1) return "暂无信息";
-
         const detail = [];
         switch (menu) {
             case "就诊科室":
@@ -184,7 +184,7 @@ export class EntryDetails extends React.Component{
                 let prevent = Entry.prevent;
                 if(prevent === null || prevent === undefined)
                     return "暂无相关资料！";
-                detail.push(<span>{prevent}</span>);
+                detail.push(<pre>{prevent}</pre>);
                 return detail;
             case "药物":
                 let flag = true;
@@ -232,9 +232,51 @@ export class EntryDetails extends React.Component{
         searchAccurate(params,this.callback);
     };
 
+    getnum = (Entry) => {
+        let num = {department: 0, symptom: 0, check: 0, accompany: 0, doeat: 0, noteat: 0, drug: 0};
+        if(Entry === null) return num;
+        if(Entry.length === 0) return num;
+        if(Entry.id === -1) return num;
+            // case "就诊科室"
+                let department = Entry.cure_department;
+                if(department === null || department === undefined) num.department = 0;
+                else num.department = department.length;
+            // case "症状":
+                let related_symptom = Entry.symptom;
+                if(related_symptom === null || related_symptom === undefined ) num.symptom = 0;
+                else num.symptom = related_symptom.length;
+            // case "检查":
+                let need_check = Entry.check;
+                if(need_check === null || need_check === undefined) num.check = 0;
+                else num.check = need_check.length;
+            // case "并发症":
+                let accompany_diseases = Entry.accompany;
+                if(accompany_diseases === null || accompany_diseases === undefined) num.accompany = 0;
+                else num.accompany = accompany_diseases.length;
+            // case "宜吃食物":
+                let do_eat = Entry.do_eat;
+                if(do_eat === null || do_eat === undefined) return num.doeat = 0;
+                else num.doeat = do_eat.length;
+            // case "忌吃食物":
+                let no_eat = Entry.no_eat;
+                if(no_eat === null || no_eat === undefined) return num.noteat = 0;
+                else num.noteat = no_eat.length;
+            // case "药物":
+                let common_drug = Entry.common_drug;
+                let recommand_drug = Entry.recommand_drug;
+                if(common_drug !== null && common_drug !== undefined) {
+                    num.drug = common_drug.length;
+                }
+                if(recommand_drug !== null && recommand_drug !== undefined) {
+                    num.drug += recommand_drug.length;
+                }
+        return num;
+    };
 
     render() {
+        let num = {department: 0, symptom: 0, check: 0, accompany: 0, doeat: 0, noteat: 0, drug: 0};
         if(this.state.type===1) {
+            num = this.getnum(this.state.result);
             const contentp = [];
             for (let i = 0; i < DiseaseMenu.length; ++i) {
                 contentp.push(
@@ -288,8 +330,21 @@ export class EntryDetails extends React.Component{
 
                     </div>
 
-                    <div>
-
+                    <div className="content-p">
+                        <div className="title-1">
+                            <div className="bk-flex">
+                                <div className="title-detail">
+                                <span>
+                                    基本信息
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <EntryDetailRadar
+                                num = {num}
+                            />
+                        </div>
                     </div>
 
                     <div>
