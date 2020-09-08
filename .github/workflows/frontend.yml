@@ -45,3 +45,6 @@ jobs:
         npm install
         npm run build
       working-directory: ./frontend
+       # 环境变量
+      env:
+        CI: false
