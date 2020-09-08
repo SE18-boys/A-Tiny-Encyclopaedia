@@ -42,6 +42,6 @@ jobs:
 
     - name: Build and Deploy
       run:
-        npm run install
-        npm run build
+        npm install
+        npm build
       working-directory: ./frontend
