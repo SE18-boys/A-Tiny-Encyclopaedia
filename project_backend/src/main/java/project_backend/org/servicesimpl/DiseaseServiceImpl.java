@@ -21,7 +21,7 @@ public class DiseaseServiceImpl implements DiseaseService {
     DiseaseDao diseaseDao;
 
     @Override
-    @Cacheable(value = "search")
+//    @Cacheable(value = "search")
     public Disease findDiseaseByName(String name) {
         return diseaseDao.findByName(name);
     }
