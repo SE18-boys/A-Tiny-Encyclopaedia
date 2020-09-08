@@ -41,7 +41,7 @@ jobs:
       uses: actions/checkout@master
 
     - name: Build and Deploy
-      run:
+      run: |
         npm install
         npm build
       working-directory: ./frontend
