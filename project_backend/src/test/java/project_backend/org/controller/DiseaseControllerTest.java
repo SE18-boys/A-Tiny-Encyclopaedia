@@ -258,7 +258,7 @@ public class DiseaseControllerTest extends UnitTestDemoApplicationTests {
     public void SetAuditResult() throws Exception {
         String name = "test";
         JSONObject jsonData = new JSONObject();
-        jsonData.put("id", "5f313c245504eb2841f29ead");
+        jsonData.put("id", "5f55e4e447f9d06ae7810983");
         jsonData.put("reason", "testreason");
         jsonData.put("result", "testresult");
 

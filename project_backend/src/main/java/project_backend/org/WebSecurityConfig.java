@@ -80,7 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/AllDiseaseApproved").hasRole("ADMIN")
                     .antMatchers("/AllDiseaseDisapproving").hasRole("ADMIN")
                     .antMatchers("/register").permitAll()
-                    .anyRequest().authenticated() //其余所有请求需要认证.authenticated()
+                    .anyRequest().permitAll() //其余所有请求需要认证.authenticated()
                     .and()
                 .formLogin()
                     .usernameParameter("username")
