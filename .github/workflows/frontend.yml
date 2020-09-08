@@ -12,30 +12,30 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-#     - name: cd dir
-#       run: cd frontend
-#     - name: test cd
-#       run: cd --help
+#     - name: Checkout
+#       uses: actions/checkout@master
+# #     - name: cd dir
+# #       run: cd frontend
+# #     - name: test cd
+# #       run: cd --help
+# #     - name: show path
+# #       run:  pwd
+# #     - name: cd to higher
+# #       run:  cd ../
 #     - name: show path
 #       run:  pwd
-#     - name: cd to higher
-#       run:  cd ../
-    - name: show path
-      run:  pwd
+# #     - name: show files
+# #       run: ls -a -1
+# #     - name: cd dir
+# #       run: cd ./frontend
+#     - name: show path
+#       run:  pwd
+#       working-directory: ./frontend
 #     - name: show files
 #       run: ls -a -1
-#     - name: cd dir
-#       run: cd ./frontend
-    - name: show path
-      run:  pwd
-      working-directory: ./frontend
-    - name: show files
-      run: ls -a -1
-    - name: show files
-      run: ls -a -1
-      working-directory: ./frontend
+#     - name: show files
+#       run: ls -a -1
+#       working-directory: ./frontend
       
     - name: Checkout
       uses: actions/checkout@master
@@ -51,4 +51,4 @@ jobs:
 
     - name: Unit Test
       run: npm test
- 
+      working-directory: ./frontend
