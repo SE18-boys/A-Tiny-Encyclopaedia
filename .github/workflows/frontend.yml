@@ -36,14 +36,12 @@ jobs:
     - name: show files
       run: ls -a -1
       working-directory: ./frontend
+      
     - name: Checkout
       uses: actions/checkout@master
 
     - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@master
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
-        BUILD_SCRIPT: npm install && npm run build
-        working-directory: ./frontend
+       run： |
+        npm run install
+        npm run build
+      working-directory: ./frontend
