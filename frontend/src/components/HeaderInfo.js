@@ -11,7 +11,7 @@ export class HeaderInfo extends React.Component {
     {
         if (history.location.pathname !== "/")
         history.push("/")
-    }
+    };
     search = (value) => {
         console.log(value);
         if(value===''){

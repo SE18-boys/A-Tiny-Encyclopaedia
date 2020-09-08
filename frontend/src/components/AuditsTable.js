@@ -2,37 +2,49 @@ import React from "react";
 import {getApprovedEntry, getDisapprovingEntry, getUnauditedEntry} from "../services/AuditService";
 import {Table, Button} from "antd";
 import {history} from "../utils/history";
+import {AuditSunburst} from "../amCharts/AuditSunburst";
 
 export class AuditsTable extends React.Component {
     constructor() {
         super();
         this.state = {
             UnauditedEntry : [],
+            ApprovedEntry : [],
+            DisapprovingEntry : [],
             type: "待审核",
-
         }
     }
 
-    callback = (data) => {
-        this.setState({UnauditedEntry: data});
-        console.log("auditEntry: ", data);
+    getUnauditedNum = (data) => {
+        this.setState({UnauditedEntry: data, UnauditedNum: data.length});
+    };
+    getApprovedNum = (data) => {
+        this.setState({ApprovedEntry: data, ApprovedNum: data.length});
+    };
+    getDisapprovingNum = (data) => {
+        this.setState({DisapprovingEntry: data, DisapprovingNum: data.length});
     };
 
     componentDidMount() {
-        getUnauditedEntry(this.callback);
+        getUnauditedEntry(this.getUnauditedNum);
+        getApprovedEntry(this.getApprovedNum);
+        getDisapprovingEntry(this.getDisapprovingNum);
     }
 
     getUnaudited() {
-        getUnauditedEntry(this.callback);
+        //getUnauditedEntry(this.callback);
         this.setState({type: "待审核"});
     }
     getApproved() {
-        getApprovedEntry(this.callback);
+        //getApprovedEntry(this.callback);
         this.setState({type: "通过"});
     }
     getDisapproving() {
-        getDisapprovingEntry(this.callback);
+        //getDisapprovingEntry(this.callback);
         this.setState({type: "未通过"});
+    }
+    getAll() {
+        this.setState({type: "基本信息"});
     }
 
     render() {
@@ -72,7 +84,18 @@ export class AuditsTable extends React.Component {
             }
         ];
 
-        if(this.state.type === "未通过"){
+        let data = [];
+
+        if(this.state.type === "待审核"){
+            data = this.state.UnauditedEntry;
+        }
+
+        else if(this.state.type === "通过"){
+            data = this.state.ApprovedEntry;
+        }
+
+        else if(this.state.type === "未通过"){
+            data = this.state.DisapprovingEntry;
             columns.push(
                 {
                     title: '原因',
@@ -82,18 +105,40 @@ export class AuditsTable extends React.Component {
             );
         }
 
-        return(
-            <div>
+        if(this.state.type === "基本信息"){
+            return(
                 <div>
-                    <Button id="waiting_for_audit" onClick={()=>this.getUnaudited()}>待审核</Button>
-                    <Button id="permitted" onClick={()=>this.getApproved()}>已通过</Button>
-                    <Button id="rejected" onClick={()=>this.getDisapproving()}>未通过</Button>
+                    <div>
+                        <Button onClick={()=> this.getAll()}>基本信息</Button>
+                        <Button id="waiting_for_audit" onClick={()=>this.getUnaudited()}>待审核</Button>
+                        <Button id="permitted" onClick={()=>this.getApproved()}>已通过</Button>
+                        <Button id="rejected" onClick={()=>this.getDisapproving()}>未通过</Button>
+                    </div>
+                    <br/>
+                    <AuditSunburst
+                        Unaudited={this.state.UnauditedEntry.length}
+                        Approved={this.state.ApprovedEntry.length}
+                        Disapproving={this.state.DisapprovingEntry.length}
+                    />
                 </div>
-                <Table
-                    columns={columns}
-                    dataSource={this.state.UnauditedEntry}
-                />
-            </div>
-        )
+            )
+        }
+        else {
+            return(
+                <div>
+                    <div>
+                        <Button onClick={()=> this.getAll()}>基本信息</Button>
+                        <Button id="waiting_for_audit" onClick={()=>this.getUnaudited()}>待审核</Button>
+                        <Button id="permitted" onClick={()=>this.getApproved()}>已通过</Button>
+                        <Button id="rejected" onClick={()=>this.getDisapproving()}>未通过</Button>
+                    </div>
+                    <Table
+                        columns={columns}
+                        dataSource={data}
+                    />
+                </div>
+            )
+        }
+
     }
 }

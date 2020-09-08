@@ -1,12 +1,10 @@
 import React from "react";
 import {withRouter} from "react-router-dom";
 import {Layout} from "antd";
-import {getUnauditedEntry} from "../services/AuditService";
 import {AuditsTable} from "../components/AuditsTable";
 import {HeaderInfo} from "../components/HeaderInfo";
-import {AuditSideBar} from "../components/AuditSideBar";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 class EntryAuditsView extends React.Component {
 
@@ -16,7 +14,7 @@ class EntryAuditsView extends React.Component {
     }
 
     componentDidMount(){
-        document.title = 'TouchFish-AdminCheck'
+        document.title = 'TouchFish-AdminCheck';
         let user = localStorage.getItem("user");
         this.setState({user:user});
     }
@@ -37,6 +35,7 @@ class EntryAuditsView extends React.Component {
                                 <div className={"foot-wrapper"}>
                                     <AuditsTable/>
                                 </div>
+
                             </div>
                         </Content>
                     </Layout>
