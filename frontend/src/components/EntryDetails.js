@@ -6,6 +6,8 @@ import {searchDetails} from "../services/SearchService";
 import {searchAccurate} from "../services/SearchService";
 import {history} from "../utils/history";
 import {EntryDetailRadar} from "../amCharts/EntryDetailRadar";
+
+let num = {department: 0, symptom: 0, check: 0, accompany: 0, doeat: 0, noteat: 0, drug: 0};
 const DiseaseMenu = ["就诊科室","病因","症状","检查","并发症","治疗","药物","宜吃食物","忌吃食物","传播","预防措施"];
 export class EntryDetails extends React.Component{
 
@@ -24,9 +26,9 @@ export class EntryDetails extends React.Component{
     }
 
     callback = (data) => {
+        //console.log("data", data);
         this.setState({showAllLoading: false});
         if(data.status===3)
-
         {
             this.setState(
                 {
@@ -234,7 +236,7 @@ export class EntryDetails extends React.Component{
     };
 
     getnum = (Entry) => {
-        let num = {department: 0, symptom: 0, check: 0, accompany: 0, doeat: 0, noteat: 0, drug: 0};
+        num = {department: 0, symptom: 0, check: 0, accompany: 0, doeat: 0, noteat: 0, drug: 0};
         if(Entry === null) return num;
         if(Entry.length === 0) return num;
         if(Entry.id === -1) return num;
@@ -256,11 +258,11 @@ export class EntryDetails extends React.Component{
                 else num.accompany = accompany_diseases.length;
             // case "宜吃食物":
                 let do_eat = Entry.do_eat;
-                if(do_eat === null || do_eat === undefined) return num.doeat = 0;
+                if(do_eat === null || do_eat === undefined) num.doeat = 0;
                 else num.doeat = do_eat.length;
             // case "忌吃食物":
                 let no_eat = Entry.no_eat;
-                if(no_eat === null || no_eat === undefined) return num.noteat = 0;
+                if(no_eat === null || no_eat === undefined) num.noteat = 0;
                 else num.noteat = no_eat.length;
             // case "药物":
                 let common_drug = Entry.common_drug;
@@ -275,9 +277,11 @@ export class EntryDetails extends React.Component{
     };
 
     render() {
-        let num = {department: 0, symptom: 0, check: 0, accompany: 0, doeat: 0, noteat: 0, drug: 0};
         if(this.state.type===1) {
-            num = this.getnum(this.state.result);
+            //console.log(this.state.result);
+            //console.log(this.state.type);
+            let num = this.getnum(this.state.result);
+            console.log("num",num);
             const contentp = [];
             for (let i = 0; i < DiseaseMenu.length; ++i) {
                 contentp.push(
@@ -353,7 +357,8 @@ export class EntryDetails extends React.Component{
                     </div>
                 </div>
             )
-        }else{
+        }
+        else{
             let value = this.props.name;
             let names= this.state.names;
             let content=[];
