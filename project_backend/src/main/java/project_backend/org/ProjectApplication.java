@@ -7,7 +7,7 @@ import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 
 @SpringBootApplication
 @EnableNeo4jRepositories
-@EnableCaching
+//@EnableCaching
 public class ProjectApplication {
 
     public static void main(String[] args) {
