@@ -46,4 +46,4 @@ jobs:
         BRANCH: gh-pages
         FOLDER: build
         BUILD_SCRIPT: npm install && npm run build
-#         working-directory: ./frontend
+        working-directory: ./frontend
