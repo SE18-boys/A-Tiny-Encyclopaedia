@@ -16,24 +16,28 @@ jobs:
       uses: actions/checkout@master
 #     - name: cd dir
 #       run: cd frontend
-    - name: test cd
-      run: cd --help
+#     - name: test cd
+#       run: cd --help
+#     - name: show path
+#       run:  pwd
+#     - name: cd to higher
+#       run:  cd ../
     - name: show path
       run:  pwd
-    - name: cd to higher
-      run:  cd ../
+#     - name: show files
+#       run: ls -a -1
+#     - name: cd dir
+#       run: cd ./frontend
     - name: show path
       run:  pwd
+      working-directory: ./frontend
     - name: show files
       run: ls -a -1
-    - name: cd dir
-      run: cd ./frontend
-    - name: show path
-      run:  pwd
     - name: show files
       run: ls -a -1
-#     - name: Checkout
-#       uses: actions/checkout@master
+      working-directory: ./frontend
+    - name: Checkout
+      uses: actions/checkout@master
 
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@master
@@ -42,3 +46,4 @@ jobs:
         BRANCH: gh-pages
         FOLDER: build
         BUILD_SCRIPT: npm install && npm run build
+#         working-directory: ./frontend
